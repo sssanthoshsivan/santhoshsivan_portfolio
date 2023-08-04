@@ -1,113 +1,280 @@
+import Link from 'next/link';
 import Image from 'next/image'
+import Head from 'next/head';
+import {SiGmail} from 'react-icons/si';
+import {TfiInstagram} from 'react-icons/tfi';
+import {GrLinkedinOption} from 'react-icons/gr'
+import {AiOutlineInstagram, 
+        AiFillLinkedin, 
+        AiFillGithub,
+      } from "react-icons/ai"
+
+import Blockchain from "../public/Blockchain.webp"
+import Shop from "../public/Shop.jpg"
+import sq from "../public/sq.jpeg"
+import code from "../public/code.png";
+import design from "../public/design.png";
+import consulting from "../public/consulting.png";
+
+import img1 from "../public/img1.jpeg";
+import img3 from "../public/img3.jpg";
+import img4 from "../public/img4.jpg";
+import img5 from "../public/img5.jpg";
+import img8 from "../public/img8.jpg";
+import img9 from "../public/img9.jpg";
+import img12 from "../public/img12.jpeg";
+import img13 from "../public/img13.jpg";
+import img15 from "../public/img15.jpg";
+import img16 from "../public/img16.jpeg";
+import About from './about';
+import Footer from './footer';
+
+
+
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div>
+      <main className='bg-white px-10 md:px-20 lg:px-40'>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <section className='min-h-screen'>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+          <nav className='py-10 mb-12 flex justify-between'>
+            <h1 className='text-lg text-slate-600'>Santhosh Sivan</h1>
+            <ul className='flex'>
+              <li>
+                <a href="mailto:santhoshkan205@gmail.com?subject=Hi, How can I help You ?"><SiGmail className='cursor-pointer text-3xl -mt-1 text-slate-600 hover:text-slate-900'/></a>
+              </li>
+              <li><a className='bg-transparent border font-medium border-slate-700 hover:bg-slate-900 hover:text-white text-black px-4 py-2 rounded-lg ml-8' href="https://drive.google.com/uc?id=1peoLr2w4IzEY9DPy7k1DwHdfx9oKN-q5&export=download">Resume</a></li>  
+            </ul>          
+          </nav>
+
+          <div className='grid grid-cols-1 justify-center lg:grid-cols-2 lg:p-10'>
+            <div className='text-center lg:text-left'>
+              <h2 className='mb-8 text-5xl  md:text-7xl font-bold tracking-tighter leading-tight'>Hi I'm</h2>
+              <h2 className='mb-8 text-5xl  md:text-7xl font-bold tracking-tighter leading-tight '>Santhosh Sivan</h2>
+              <h3 className='mb-10 text-2xl py-2 md:text-3xl md:pb-5 text-slate-600'>Front-end Developer, Photographer, Football Athlete</h3>
+            </div>
+            
+            <div className='md:grid-flow-row md:m-20 lg:h-auto lg:w-96 lg:m-0 lg:ml-32 lg:-mt-6 lg:px-5'>
+              <Image src={sq} className='rounded-3xl object-cover hover:rounded-full transition-all duration-200' />
+            </div>
+            <div className='text-gray-600 grid items-center grid-cols-3 p-14 gap-14 lg:-mt-16 lg:-ml-14 md:-mr-20'>
+              <a href="https://github.com/sssanthoshsivan" className='text-6xl hover:text-slate-900 ' target='_blank'><AiFillGithub /></a> 
+              <a href="https://www.instagram.com/sssanthosh_sivan/" className='text-5xl ml-2 mt-2 hover:text-slate-900' target='_blank'><TfiInstagram/></a>
+              <a href="https://www.linkedin.com/in/sssanthoshsivan/" className='text-6xl hover:text-slate-900' target='_blank'><GrLinkedinOption /></a>
+            </div>
+          </div>
+        </section>
+        
+
+        <section>
+          <h2 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight">
+            Projects
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+          <section class=" pt-5 lg:pt-10 pb-10 lg:pb-20 bg-white">
+            <div class="container">
+                <div class="flex flex-wrap -mx-4">
+                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                      <div class="bg-white rounded-lg overflow-hidden mb-10">
+                        <Image
+                            src={Shop}
+                            alt="image"
+                            class="w-full"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3>
+                              <a
+                                  href="javascript:void(0)"
+                                  class="
+                                  font-semibold
+                                  text-dark text-xl
+                                  sm:text-[22px]
+                                  md:text-xl
+                                  lg:text-[22px]
+                                  xl:text-xl
+                                  2xl:text-[22px]
+                                  mb-4
+                                  block
+                                  hover:text-primary
+                                  "
+                                  >
+                              UI Design for an e-Commerece Website
+                              </a>
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed mb-7">
+                            EarthlyShop is a front-end design project aimed at improving creativity and showcasing web design skills. 
+                            The project is built using HTML, CSS, and Bootstrap.
+                            </p>
+                            <a
+                              href="https://sssanthoshsivan.github.io/earthlyshop.github.io/"
+                              target='_blank'
+                              class="
+                              inline-block
+                              py-2
+                              px-7
+                              border border-[#E5E7EB]
+                              rounded-xl
+                              font-medium
+                              hover:bg-black hover:text-white
+                              transition
+                              "
+                              >
+                            Live Demo
+                            </a>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                      <div class="bg-white rounded-lg overflow-hidden mb-10">
+                        <Image
+                            src={Blockchain}
+                            alt="image"
+                            class="w-full"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3>
+                              <a
+                                  href="javascript:void(0)"
+                                  class="
+                                  font-semibold
+                                  text-dark text-xl
+                                  sm:text-[22px]
+                                  md:text-xl
+                                  lg:text-[22px]
+                                  xl:text-xl
+                                  2xl:text-[22px]
+                                  mb-4
+                                  block
+                                  hover:text-primary
+                                  "
+                                  >
+                              D' Storage
+                              </a>
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed mb-7">
+                            Blockchain-based decentralized storage using IPFS and blockchain technology to provide secure and scalable data storage, 
+                            with data distributed across multiple nodes for redundancy and protected by encryption for authorized access.
+                            </p>
+                            <a
+                              href="https://github.com/sssanthoshsivan/D-Storage"
+                              target='_blank'
+                              class="
+                              inline-block
+                              py-2
+                              px-7
+                              border border-[#E5E7EB]
+                              rounded-xl
+                              text-base text-body-color
+                              font-medium
+                              hover:bg-black hover:text-white
+                              transition
+                              "
+                              >
+                            View Details
+                            </a>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+                      <div class="bg-white rounded-lg overflow-hidden mb-10">
+                        <img
+                            src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-03.jpg"
+                            alt="image"
+                            class="w-full"
+                            />
+                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                            <h3>
+                              <a
+                                  href="javascript:void(0)"
+                                  class="
+                                  font-semibold
+                                  text-dark text-xl
+                                  sm:text-[22px]
+                                  md:text-xl
+                                  lg:text-[22px]
+                                  xl:text-xl
+                                  2xl:text-[22px]
+                                  mb-4
+                                  block
+                                  hover:text-primary
+                                  "
+                                  >
+                              Upcoming Project
+                              </a>
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed mb-7">
+                              Working on Some New Stuffs on the Market.
+                            </p>
+                            <a
+                              href="javascript:void(0)"
+                              class="
+                              inline-block
+                              py-2
+                              px-7
+                              border border-[#E5E7EB]
+                              rounded-xl
+                              text-base text-body-color
+                              font-medium
+                              hover:bg-black hover:text-white
+                              transition
+                              "
+                              >
+                            Soon....
+                            </a>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </section>
+        </section>
+        
+        <section>
+        <h2 className="mb-8 text-3xl pt-10 md:text-5xl font-bold tracking-tighter leading-tight">
+            My Photographs
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+          <div className='py-10'>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+            <div className='grid grid-cols-2 gap-5 lg:grid-cols-5 md:grid-cols-3'>
+              <Image src={img3} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img9} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img15} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img13} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img8} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img12} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img1} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img4} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img16} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img5} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+            </div>
+
+          </div>
+        </section>
+
+        <section>
+
+          <div>
+          <h2 className="mb-8 text-3xl pt-10 text-center md:text-5xl font-bold tracking-tighter leading-tight">
+            About
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          </div>
+
+        </section>  
+
+        <section>
+          <div>
+            <About/>
+          </div>
+        </section>
+
+        <footer>
+          <Footer />
+        </footer>
+    
+      </main>
+    </div>
   )
 }

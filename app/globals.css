@@ -25,3 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+  @layer utilities {
+      .transition-rounded {
+        --tw-transition-property: border-radius;
+      }
+    }
+
+  
