@@ -300,11 +300,9 @@ export default function Home() {
               <div className="text-sm text-gray-500 dark:text-gray-400">
                 Santhosh Sivan
               </div>
-              <div>&bull;</div>
-              <div>{`© 2023`}</div>
-              <div>&bull;</div>
-              {/* Corrected Link tag */}
-              <Link href="/">Home</Link>
+                <div>&bull;</div>
+                <div>{`© 2023`}</div>
+                <div>&bull;</div>
             </div>
           </div>
         </footer>
