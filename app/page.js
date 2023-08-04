@@ -14,7 +14,7 @@ import {SlSocialYoutube,
 import Blockchain from "../public/Blockchain.webp"
 import Shop from "../public/Shop.jpg"
 import sq from "../public/sq.jpeg"
-
+import Upcoming from "../public/upcoming.jpg"
 import img1 from "../public/img1.jpeg";
 import img3 from "../public/img3.jpg";
 import img4 from "../public/img4.jpg";
@@ -78,7 +78,7 @@ export default function Home() {
                       <div class="bg-white rounded-lg overflow-hidden mb-10">
                         <Image
                             src={Shop}
-                            alt="image"
+                            alt="UI Design for an e-Commerce Website"
                             class="w-full"
                             />
                         <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
@@ -177,8 +177,8 @@ export default function Home() {
                   </div>
                   <div class="w-full md:w-1/2 xl:w-1/3 px-4">
                       <div class="bg-white rounded-lg overflow-hidden mb-10">
-                        <img
-                            src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-03.jpg"
+                        <Image
+                            src={Upcoming}
                             alt="image"
                             class="w-full"
                             />
@@ -265,7 +265,7 @@ export default function Home() {
         <section>
         <div>
             <p className=" text-black text-justify pb-10 leading-loose text-lg">
-                Greetings! I'm a passionate coder. My coding adventure kicked off with Python, where I tackled small projects, 
+                Greetings! I&apos;m a passionate coder. My coding adventure kicked off with Python, where I tackled small projects, 
                 and soon I found myself drawn into the world of web development through frameworks like Flask and Django along with HTML, CSS, and JavaScript. 
                 Soon I built my very first webpage using plain HTML and Bootstrap, a modest achievement, and I even ventured into blockchain projects, 
                 with a primary focus on Web 3.0 for my academics. Countless hours of self-guided learning prepared me for the transition to React. 
@@ -278,25 +278,34 @@ export default function Home() {
 
         <footer>
           <div className="mt-16 flex flex-col items-center">
-          
             <div className="mb-3 flex space-x-4">
-              <a target='_blank' href="https://github.com/sssanthoshsivan"><SlSocialGithub kind="github"   /></a>
-              <a target='_blank' href="https://www.instagram.com/sssanthosh_sivan/" ><SlSocialInstagram kind="facebook" /></a>
-              <a target='_blank' href="https://www.youtube.com/channel/UCb3BUO7Y78L8kwj59b9L_EQ"><SlSocialYoutube kind="youtube" /></a>
-              <a target='_blank' href="https://open.spotify.com/user/31sc2cwyyfou3apb5xjgeuugostq"><SlSocialSpotify kind="linkedin" /></a>
-              <a target='_blank' href="https://www.linkedin.com/in/sssanthoshsivan/"><SlSocialLinkedin kind="twitter" /></a>
+              <a target="_blank" href="https://github.com/sssanthoshsivan">
+                <SlSocialGithub kind="github" />
+              </a>
+              <a target="_blank" href="https://www.instagram.com/sssanthosh_sivan/">
+                <SlSocialInstagram kind="facebook" />
+              </a>
+              <a target="_blank" href="https://www.youtube.com/channel/UCb3BUO7Y78L8kwj59b9L_EQ">
+                <SlSocialYoutube kind="youtube" />
+              </a>
+              <a target="_blank" href="https://open.spotify.com/user/31sc2cwyyfou3apb5xjgeuugostq">
+                <SlSocialSpotify kind="linkedin" />
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/sssanthoshsivan/">
+                <SlSocialLinkedin kind="twitter" />
+              </a>
             </div>
             <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
               <div></div>
               <div className="text-sm text-gray-500 dark:text-gray-400">
                 Santhosh Sivan
               </div>
-              <div>{` • `}</div>
+              <div>&bull;</div>
               <div>{`© 2023`}</div>
-              <div>{` • `}</div>
-              <Link href="/"></Link>
+              <div>&bull;</div>
+              {/* Corrected Link tag */}
+              <Link href="/">Home</Link>
             </div>
-            
           </div>
         </footer>
     
