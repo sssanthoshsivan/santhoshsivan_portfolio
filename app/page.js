@@ -1,20 +1,19 @@
-import Link from 'next/link';
 import Image from 'next/image'
-import Head from 'next/head';
+import Link from 'next/link';
 import {SiGmail} from 'react-icons/si';
 import {TfiInstagram} from 'react-icons/tfi';
 import {GrLinkedinOption} from 'react-icons/gr'
-import {AiOutlineInstagram, 
-        AiFillLinkedin, 
-        AiFillGithub,
-      } from "react-icons/ai"
+import { AiFillGithub } from "react-icons/ai"
+
+import {SlSocialYoutube,
+        SlSocialLinkedin,
+        SlSocialInstagram,
+        SlSocialSpotify,
+        SlSocialGithub } from 'react-icons/sl'
 
 import Blockchain from "../public/Blockchain.webp"
 import Shop from "../public/Shop.jpg"
 import sq from "../public/sq.jpeg"
-import code from "../public/code.png";
-import design from "../public/design.png";
-import consulting from "../public/consulting.png";
 
 import img1 from "../public/img1.jpeg";
 import img3 from "../public/img3.jpg";
@@ -26,8 +25,7 @@ import img12 from "../public/img12.jpeg";
 import img13 from "../public/img13.jpg";
 import img15 from "../public/img15.jpg";
 import img16 from "../public/img16.jpeg";
-import About from './about';
-import Footer from './footer';
+
 
 
 
@@ -265,13 +263,41 @@ export default function Home() {
         </section>  
 
         <section>
-          <div>
-            <About/>
-          </div>
+        <div>
+            <p className=" text-black text-justify pb-10 leading-loose text-lg">
+                Greetings! I'm a passionate coder. My coding adventure kicked off with Python, where I tackled small projects, 
+                and soon I found myself drawn into the world of web development through frameworks like Flask and Django along with HTML, CSS, and JavaScript. 
+                Soon I built my very first webpage using plain HTML and Bootstrap, a modest achievement, and I even ventured into blockchain projects, 
+                with a primary focus on Web 3.0 for my academics. Countless hours of self-guided learning prepared me for the transition to React. 
+                This shift opened doors to dynamic website possibilities, and I further refined my skills using tools like Next.js and Tailwind CSS, 
+                enhancing my ability to craft seamless user experiences. My current focus centres predominantly on front-end web development. 
+                I relish the process of transforming concepts into captivating and interactive digital spaces. Feel free to connect. Thank you
+            </p>
+        </div>
         </section>
 
         <footer>
-          <Footer />
+          <div className="mt-16 flex flex-col items-center">
+          
+            <div className="mb-3 flex space-x-4">
+              <a target='_blank' href="https://github.com/sssanthoshsivan"><SlSocialGithub kind="github"   /></a>
+              <a target='_blank' href="https://www.instagram.com/sssanthosh_sivan/" ><SlSocialInstagram kind="facebook" /></a>
+              <a target='_blank' href="https://www.youtube.com/channel/UCb3BUO7Y78L8kwj59b9L_EQ"><SlSocialYoutube kind="youtube" /></a>
+              <a target='_blank' href="https://open.spotify.com/user/31sc2cwyyfou3apb5xjgeuugostq"><SlSocialSpotify kind="linkedin" /></a>
+              <a target='_blank' href="https://www.linkedin.com/in/sssanthoshsivan/"><SlSocialLinkedin kind="twitter" /></a>
+            </div>
+            <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+              <div></div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                Santhosh Sivan
+              </div>
+              <div>{` • `}</div>
+              <div>{`© 2023`}</div>
+              <div>{` • `}</div>
+              <Link href="/"></Link>
+            </div>
+            
+          </div>
         </footer>
     
       </main>
