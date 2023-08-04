@@ -58,7 +58,7 @@ export default function Home() {
             </div>
             
             <div className='md:grid-flow-row md:m-20 lg:h-auto lg:w-96 lg:m-0 lg:ml-32 lg:-mt-6 lg:px-5'>
-              <Image src={sq} className='rounded-3xl object-cover hover:rounded-full transition-all duration-200' />
+              <Image src={sq} alt="image" className='rounded-3xl object-cover hover:rounded-full transition-all duration-200' />
             </div>
             <div className='text-gray-600 grid items-center grid-cols-3 p-14 gap-14 lg:-mt-16 lg:-ml-14 md:-mr-20'>
               <a href="https://github.com/sssanthoshsivan" className='text-6xl hover:text-slate-900 ' target='_blank'><AiFillGithub /></a> 
@@ -239,16 +239,16 @@ export default function Home() {
           <div className='py-10'>
 
             <div className='grid grid-cols-2 gap-5 lg:grid-cols-5 md:grid-cols-3'>
-              <Image src={img3} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img9} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img15} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img13} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img8} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img12} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img1} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img4} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img16} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img5} className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img3} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img9} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img15} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img13} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img8} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img12} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img1} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img4} alt="image" className='rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img16} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
+              <Image src={img5} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
             </div>
 
           </div>
