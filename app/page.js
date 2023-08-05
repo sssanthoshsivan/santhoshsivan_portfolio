@@ -50,15 +50,15 @@ export default function Home() {
 
           <div className='grid grid-cols-1 justify-center lg:grid-cols-2 lg:p-10'>
             <div className='text-center lg:text-left'>
-              <h2 className='mb-8 text-5xl  md:text-7xl font-bold tracking-tighter leading-tight'>Hi I'm</h2>
-              <h2 className='mb-8 text-5xl  md:text-7xl font-bold tracking-tighter leading-tight '>Santhosh Sivan</h2>
-              <h3 className='mb-10 text-2xl py-2 md:text-3xl md:pb-5 text-slate-600'>Front-end Developer, Photographer, Football Athlete</h3>
+              <h2 className='md:mb-8 text-5xl  md:text-7xl font-bold tracking-tighter leading-tight'>Hi I'm</h2>
+              <h2 className='m-4 md:mb-8 text-5xl lg:-ml-1 md:text-7xl font-bold tracking-tighter leading-tight '>Santhosh Sivan</h2>
+              <h3 className='mb-4 md:mb-10 text-2xl py-2 md:text-3xl md:pb-5 text-slate-600'>Front-end Developer, Photographer, Football Athlete</h3>
             </div>
             
-            <div className='md:grid-flow-row md:m-20 lg:h-auto lg:w-96 lg:m-0 lg:ml-32 lg:-mt-6 lg:px-5'>
+            <div className='md:grid-flow-row md:m-20 xl:ml-56 lg:h-auto lg:w-96 lg:m-0 lg:-mt-6 lg:mx-10'>
               <Image src={sq} alt="image" className='rounded-3xl object-cover hover:rounded-full transition-all duration-200' />
             </div>
-            <div className='text-gray-600 grid items-center grid-cols-3 p-14 gap-14 lg:-mt-16 lg:-ml-14 md:-mr-20'>
+            <div className='text-gray-600 grid space-x-3 content-around  grid-cols-3 p-10 gap-10 px-11 lg:-mt-4 lg:-ml-14 md:px-10 md:-mr-24 md:mb-10 sm:ml-14'>
               <a href="https://github.com/sssanthoshsivan" className='text-6xl hover:text-slate-900 ' target='_blank'><AiFillGithub /></a> 
               <a href="https://www.instagram.com/sssanthosh_sivan/" className='text-5xl ml-2 mt-2 hover:text-slate-900' target='_blank'><TfiInstagram/></a>
               <a href="https://www.linkedin.com/in/sssanthoshsivan/" className='text-6xl hover:text-slate-900' target='_blank'><GrLinkedinOption /></a>
@@ -72,7 +72,7 @@ export default function Home() {
             Projects
           </h2>
           <section class=" pt-5 lg:pt-10 pb-10 lg:pb-20 bg-white">
-            <div class="container">
+            <div class="container justify-center">
                 <div class="flex flex-wrap -mx-4">
                   <div class="w-full md:w-1/2 xl:w-1/3 px-4">
                       <div class="bg-white rounded-lg overflow-hidden mb-10">
