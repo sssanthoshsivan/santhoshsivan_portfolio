@@ -11,21 +11,19 @@ import {SlSocialYoutube,
         SlSocialSpotify,
         SlSocialGithub } from 'react-icons/sl'
 
-import Blockchain from "../public/Blockchain.webp"
-import Shop from "../public/Shop.jpg"
 import sq from "../public/sq.jpeg"
-import Upcoming from "../public/upcoming.jpg"
-import img1 from "../public/img1.jpeg";
-import img3 from "../public/img3.jpg";
-import img4 from "../public/img4.jpg";
-import img5 from "../public/img5.jpg";
-import img8 from "../public/img8.jpg";
-import img9 from "../public/img9.jpg";
-import img12 from "../public/img12.jpeg";
-import img13 from "../public/img13.jpg";
-import img15 from "../public/img15.jpg";
-import img16 from "../public/img16.jpeg";
 
+
+
+import Projects from '@/pages/projects';
+import Photographs from '@/pages/photos';
+
+import react from "../public/atom.png";
+import bootstrap from "../public/bootstrap.png";
+import css from "../public/css-3.png";
+import git from "../public/Gitk.png";
+import html from "../public/html.png";
+import javascript from "../public/java-script-logo.png";
 
 
 
@@ -39,30 +37,38 @@ export default function Home() {
         <section className='min-h-screen'>
 
           <nav className='py-10 mb-12 flex justify-between'>
-            <h1 className='text-lg text-slate-600'>Santhosh Sivan</h1>
+            <h1 className='text-sm font-medium md:text-lg md:font-normal text-slate-600'>Santhosh Sivan</h1>
             <ul className='flex'>
               <li>
-                <a href="mailto:santhoshkan205@gmail.com?subject=Hi, How can I help You ?"><SiGmail className='cursor-pointer text-3xl -mt-1 text-slate-600 hover:text-slate-900'/></a>
+                <Link href="mailto:santhoshkan205@gmail.com?subject=Hi, How can I help you ?"><SiGmail className=' text-slate-600 hover:text-slate-900 text-2xl -mr-3 md:text-3xl md:mx-5'/></Link>
               </li>
-              <li><a className='bg-transparent border font-medium border-slate-700 hover:bg-slate-900 hover:text-white text-black px-4 py-2 rounded-lg ml-8' href="https://drive.google.com/uc?id=1peoLr2w4IzEY9DPy7k1DwHdfx9oKN-q5&export=download">Resume</a></li>  
+              <li className='mt-1'><Link className='bg-transparent border border-slate-700 hover:bg-slate-900 hover:text-white text-black px-4 py-2 rounded-lg ml-8' href="https://drive.google.com/uc?id=1peoLr2w4IzEY9DPy7k1DwHdfx9oKN-q5&export=download">Resume</Link></li>  
             </ul>          
           </nav>
 
           <div className='grid grid-cols-1 justify-center lg:grid-cols-2 lg:p-10'>
             <div className='text-center lg:text-left'>
-              <h2 className='md:mb-8 text-5xl  md:text-7xl font-bold tracking-tighter leading-tight'>Hi I'm</h2>
-              <h2 className='m-4 md:mb-8 text-5xl lg:-ml-1 md:text-7xl font-bold tracking-tighter leading-tight '>Santhosh Sivan</h2>
+              <h2 className='md:mb-8 text-5xl  md:text-7xl  font-bold tracking-tighter leading-tight'>Hi I'm</h2>
+              <h2 className='m-4 md:mb-8 text-5xl lg:-ml-1 md:text-7xl font-bold tracking-tighter leading-tight'>Santhosh Sivan</h2>
               <h3 className='mb-4 md:mb-10 text-2xl py-2 md:text-3xl md:pb-5 text-slate-600'>Front-end Developer, Photographer, Football Athlete</h3>
             </div>
             
-            <div className='md:grid-flow-row md:m-20 xl:ml-56 lg:h-auto lg:w-96 lg:m-0 lg:-mt-6 lg:mx-10'>
+            <div className='md:grid-flow-row md:m-20 xl:ml-56 lg:h-auto lg:w-96 lg:m-0 lg:mx-10 md:mx-10 sm:mx-10'>
               <Image src={sq} alt="image" className='rounded-3xl object-cover hover:rounded-full transition-all duration-200' />
             </div>
-            <div className='text-gray-600 grid space-x-3 content-around  grid-cols-3 p-10 gap-10 px-11 lg:-mt-4 lg:-ml-14 md:px-10 md:-mr-24 md:mb-10 sm:ml-14'>
-              <a href="https://github.com/sssanthoshsivan" className='text-6xl hover:text-slate-900 ' target='_blank'><AiFillGithub /></a> 
-              <a href="https://www.instagram.com/sssanthosh_sivan/" className='text-5xl ml-2 mt-2 hover:text-slate-900' target='_blank'><TfiInstagram/></a>
-              <a href="https://www.linkedin.com/in/sssanthoshsivan/" className='text-6xl hover:text-slate-900' target='_blank'><GrLinkedinOption /></a>
+            <div className='text-gray-600 grid grid-cols-3 gap-10 p-10 lg:-ml-14 md:pb-20 xl:-ml-32'>
+                <Link href="https://github.com/sssanthoshsivan" className='text-6xl hover:text-slate-900 flex justify-center items-center' target='_blank'>
+                    <AiFillGithub />
+                </Link>
+                <Link href="https://www.instagram.com/sssanthosh_sivan/" className='text-5xl mt-1 hover:text-slate-900 flex justify-center items-center' target='_blank'>
+                    <TfiInstagram />
+                </Link>
+                <Link href="https://www.linkedin.com/in/sssanthoshsivan/" className='text-6xl hover:text-slate-900 flex justify-center items-center' target='_blank'>
+                    <GrLinkedinOption />
+                </Link>
             </div>
+
+
           </div>
         </section>
         
@@ -71,187 +77,20 @@ export default function Home() {
           <h2 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight">
             Projects
           </h2>
-          <section class=" pt-5 lg:pt-10 pb-10 lg:pb-20 bg-white">
-            <div class="container justify-center">
-                <div class="flex flex-wrap -mx-4">
-                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10">
-                        <Image
-                            src={Shop}
-                            alt="UI Design for an e-Commerce Website"
-                            class="w-full"
-                            />
-                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                            <h3>
-                              <a
-                                  href="javascript:void(0)"
-                                  class="
-                                  font-semibold
-                                  text-dark text-xl
-                                  sm:text-[22px]
-                                  md:text-xl
-                                  lg:text-[22px]
-                                  xl:text-xl
-                                  2xl:text-[22px]
-                                  mb-4
-                                  block
-                                  hover:text-primary
-                                  "
-                                  >
-                              UI Design for an e-Commerece Website
-                              </a>
-                            </h3>
-                            <p class="text-slate-600 leading-relaxed mb-7">
-                            EarthlyShop is a front-end design project aimed at improving creativity and showcasing web design skills. 
-                            The project is built using HTML, CSS, and Bootstrap.
-                            </p>
-                            <a
-                              href="https://sssanthoshsivan.github.io/earthlyshop.github.io/"
-                              target='_blank'
-                              class="
-                              inline-block
-                              py-2
-                              px-7
-                              border border-[#E5E7EB]
-                              rounded-xl
-                              font-medium
-                              hover:bg-black hover:text-white
-                              transition
-                              "
-                              >
-                            Live Demo
-                            </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10">
-                        <Image
-                            src={Blockchain}
-                            alt="image"
-                            class="w-full"
-                            />
-                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                            <h3>
-                              <a
-                                  href="javascript:void(0)"
-                                  class="
-                                  font-semibold
-                                  text-dark text-xl
-                                  sm:text-[22px]
-                                  md:text-xl
-                                  lg:text-[22px]
-                                  xl:text-xl
-                                  2xl:text-[22px]
-                                  mb-4
-                                  block
-                                  hover:text-primary
-                                  "
-                                  >
-                              D' Storage
-                              </a>
-                            </h3>
-                            <p class="text-slate-600 leading-relaxed mb-7">
-                            Blockchain-based decentralized storage using IPFS and blockchain technology to provide secure and scalable data storage, 
-                            with data distributed across multiple nodes for redundancy and protected by encryption for authorized access.
-                            </p>
-                            <a
-                              href="https://github.com/sssanthoshsivan/D-Storage"
-                              target='_blank'
-                              class="
-                              inline-block
-                              py-2
-                              px-7
-                              border border-[#E5E7EB]
-                              rounded-xl
-                              text-base text-body-color
-                              font-medium
-                              hover:bg-black hover:text-white
-                              transition
-                              "
-                              >
-                            View Details
-                            </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10">
-                        <Image
-                            src={Upcoming}
-                            alt="image"
-                            class="w-full"
-                            />
-                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                            <h3>
-                              <a
-                                  href="javascript:void(0)"
-                                  class="
-                                  font-semibold
-                                  text-dark text-xl
-                                  sm:text-[22px]
-                                  md:text-xl
-                                  lg:text-[22px]
-                                  xl:text-xl
-                                  2xl:text-[22px]
-                                  mb-4
-                                  block
-                                  hover:text-primary
-                                  "
-                                  >
-                              Upcoming Project
-                              </a>
-                            </h3>
-                            <p class="text-slate-600 leading-relaxed mb-7">
-                              Working on Some New Stuffs on the Market.
-                            </p>
-                            <a
-                              href="javascript:void(0)"
-                              class="
-                              inline-block
-                              py-2
-                              px-7
-                              border border-[#E5E7EB]
-                              rounded-xl
-                              text-base text-body-color
-                              font-medium
-                              hover:bg-black hover:text-white
-                              transition
-                              "
-                              >
-                            Soon....
-                            </a>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-            </div>
-          </section>
+
+          <Projects />
+          
         </section>
         
         <section>
         <h2 className="mb-8 text-3xl pt-10 md:text-5xl font-bold tracking-tighter leading-tight">
-            My Photographs
-          </h2>
+          My Photographs
+        </h2>
 
-          <div className='py-10'>
-
-            <div className='grid grid-cols-2 gap-5 lg:grid-cols-5 md:grid-cols-3'>
-              <Image src={img3} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img9} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img15} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img13} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img8} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img12} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img1} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img4} alt="image" className='rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img16} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-              <Image src={img5} alt="image" className=' rounded-xl hover:scale-125 hover:rounded-md transition-all duration-150 '/>
-            </div>
-
-          </div>
+        < Photographs />
+          
         </section>
-
+        
         <section>
 
           <div>
@@ -259,10 +98,6 @@ export default function Home() {
             About
           </h2>
           </div>
-
-        </section>  
-
-        <section>
         <div>
             <p className=" text-black text-justify pb-10 leading-loose text-lg">
                 Greetings! I&apos;m a passionate coder. My coding adventure kicked off with Python, where I tackled small projects, 
@@ -271,7 +106,7 @@ export default function Home() {
                 with a primary focus on Web 3.0 for my academics. Countless hours of self-guided learning prepared me for the transition to React. 
                 This shift opened doors to dynamic website possibilities, and I further refined my skills using tools like Next.js and Tailwind CSS, 
                 enhancing my ability to craft seamless user experiences. My current focus centres predominantly on front-end web development. 
-                I relish the process of transforming concepts into captivating and interactive digital spaces. Feel free to connect. Thank you
+                I relish the process of transforming concepts into captivating and interactive digital spaces. Feel free to connect, Thank you.
             </p>
         </div>
         </section>
@@ -279,21 +114,21 @@ export default function Home() {
         <footer>
           <div className="mt-16 flex flex-col items-center">
             <div className="mb-3 flex space-x-4">
-              <a target="_blank" href="https://github.com/sssanthoshsivan">
+              <Link target="_blank" href="https://github.com/sssanthoshsivan">
                 <SlSocialGithub kind="github" />
-              </a>
-              <a target="_blank" href="https://www.instagram.com/sssanthosh_sivan/">
-                <SlSocialInstagram kind="facebook" />
-              </a>
-              <a target="_blank" href="https://www.youtube.com/channel/UCb3BUO7Y78L8kwj59b9L_EQ">
+              </Link>
+              <Link target="_blank" href="https://www.instagram.com/sssanthosh_sivan/">
+                <SlSocialInstagram kind="instagram" />
+              </Link>
+              <Link target="_blank" href="https://www.youtube.com/channel/UCb3BUO7Y78L8kwj59b9L_EQ">
                 <SlSocialYoutube kind="youtube" />
-              </a>
-              <a target="_blank" href="https://open.spotify.com/user/31sc2cwyyfou3apb5xjgeuugostq">
-                <SlSocialSpotify kind="linkedin" />
-              </a>
-              <a target="_blank" href="https://www.linkedin.com/in/sssanthoshsivan/">
+              </Link>
+              <Link target="_blank" href="https://open.spotify.com/user/31sc2cwyyfou3apb5xjgeuugostq">
+                <SlSocialSpotify kind="spotify" />
+              </Link>
+              <Link target="_blank" href="https://www.linkedin.com/in/sssanthoshsivan/">
                 <SlSocialLinkedin kind="twitter" />
-              </a>
+              </Link>
             </div>
             <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
               <div></div>
