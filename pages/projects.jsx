@@ -45,7 +45,7 @@ const Projects = () => {
                               px-7
                               border border-[#E5E7EB]
                               rounded-xl
-                              font-medium
+                              font-medium text-black
                               hover:bg-black hover:text-white
                               transition
                               "
@@ -95,7 +95,7 @@ const Projects = () => {
                               px-7
                               border border-[#E5E7EB]
                               rounded-xl
-                              text-base text-body-color
+                              text-base text-black
                               font-medium
                               hover:bg-black hover:text-white
                               transition
@@ -144,7 +144,7 @@ const Projects = () => {
                               px-7
                               border border-[#E5E7EB]
                               rounded-xl
-                              text-base text-body-color
+                              text-base text-black
                               font-medium
                               hover:bg-black hover:text-white
                               transition
