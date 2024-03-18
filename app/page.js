@@ -3,6 +3,7 @@ import Photographs from "@/pages/photos";
 import Intro from "@/pages/intro";
 import Footer from "@/pages/footer";
 import About from "@/pages/about";
+import WorkExperience from "@/pages/WorkExperience";
 
 export default function Home() {
   return (
@@ -18,6 +19,13 @@ export default function Home() {
             Projects
           </h2>
           <Projects />
+        </section>
+
+        <section>
+          <h2 className="mb-8 text-3xl pt-6 md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
+            Work Experience
+          </h2>
+          <WorkExperience />
         </section>
 
         <section>

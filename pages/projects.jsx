@@ -6,11 +6,9 @@ import Upcoming from "../public/upcoming.jpg"
 
 const Projects = () => {
     return ( 
-        <section class=" pt-5 lg:pt-10 pb-10 lg:pb-20 bg-white">
-            <div class="container justify-center">
-                <div class="flex flex-wrap -mx-4">
-                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10">
+                <div class="flex flex-wrap justify-around px-5 pt-5 lg:pt-10 bg-white">
+                  <div class="w-full md:w-1/2 xl:w-1/3 px-4 min-h-max">
+                      <div class="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
                         <Image src={Shop} alt="UI Design for an e-Commerce Website" class="w-full"/>
                         <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
                             <h3>
@@ -29,7 +27,7 @@ const Projects = () => {
                                   hover:text-primary
                                   "
                                   >
-                              UI Design for an e-Commerece Website
+                              EarthlyShop UI
                               </a>
                             </h3>
                             <p class="text-slate-600 leading-relaxed mb-7">
@@ -44,7 +42,7 @@ const Projects = () => {
                               py-2
                               px-7
                               border border-[#E5E7EB]
-                              rounded-xl
+                              rounded-lg
                               font-medium text-black
                               hover:bg-black hover:text-white
                               transition
@@ -56,7 +54,7 @@ const Projects = () => {
                       </div>
                   </div>
                   <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10">
+                      <div class="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
                         <Image
                             src={Blockchain}
                             alt="image"
@@ -83,8 +81,8 @@ const Projects = () => {
                               </a>
                             </h3>
                             <p class="text-slate-600 leading-relaxed mb-7">
-                            Blockchain-based decentralized storage using IPFS and blockchain technology to provide secure and scalable data storage, 
-                            with data distributed across multiple nodes for redundancy and protected by encryption for authorized access.
+                            Decentralized storage system using IPFS and blockchain for secure, scalable data storage. 
+                            Data dispersed across nodes for redundancy, encrypted for authorized access.
                             </p>
                             <a
                               href="https://github.com/sssanthoshsivan/D-Storage"
@@ -94,7 +92,7 @@ const Projects = () => {
                               py-2
                               px-7
                               border border-[#E5E7EB]
-                              rounded-xl
+                              rounded-lg
                               text-base text-black
                               font-medium
                               hover:bg-black hover:text-white
@@ -107,7 +105,7 @@ const Projects = () => {
                       </div>
                   </div>
                   <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10">
+                      <div class="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
                         <Image
                             src={Upcoming}
                             alt="image"
@@ -133,8 +131,8 @@ const Projects = () => {
                               Upcoming Project
                               </a>
                             </h3>
-                            <p class="text-slate-600 leading-relaxed mb-7">
-                              Working on Some New Stuffs on the Market.
+                            <p class="text-slate-600 leading-relaxed mb-7 italic">
+                              "Learning never exhausts the mind"
                             </p>
                             <a
                               href="javascript:void(0)"
@@ -143,7 +141,7 @@ const Projects = () => {
                               py-2
                               px-7
                               border border-[#E5E7EB]
-                              rounded-xl
+                              rounded-lg
                               text-base text-black
                               font-medium
                               hover:bg-black hover:text-white
@@ -156,8 +154,6 @@ const Projects = () => {
                       </div>
                   </div>
                 </div>
-            </div>
-          </section>
      );
 }
  

@@ -10,7 +10,7 @@ import {
 const About = () => {
     return ( 
         <div>
-                <h2 className="mb-8 text-3xl pt-10 text-center md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
+                <h2 className="mb-8 text-3xl pt-16 text-center md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
                 About
                 </h2>
             <div>
@@ -28,7 +28,7 @@ const About = () => {
                 CSS, enhancing my ability to craft seamless user experiences. My
                 current focus centres predominantly on front-end web development.
                 I relish the process of transforming concepts into captivating and
-                interactive digital spaces. Feel free to connect, Thank you.
+                interactive digital spaces. Feel free to connect, <span className=" text-orange-500 font-semibold">Thank you</span>.
                 </p>
             </div>
         </div>
