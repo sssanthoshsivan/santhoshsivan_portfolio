@@ -1,20 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link';
-import Blockchain from "../public/Blockchain.webp"
-import Shop from "../public/Shop.jpg"
-import Upcoming from "../public/upcoming.jpg"
+import Blockchain from "../../../public/Blockchain.webp"
+import Shop from "../../../public/Shop.jpg"
+import Upcoming from "../../../public/upcoming.jpg"
 
 const Projects = () => {
     return ( 
-                <div class="flex flex-wrap justify-around px-5 pt-5 lg:pt-10 bg-white">
-                  <div class="w-full md:w-1/2 xl:w-1/3 px-4 min-h-max">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
-                        <Image src={Shop} alt="UI Design for an e-Commerce Website" class="w-full"/>
-                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                <div className="flex flex-wrap justify-around px-5 pt-5 lg:pt-10 bg-white">
+                  <div className="w-full md:w-1/2 xl:w-1/3 px-4 min-h-max">
+                      <div className="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
+                        <Image src={Shop} alt="UI Design for an e-Commerce Website" className="w-full"/>
+                        <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
                             <h3>
                               <a
-                                  href="javascript:void(0)"
-                                  class="
+                                  className="
                                   font-semibold
                                   text-dark text-xl
                                   sm:text-[22px]
@@ -30,14 +29,14 @@ const Projects = () => {
                               EarthlyShop UI
                               </a>
                             </h3>
-                            <p class="text-slate-600 leading-relaxed mb-7">
+                            <p className="text-slate-600 leading-relaxed mb-7">
                             EarthlyShop is a front-end design project aimed at improving creativity and showcasing web design skills. 
                             The project is built using HTML, CSS, and Bootstrap.
                             </p>
                             <a
                               href="https://sssanthoshsivan.github.io/earthlyshop.github.io/"
                               target='_blank'
-                              class="
+                              className="
                               inline-block
                               py-2
                               px-7
@@ -53,18 +52,17 @@ const Projects = () => {
                         </div>
                       </div>
                   </div>
-                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
+                  <div className="w-full md:w-1/2 xl:w-1/3 px-4">
+                      <div className="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
                         <Image
                             src={Blockchain}
                             alt="image"
-                            class="w-full"
+                            className="w-full"
                             />
-                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                        <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
                             <h3>
                               <a
-                                  href="javascript:void(0)"
-                                  class="
+                                  className="
                                   font-semibold
                                   text-dark text-xl
                                   sm:text-[22px]
@@ -80,14 +78,14 @@ const Projects = () => {
                               D' Storage
                               </a>
                             </h3>
-                            <p class="text-slate-600 leading-relaxed mb-7">
+                            <p className="text-slate-600 leading-relaxed mb-7">
                             Decentralized storage system using IPFS and blockchain for secure, scalable data storage. 
                             Data dispersed across nodes for redundancy, encrypted for authorized access.
                             </p>
                             <a
                               href="https://github.com/sssanthoshsivan/D-Storage"
                               target='_blank'
-                              class="
+                              className="
                               inline-block
                               py-2
                               px-7
@@ -104,18 +102,17 @@ const Projects = () => {
                         </div>
                       </div>
                   </div>
-                  <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div class="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
+                  <div className="w-full md:w-1/2 xl:w-1/3 px-4">
+                      <div className="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
                         <Image
                             src={Upcoming}
                             alt="image"
-                            class="w-full"
+                            className="w-full"
                             />
-                        <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                        <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
                             <h3>
                               <a
-                                  href="javascript:void(0)"
-                                  class="
+                                  className="
                                   font-semibold
                                   text-dark text-xl
                                   sm:text-[22px]
@@ -131,12 +128,11 @@ const Projects = () => {
                               Upcoming Project
                               </a>
                             </h3>
-                            <p class="text-slate-600 leading-relaxed mb-7 italic">
+                            <p className="text-slate-600 leading-relaxed mb-7 italic">
                               "Learning never exhausts the mind"
                             </p>
                             <a
-                              href="javascript:void(0)"
-                              class="
+                              className="
                               inline-block
                               py-2
                               px-7
