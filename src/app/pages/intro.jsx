@@ -28,7 +28,7 @@ const Intro = () => {
 
     return ( 
         <div>
-            <div className='grid grid-cols-1 items-center justify-center lg:grid-cols-2 lg:py-10'>
+            <div className='grid grid-cols-1 items-center justify-center lg:grid-cols-2 lg:py-10 mt-24'>
                 <div className='text-center lg:text-left'>
                     <h2 className='reveal-text md:mb-8 text-5xl  md:text-7xl  font-bold tracking-tighter leading-tight text-black dark:text-black'>Hi I'm</h2>
                     <h2 className='reveal-text m-4 md:mb-8 text-5xl lg:-ml-1 md:text-7xl font-bold tracking-tighter leading-tight text-black dark:text-black'>Santhosh Sivan</h2>

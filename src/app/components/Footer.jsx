@@ -47,7 +47,7 @@ const Footer = () => {
                         Santhosh Sivan
                     </div>
                     <div>&bull;</div>
-                    <div>{`© 2023`}</div>
+                    <div>{`© 2024`}</div>
                     <div>&bull;</div>
                     </div>
                 </div>
