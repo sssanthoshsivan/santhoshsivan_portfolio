@@ -4,7 +4,7 @@ import Intro from "@/app/pages/intro";
 import Footer from "@/app/components/Footer";
 import About from "@/app/pages/about";
 import WorkExperience from "@/app/pages/WorkExperience";
-import Header from "./components/header";
+import Header from "@/app/components/Header";
 
 export default function Home() {
   return (
