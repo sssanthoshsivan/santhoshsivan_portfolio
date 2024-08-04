@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        josefin: ['var(--font-josefin-slab)', 'serif'],
+      },
+      screens:{
+        'screen-xs':{'max':'480px'},
+        'screen-sm':{'min': '480px', 'max': '768px'},
+        'screen-md':{'min': '768px', 'max': '992px'},
+        'screen-lg':{'min': '992px', 'max': '1200px'},
+        'screen-xl':{'min':'1200px'},
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

@@ -5,6 +5,7 @@ import Footer from "@/app/components/Footer";
 import About from "@/app/pages/about";
 import WorkExperience from "@/app/pages/WorkExperience";
 import Header from "@/app/components/Header";
+import Playgroud from "./pages/Playgroud";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
         <section>
           <Intro />
         </section>
-
+        {/* <Playgroud /> */}
         <section>
           <h2 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
             Projects

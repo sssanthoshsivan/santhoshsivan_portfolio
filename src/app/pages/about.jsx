@@ -73,7 +73,7 @@ const About = () => {
         About
       </h2>
       <div>
-        <p className="text-black text-justify pb-10 leading-extra-loose text-lg mx-36">
+        <p className="text-black text-justify pb-10 leading-extra-loose text-lg screen-xs:mx-2 screen-xs:leading-loose">
           Greetings! I&apos;m Santhosh Sivan from 
           <span 
             ref={tamilnaduRef} 

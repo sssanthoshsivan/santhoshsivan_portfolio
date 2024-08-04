@@ -2,7 +2,7 @@
 import {TfiInstagram} from 'react-icons/tfi';
 import {GrLinkedinOption} from 'react-icons/gr'
 import { AiFillGithub } from "react-icons/ai"
-import Profile from "../../../public/profile.jpeg"
+import Profile from "../../../public/profile.jpg"
 import Image from 'next/image'
 import Link from 'next/link';
 import gsap from 'gsap';
@@ -22,6 +22,7 @@ const Intro = () => {
             duration: 0.20,
             ease: 'power3.inOut',
             stagger: 0.05,
+            delay: 0.2
         });
     }, []);
 
@@ -35,8 +36,14 @@ const Intro = () => {
                     <h3 className='reveal-text mb-4 md:mb-10 text-2xl py-2 md:text-3xl md:pb-5 text-slate-600'>Front-end Developer, Photographer, Football Athlete</h3>
                 </div>
                 
-                <div className='md:grid-flow-row md:m-20 xl:ml-56 lg:h-auto lg:w-96 lg:m-0 lg:mx-10 md:mx-10 sm:mx-10'>
-                <Image src={Profile} alt="image" className='rounded-3xl object-cover hover:rounded-full transition-all duration-200' />
+                <div className='relative md:m-20 xl:ml-56 lg:h-auto lg:w-96 lg:m-0 lg:mx-10 md:mx-10 sm:mx-10'>
+                    <div className='overflow-hidden rounded-3xl hover:rounded-full transition-all duration-200'>
+                        <Image 
+                            src={Profile} 
+                            alt="image" 
+                            className='object-cover transition-transform duration-500 hover:scale-110' 
+                        />
+                    </div>
                 </div>
                 <div className='text-gray-600 grid grid-cols-3 gap-10 p-10 lg:-ml-14 md:pb-20 xl:-ml-32'>
                     <Link href="https://github.com/sssanthoshsivan" className='text-6xl hover:text-slate-900 flex justify-center items-center' target='_blank'>

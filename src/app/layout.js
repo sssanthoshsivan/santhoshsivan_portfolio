@@ -1,7 +1,11 @@
-import { Inter } from "next/font/google";
+import { Inter, Josefin_Slab } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const josefinSlab = Josefin_Slab({
+  subsets: ['latin'],
+  variable: '--font-josefin-slab',
+});
 
 export const metadata = {
   title: "Santhosh Sivan",
