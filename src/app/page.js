@@ -16,18 +16,19 @@ export default function Home() {
           <Intro />
         </section>
         {/* <Playgroud /> */}
-        <section>
-          <h2 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
-            Projects
-          </h2>
-          <Projects />
-        </section>
 
         <section>
           <h2 className="mb-8 text-3xl pt-6 md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
             Work Experience
           </h2>
           <WorkExperience />
+        </section>
+
+        <section>
+          <h2 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
+            Projects
+          </h2>
+          <Projects />
         </section>
 
         <section>

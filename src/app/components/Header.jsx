@@ -34,7 +34,8 @@ const Header = () => {
                 <div className="px-2 pt-20 pb-3 space-y-1 sm:px-3 text-white">
                     <Link href="mailto:santhoshkan205@gmail.com?subject=Hi, How can I help you ?" className="block px-3 py-2 rounded-md text-3xl font-extrabold">Email</Link>
                     <Link href="https://drive.google.com/uc?id=1peoLr2w4IzEY9DPy7k1DwHdfx9oKN-q5&export=download" className="block px-3 py-2 rounded-md text-3xl font-extrabold">Resume</Link>
-                    <Link href="/Favourites" className="block px-3 py-2 rounded-md text-3xl font-extrabold">Favourites</Link>
+                    <Link href="/favourites" className="block px-3 py-2 rounded-md text-3xl font-extrabold">Favourites</Link>
+                    <Link href="/projects" className="block px-3 py-2 rounded-md text-3xl font-extrabold">Projects</Link>
                 </div>
             </div>
         </div>

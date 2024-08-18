@@ -1,25 +1,48 @@
+import Link from "next/link";
 import React from "react";
 
 function WorkExperience() {
   return (
-    <div className="-my-6 py-8 mx-10 screen-xs:mx-0">
-
-      <div className="relative pl-8 sm:pl-32 py-6 group">
+    <div className="screen-xs:py-0 mx-6 screen-xs:mx-0">
+      <div className="relative pl-8 sm:pl-48 py-6 group screen-xs:pl-4 screen-xs:pt-0">
         <div className="font-caveat font-medium text-2xl text-orange-500 mb-1 sm:mb-0">
           Web Developer
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-orange-600 after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-          <time className="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">
-            Sep, 2023
+        <div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-8 sm:after:left-0 after:w-2 after:h-2 after:bg-orange-600 after:border-4 after:screen-xs:hidden after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[10rem] after:-translate-x-1/2 after:translate-y-1.5">
+          <time className="sm:absolute sm:left-0 sm:translate-y-0.5 sm:w-32 inline-flex items-center justify-center text-xs font-semibold uppercase w-28 screen-xs:w-40 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">
+            Sep 2023 - Present
           </time>
-          <div className="text-xl font-bold text-slate-900">
+          <div className="text-xl font-bold text-slate-900 ">
             Jobin and Jismi
           </div>
         </div>
 
         <div className="text-slate-500">
-            I am currently serving as a Junior Web Developer at Jobin & Jismi. Our work primarily revolves around leveraging technologies such as React, Next.js, and Tailwind CSS
+          I am currently serving as a Web Developer at <strong>Jobin & Jismi</strong>. Our work primarily revolves around leveraging latest technologies such as React, Next.js, and Tailwind CSS.
+        </div>
+
+        <div className="mt-4 flex items-center space-x-2 group">
+          <Link
+            href="/projects"
+            className="text-orange-600 hover:underline text-sm font-medium flex items-center"
+          >
+            Click here to view the projects
+            <svg
+              className="w-4 h-4 text-orange-600 ml-1 transition-transform duration-300 ease-in-out transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 12h14m-7-7l7 7-7 7"
+              ></path>
+            </svg>
+          </Link>
         </div>
       </div>
     </div>
