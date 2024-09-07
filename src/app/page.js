@@ -24,12 +24,12 @@ export default function Home() {
           <WorkExperience />
         </section>
 
-        <section>
+        {/* <section>
           <h2 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
             Projects
           </h2>
           <Projects />
-        </section>
+        </section> */}
 
         <section>
           <h2 className="mb-8 text-3xl pt-10 md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">

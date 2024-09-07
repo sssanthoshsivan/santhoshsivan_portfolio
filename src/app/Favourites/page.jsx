@@ -18,7 +18,7 @@ function Favourites() {
         ].map((item, index) => (
           <div key={index} className='relative group flex-1 aspect-square overflow-hidden'>
             <Image 
-              className='object-cover grayscale group-hover:grayscale-0 ease-in-out duration-300 transform group-hover:scale-105' 
+              className='object-cover group-hover:grayscale grayscale-0 ease-in-out duration-300 transform group-hover:scale-105 group-hover:blur-sm' 
               src={item.src} 
               alt={item.alt} 
               layout='fill'

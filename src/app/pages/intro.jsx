@@ -33,7 +33,7 @@ const Intro = () => {
                 <div className='text-center lg:text-left'>
                     <h2 className='reveal-text md:mb-8 text-5xl  md:text-7xl  font-bold tracking-tighter leading-tight text-black dark:text-black'>Hi I'm</h2>
                     <h2 className='reveal-text m-4 md:mb-8 text-5xl lg:-ml-1 md:text-7xl font-bold tracking-tighter leading-tight text-black dark:text-black'>Santhosh Sivan</h2>
-                    <h3 className='reveal-text mb-4 md:mb-10 text-2xl py-2 md:text-3xl md:pb-5 text-slate-600'>Front-end Developer, Photographer, Football Athlete</h3>
+                    <h3 className='reveal-text mb-4 md:mb-10 text-xl py-2 md:text-2xl md:pb-5 text-slate-600'>Engineer, Artist, Athlete</h3>
                 </div>
                 
                 <div className='relative md:m-20 xl:ml-56 lg:h-auto lg:w-96 lg:m-0 lg:mx-10 md:mx-10 sm:mx-10'>

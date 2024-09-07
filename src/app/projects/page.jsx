@@ -7,23 +7,62 @@ function Projects() {
   return (
     <div>
       <Header />
-      <div className='font-extrabold flex text-7xl screen-xs:text-6xl px-10 my-5 font-sans w-full mt-20'>
+      <div className='font-extrabold flex text-7xl screen-xs:text-4xl px-14 screen-xs:px-7 my-5 font-sans w-full mt-20'>
         Web Developer
-        <p className='text-base '>20</p>
       </div>
+      <div class="mb-4 text-2xl px-16 screen-xs:px-8 tracking-tight font-bold text-gray-900 dark:text-white">Jobin & Jismi <time class="font-medium text-lg">Thrissur, Kerala.</time></div>
       <section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-      <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
-          <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Powering innovation at <span class="font-extrabold">200,000+</span> companies worldwide</h2>
-          <p class="mb-4 font-light">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
-          <p class="mb-4 font-medium">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.</p>
-          <a href="#" class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700">
-              Learn more
-              <svg class="ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-          </a>
-      </div>
-  </div>
-</section>
+        <div class="px-16 screen-xs:px-8 lg:py-2">
+            <div class=" text-gray-500 sm:text-lg dark:text-gray-400">
+                <p class="mb-4 font-light">As a <span className='font-medium'>Web Developer</span>, I bring visions to life by crafting user interfaces that are both visually compelling and highly intuitive. My focus is on bridging the gap between design and functionality, translating creative concepts into practical digital experiences that closely aligns with the business goals.</p>
+                <p class="mb-4 font-medium">Whether it's enhancing user engagement, boosting conversion rates, or streamlining workflows, my work is all about creating meaningful impact and propelling the company forward.</p>
+            </div>
+        </div>
+      </section>
+
+      <h2 class="mb-4 text-4xl screen-xs:text-2xl tracking-tight font-bold px-16 screen-xs:px-8 text-gray-900 dark:text-white">Projects</h2>
+      <section class="bg-white dark:bg-gray-900 px-16 screen-xs:px-8">
+        <div class=" px-4  lg:py-2 lg:px-6 screen-xs:px-2">
+            <div class=" text-gray-500 sm:text-lg dark:text-gray-400">
+                <h2 class="mb-4 text-2xl screen-xs:text-lg tracking-tight font-bold text-gray-900 dark:text-white">Work Management System <span className=' text-base'>(Sep 2023 - Present)</span></h2>
+                <ul className='pl-8'>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Description: </span>This project aimed to streamline employee management through extensive form handling and validation. Key functionalities included resource booking, invoice attachment management, and inventory tracking. I implemented dynamic forms to accommodate various user inputs and integrated time zone handling for seamless resource booking across different locations.</li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Role: </span> Developed UI components and integrated APIs for backend data retrieval.</li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Work Done: </span> Created pages for managing employee profiles, booking resources, handling invoice attachments, and managing inventory items through extensive form handling and validation. Ensured seamless time zone handling for accurate resource scheduling. </li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Technologies Used: </span> Next.js, Tailwind CSS, Sass.</li>
+                </ul>
+            </div>
+        </div>
+      </section>
+
+      <section class="bg-white dark:bg-gray-900 px-16 screen-xs:px-8">
+        <div class=" px-4  lg:py-2 lg:px-6 screen-xs:px-2">
+            <div class=" text-gray-500 sm:text-lg dark:text-gray-400">
+                <h2 class="mb-4 text-2xl screen-xs:text-lg tracking-tight font-bold text-gray-900 dark:text-white">Banking Application <span className=' text-base'>(July 2024 - Aug 2024)</span></h2>
+                <ul className='pl-8'>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Description: </span>This application facilitated payment processing by displaying bills from Netsuite ERP and enabling users to manage bill statuses (e.g., on hold, processing, closed). I designed intuitive user interfaces that provided insights into multiple bank and credit accounts, along with associated invoices linked to vendors.</li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Role: </span>Frontend Developer specializing in UI/UX design and client-side validation.</li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Work Done: </span> Designed and developed intuitive UI components for bill management, including display, status tracking, and detailed financial account insights. </li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Technologies Used: </span>Vue.js, Tailwind CSS.</li>
+                </ul>
+            </div>
+        </div>
+      </section>
+
+      <section class="bg-white dark:bg-gray-900 px-16 screen-xs:px-8">
+        <div class=" px-4  lg:py-2 lg:px-6 screen-xs:px-2">
+            <div class=" text-gray-500 sm:text-lg dark:text-gray-400">
+                <h2 class="mb-4 text-2xl screen-xs:text-lg tracking-tight font-bold text-gray-900 dark:text-white">Work Management App <span className=' text-base'>(June 2024)</span></h2>
+                <ul className='pl-8'>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Description: </span>Designed and developed a comprehensive work management application tailored for a construction company. Implemented role-based access control to restrict content visibility based on user roles, ensuring sensitive data and workflows were protected. Key features included dynamic task and project management, user profile administration, and streamlined approval workflows.</li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Role: </span>Full-stack Developer responsible for frontend (Next.js, TypeScript) and backend (Payload CMS, PostgreSQL) development.</li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Work Done: </span>Developed role-based access controls, dynamic content rendering, and streamlined approval workflows for task and project management.</li>
+                  <li class="mb-4 list-disc text-base font-light"><span className='font-semibold'>Technologies Used: </span> Next.js, TypeScript, Payload CMS, PostgreSQL.</li>
+                </ul>
+            </div>
+        </div>
+      </section>
+      
 
       <Footer />
     </div>
