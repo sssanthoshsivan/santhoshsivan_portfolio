@@ -43,11 +43,11 @@ const Header = () => {
                     <Link href="https://drive.google.com/uc?id=1-irmyvmn-rJRjSMCkPQD6cVdCYgQDD9W&export=download" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>
                         Resume
                     </Link>
-                    <Link href="/favourites" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>
-                        Favourites
-                    </Link>
                     <Link href="/projects" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>
                         Projects
+                    </Link>
+                    <Link href="/favourites" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>
+                        Favourites
                     </Link>
                 </div>
             </div>
