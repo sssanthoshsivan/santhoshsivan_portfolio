@@ -10,7 +10,7 @@ function Favourites() {
 
   const images = {
     cinema: "/movies.jpeg",
-    superstar: "/superstar.jpg",
+    superstar: "/superstar.jpeg",
     music: "/music.jpeg",
     temples: "/temples.jpg",
     lalaLand: "/lalaLand.jpg",
