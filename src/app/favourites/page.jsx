@@ -10,9 +10,10 @@ function Favourites() {
 
   const images = {
     cinema: "/movies.jpeg",
-    superstar: "/superstar.jpeg",
+    superstar: "/superStar.jpeg",
     music: "/music.jpeg",
     temples: "/temples.jpg",
+    homedecor: "/homeDecor.jpg",
     lalaLand: "/lalaLand.jpg",
     formulaOne: "/f1.jpg",
     wildLife: "/img3.jpg",
@@ -58,6 +59,11 @@ function Favourites() {
             onMouseEnter={() => handleMouseEnter('temples')} 
             onMouseLeave={handleMouseLeave}>
           TEMPLES 
+        </li>
+        <li className=' cursor-default' 
+            onMouseEnter={() => handleMouseEnter('homedecor')} 
+            onMouseLeave={handleMouseLeave}>
+          HOME DECOR 
         </li>
         <li className=' cursor-default' 
             onMouseEnter={() => handleMouseEnter('formulaOne')} 
