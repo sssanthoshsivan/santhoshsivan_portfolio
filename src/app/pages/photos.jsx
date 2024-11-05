@@ -30,7 +30,7 @@ const Photographs = () => {
     };
 
     return (
-        <div className='pb-10 lg:mx-10'>
+        <div className='py-10 lg:mx-10'>
             <div className='grid grid-cols-2 gap-5 lg:grid-cols-5 md:grid-cols-3'>
                 {images.map((image, index) => (
                     <div key={index} onClick={() => openModal(index)}>

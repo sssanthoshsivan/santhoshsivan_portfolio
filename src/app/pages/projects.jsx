@@ -1,156 +1,81 @@
-import Image from 'next/image'
-import Link from 'next/link';
-import Blockchain from "../../../public/Blockchain.webp"
-import Shop from "../../../public/Shop.jpg"
-import Upcoming from "../../../public/upcoming.jpg"
+import Image from "next/image";
+import Link from "next/link";
+import Blockchain from "../../../public/Blockchain.webp";
+import Shop from "../../../public/Shop.jpg";
+import Upcoming from "../../../public/upcoming.jpg";
+import Coding from "../../../public/Coding.jpg";
 
 const Projects = () => {
-    return ( 
-                <div className="flex flex-wrap justify-around px-5 pt-5 lg:pt-10 bg-white">
-                  <div className="w-full md:w-1/2 xl:w-1/3 px-4 min-h-max">
-                      <div className="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
-                        <Image src={Shop} alt="UI Design for an e-Commerce Website" className="w-full"/>
-                        <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                            <h3>
-                              <a
-                                  className="
-                                  font-semibold
-                                  text-dark text-xl
-                                  sm:text-[22px]
-                                  md:text-xl
-                                  lg:text-[22px]
-                                  xl:text-xl
-                                  2xl:text-[22px]
-                                  mb-4
-                                  block
-                                  hover:text-primary
-                                  "
-                                  >
-                              EarthlyShop UI
-                              </a>
-                            </h3>
-                            <p className="text-slate-600 leading-relaxed mb-7">
-                            EarthlyShop is a front-end design project aimed at improving creativity and showcasing web design skills. 
-                            The project is built using HTML, CSS, and Bootstrap.
-                            </p>
-                            <a
-                              href="https://sssanthoshsivan.github.io/earthlyshop.github.io/"
-                              target='_blank'
-                              className="
-                              inline-block
-                              py-2
-                              px-7
-                              border border-[#E5E7EB]
-                              rounded-lg
-                              font-medium text-black
-                              hover:bg-black hover:text-white
-                              transition
-                              "
-                              >
-                            Live Demo
-                            </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div className="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div className="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
-                        <Image
-                            src={Blockchain}
-                            alt="image"
-                            className="w-full"
-                            />
-                        <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                            <h3>
-                              <a
-                                  className="
-                                  font-semibold
-                                  text-dark text-xl
-                                  sm:text-[22px]
-                                  md:text-xl
-                                  lg:text-[22px]
-                                  xl:text-xl
-                                  2xl:text-[22px]
-                                  mb-4
-                                  block
-                                  hover:text-primary
-                                  "
-                                  >
-                              D' Storage
-                              </a>
-                            </h3>
-                            <p className="text-slate-600 leading-relaxed mb-7">
-                            Decentralized storage system using IPFS and blockchain for secure, scalable data storage. 
-                            Data dispersed across nodes for redundancy, encrypted for authorized access.
-                            </p>
-                            <a
-                              href="https://github.com/sssanthoshsivan/D-Storage"
-                              target='_blank'
-                              className="
-                              inline-block
-                              py-2
-                              px-7
-                              border border-[#E5E7EB]
-                              rounded-lg
-                              text-base text-black
-                              font-medium
-                              hover:bg-black hover:text-white
-                              transition
-                              "
-                              >
-                            View Details
-                            </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div className="w-full md:w-1/2 xl:w-1/3 px-4">
-                      <div className="bg-white rounded-lg overflow-hidden mb-10 border hover:bg-zinc-50">
-                        <Image
-                            src={Upcoming}
-                            alt="image"
-                            className="w-full"
-                            />
-                        <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                            <h3>
-                              <a
-                                  className="
-                                  font-semibold
-                                  text-dark text-xl
-                                  sm:text-[22px]
-                                  md:text-xl
-                                  lg:text-[22px]
-                                  xl:text-xl
-                                  2xl:text-[22px]
-                                  mb-4
-                                  block
-                                  hover:text-primary
-                                  "
-                                  >
-                              Upcoming Project
-                              </a>
-                            </h3>
-                            <p className="text-slate-600 leading-relaxed mb-7 italic">
-                              "Learning never exhausts the mind"
-                            </p>
-                            <a
-                              className="
-                              inline-block
-                              py-2
-                              px-7
-                              border border-[#E5E7EB]
-                              rounded-lg
-                              text-base text-black
-                              font-medium
-                              hover:bg-black hover:text-white
-                              transition
-                              "
-                              >
-                            Soon....
-                            </a>
-                        </div>
-                      </div>
-                  </div>
+  return (
+    <div className="flex flex-wrap justify-around bg-white">
+      
+      <div className="w-full md:w-1/2 xl:w-1/3 px-4 screen-xs:px-0">
+        <Link href="/professionalProjects" passHref>
+          <div className="bg-white rounded-lg overflow-hidden my-10 border hover:bg-zinc-50 cursor-pointer">
+            <Image
+              src={Coding}
+              alt="UI Design for an e-Commerce Website"
+              className="w-full"
+            />
+            <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+              <h3>
+                <div
+                  className="
+                    font-semibold
+                    text-dark text-xl
+                    sm:text-[22px]
+                    md:text-xl
+                    lg:text-[22px]
+                    xl:text-xl
+                    2xl:text-[22px]
+                    mb-4
+                    block
+                    hover:text-primary
+                  "
+                >
+                  Professional Projects
                 </div>
-     );
-}
- 
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+                My personal projects are a blend of academic work, explorations into new technologies, and creative endeavors I built just for fun. 
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
+
+      <div className="w-full md:w-1/2 xl:w-1/3 px-4 screen-xs:px-0">
+        <Link href="/personalProjects" passHref>
+          <div className="bg-white rounded-lg overflow-hidden my-10 border hover:bg-zinc-50 cursor-pointer">
+            <Image src={Upcoming} alt="image" className="w-full" />
+            <div className="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+              <h3>
+                <div
+                  className="
+                    font-semibold
+                    text-dark text-xl
+                    sm:text-[22px]
+                    md:text-xl
+                    lg:text-[22px]
+                    xl:text-xl
+                    2xl:text-[22px]
+                    mb-4
+                    block
+                    hover:text-primary
+                  "
+                >
+                  Personal Projects
+                </div>
+              </h3>
+              <p className="text-slate-600 leading-relaxed">  
+                The projects I’ve developed during my job showcase my capacity to create solutions that streamline workflows and enhance operational effectiveness
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 export default Projects;

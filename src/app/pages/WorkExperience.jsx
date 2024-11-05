@@ -3,9 +3,9 @@ import React from "react";
 
 function WorkExperience() {
   return (
-    <div className="screen-xs:py-0 mx-6 screen-xs:mx-0">
+    <div className="screen-xs:py-0 mx-6 screen-xs:mx-0 py-8">
       <div className="relative pl-8 sm:pl-56 py-6 group screen-xs:pl-4 screen-xs:pt-0">
-        <div className="font-caveat font-medium text-2xl text-orange-500 mb-1 sm:mb-0">
+        <div className="font-caveat font-bold text-2xl text-slate-900 mb-1 sm:mb-0">
           Web Developer
         </div>
 
@@ -13,18 +13,23 @@ function WorkExperience() {
           <time className="sm:absolute sm:left-0 sm:translate-y-0.5 sm:w-40 inline-flex items-center justify-center text-xs font-semibold uppercase w-28 screen-xs:w-40 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">
             Sep 2023 - Present
           </time>
-          <div className="text-xl font-bold text-slate-900 ">
-            Jobin and Jismi
+          <div className="text-xl font-medium text-slate-800 ">
+            Jobin and Jismi <time className="font-normal text-sm">Thrissur, Kerala.</time>
           </div>
         </div>
 
         <div className="text-slate-500">
-          I am currently serving as a Web Developer at <strong>Jobin & Jismi</strong>. Our work primarily revolves around leveraging latest technologies such as React, Next.js, and Tailwind CSS.
+          I specialize in developing visually compelling and highly intuitive
+          user interfaces by leveraging React, Next.js, and Tailwind CSS. My
+          work bridges the gap between design and functionality, driving user
+          engagement, increasing conversion rates, and streamlining workflows to
+          create impactful digital experiences that support and enhance business
+          goals.
         </div>
 
         <div className="mt-4 flex items-center space-x-2 group">
           <Link
-            href="/projects"
+            href="/professionalProjects"
             className="text-orange-600 hover:underline text-sm font-medium flex items-center"
           >
             Click here to view the projects

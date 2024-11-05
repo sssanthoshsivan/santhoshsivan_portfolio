@@ -69,7 +69,7 @@ const About = () => {
 
   return (
     <div>
-      <h2 className="mb-8 text-3xl pt-16 text-center md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
+      <h2 className="mb-8 text-3xl pt-10 text-center md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
         About
       </h2>
       <div>
@@ -80,7 +80,7 @@ const About = () => {
             className="inline-block max-w-36 min-w-36 hover:overflow-hidden hover:-mb-3 hover:pb-1 text-center text-orange-500 font-semibold mx-2 hover:text-2xl"
           >
             Tamilnadu
-          </span>, India,
+          </span>, India.
           currently serving as a Junior Web Developer at a startup. After
           completing my degree in computer science, I tackled small projects
           and soon found myself drawn into the world of web development
