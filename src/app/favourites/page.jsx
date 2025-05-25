@@ -1,119 +1,78 @@
-"use client"
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Footer from "@/app/components/Footer";
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
 import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
 function Favourites() {
-  const [hoveredImage, setHoveredImage] = useState(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [hoveredKey, setHoveredKey] = useState(null);
 
   const images = {
-    cinema: "/movies.jpeg",
-    superstar: "/superStar.jpeg",
-    music: "/music.jpeg",
+    96: "/96.png",
+    superstar: "/coolie.jpg",
+    music: "/music.jpg",
     temples: "/temples.jpg",
-    homedecor: "/homeDecor.jpg",
+    myHome: "/myHome.jpg",
     lalaLand: "/lalaLand.jpg",
-    formulaOne: "/f1.jpg",
+    simpleLife: "/simpleLife.jpg",
     wildLife: "/img3.jpg",
-    earthTones: "/earthTones.jpg",
+    travel: "/travel.jpg",
     conversation: "/goodConversation.jpg",
   };
 
-  const handleMouseMove = (e) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
+  const items = [
 
-  const handleMouseEnter = (imageKey) => {
-    setHoveredImage(images[imageKey]);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredImage(null);
-  };
+    { key: "96", label: "`96" },
+    { key: "music", label: "MUSIC (CDS, MP3S & A GOOD PLAYLIST)" },
+    { key: "myHome", label: "MY HOME" },
+    { key: "superstar", label: "SUPER STAR" },
+    { key: "temples", label: "TEMPLES" },
+    { key: "simpleLife", label: "SIMPLE LIFE" },
+    { key: "travel", label: "TRAVEL" },
+    { key: "conversation", label: "A GOOD CONVERSATION" },
+  ];
 
   return (
-    <div onMouseMove={handleMouseMove} className="relative">
-      <Header />
-      <div className='font-extrabold text-9xl screen-xs:text-6xl px-10 my-5 w-full mt-20'>
-        I'M A LOVER OF :
-      </div>
-      <ul className='font-extrabold text-7xl screen-xs:text-4xl px-10 w-full'>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('cinema')} 
-            onMouseLeave={handleMouseLeave}>
-          CINEMA
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('superstar')} 
-            onMouseLeave={handleMouseLeave}>
-          SUPER STAR
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('music')} 
-            onMouseLeave={handleMouseLeave}>
-          MUSIC (CDS, MP3S & A GOOD PLAYLIST)
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('temples')} 
-            onMouseLeave={handleMouseLeave}>
-          TEMPLES 
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('homedecor')} 
-            onMouseLeave={handleMouseLeave}>
-          HOME DECOR 
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('formulaOne')} 
-            onMouseLeave={handleMouseLeave}>
-          FORMULA 1
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('earthTones')} 
-            onMouseLeave={handleMouseLeave}>
-          RAIN
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('lalaLand')} 
-            onMouseLeave={handleMouseLeave}>
-          LA LA LAND
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('wildLife')} 
-            onMouseLeave={handleMouseLeave}>
-          WILD LIFE
-        </li>
-        <li className=' cursor-default' 
-            onMouseEnter={() => handleMouseEnter('conversation')} 
-            onMouseLeave={handleMouseLeave}>
-          A GOOD CONVERSATION
-        </li>
-      </ul>
-      
-      {/* Hovered Image */}
-      {hoveredImage && (
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            top: mousePosition.y + 20,
-            left: mousePosition.x + 20,
-            transform: "translate(-50%, -50%)",
-            zIndex: 1000,
-          }}
-        >
+    <div className="relative text-black bg-white min-h-screen overflow-x-hidden">
+      {/* Fixed right-aligned background image on hover */}
+      <div className="fixed top-0 bottom-0 right-0 z-0 w-1/2 pointer-events-none flex items-center py-20">
+        {hoveredKey && (
+            <div className="relative w-full h-full">
           <Image
-            src={hoveredImage}
-            alt="hovered"
-            width={150}
-            height={150}
-            className="object-cover"
+            src={images[hoveredKey]}
+            alt="background"
+            fill
+            className="object-contain rounded-lg transition-opacity duration-500 ease-in-out"
           />
+            </div>
+
+        )}
+      </div>
+
+      {/* Scrollable content */}
+      <div className="relative z-10">
+        <Header />
+        <div className="text-[8rem] font-black px-10 pt-24 leading-none">
+          I'M A LOVER OF :
         </div>
-      )}
-      
-      <Footer />
+
+        <ul className="px-10 mt-10">
+          {items.map((item) => (
+            <li
+              key={item.key}
+              onMouseEnter={() => setHoveredKey(item.key)}
+              onMouseLeave={() => setHoveredKey(null)}
+              className={`text-[5rem] font-bold my-0 font-josefin cursor-default transition-opacity duration-300 ${
+                hoveredKey && hoveredKey !== item.key ? "opacity-100" : "opacity-50"
+              }`}
+            >
+              {item.label}
+            </li>
+          ))}
+        </ul>
+
+        <Footer />
+      </div>
     </div>
   );
 }

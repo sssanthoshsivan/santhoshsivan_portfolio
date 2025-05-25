@@ -34,7 +34,7 @@ function WorkExperience() {
           >
             Click here to view the projects
             <svg
-              className="w-4 h-4 text-orange-600 ml-1 transition-transform duration-300 ease-in-out transform group-hover:translate-x-1"
+              className="w-4 h-4 text-orange-600 ml-1 hover:ml-2 transition-transform duration-300 ease-in-out transform group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"

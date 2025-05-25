@@ -35,7 +35,7 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-            <div className={`fixed top-0 left-0 w-full z-10 transition-all duration-100 ease-in-out ${isMenuOpen ? 'max-h-screen' : 'max-h-0'} overflow-hidden bg-black`}>
+            <div className={`fixed top-0 left-0 w-full z-10 transition-all duration-100 ease-in-out ${isMenuOpen ? 'max-h-screen' : 'max-h-0'} overflow-hidden bg-black `}>
                 <div className="px-2 pt-20 pb-3 space-y-1 sm:px-3 text-white">
                     <Link href="mailto:santhoshkan205@gmail.com?subject=Hi, How can I help you ?" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>
                         Email
@@ -43,7 +43,7 @@ const Header = () => {
                     <Link href="https://drive.google.com/uc?id=1-irmyvmn-rJRjSMCkPQD6cVdCYgQDD9W&export=download" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>
                         Resume
                     </Link>
-                    <Link href="/projects" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>
+                    <Link href="#projects" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>
                         Projects
                     </Link>
                     <Link href="/favourites" className="block px-3 py-2 rounded-md text-3xl font-extrabold" onClick={closeMenu}>

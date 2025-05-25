@@ -1,7 +1,4 @@
-"use client"
-import { useState } from 'react';
 import Image from 'next/image';
-import ModalCarousel from '../components/ModalCarousl';
 
 const images = [
     "/img1.jpeg",
@@ -17,23 +14,12 @@ const images = [
 ];
 
 const Photographs = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const openModal = (index) => {
-        setCurrentIndex(index);
-        setIsOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsOpen(false);
-    };
 
     return (
         <div className='py-10 lg:mx-10'>
             <div className='grid grid-cols-2 gap-5 lg:grid-cols-5 md:grid-cols-3'>
                 {images.map((image, index) => (
-                    <div key={index} onClick={() => openModal(index)}>
+                    <div key={index} >
                         <Image
                             src={image}
                             alt={`image-${index}`}
@@ -44,14 +30,6 @@ const Photographs = () => {
                     </div>
                 ))}
             </div>
-
-            {isOpen && (
-                <ModalCarousel
-                    images={images}
-                    currentIndex={currentIndex}
-                    onClose={closeModal}
-                />
-            )}
         </div>
     );
 };
