@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import ProjectCard from "@/app/components/projectCard";
-import ProjectModal from "@/app/components/projectModal";
+import ProjectCard from "../components/projectCard";
+import ProjectModal from "../components/projectModal";
 
 const projects = [
 {
