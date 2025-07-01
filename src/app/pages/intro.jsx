@@ -9,41 +9,43 @@ import gsap from 'gsap';
 import SplitType from 'split-type';
 import { useEffect } from 'react';
 
-const Intro = () => {
+const Intro = ({ triggerAnimation }) => {
+  useEffect(() => {
+    if (!triggerAnimation) return;
 
-useEffect(() => {
-    const nameSplit = new SplitType('.reveal-name', {
-        types: 'chars',
-        tagName: 'span',
+    const nameSplit = new SplitType(".reveal-name", {
+      types: "chars",
+      tagName: "span",
     });
 
-    const subtitleSplit = new SplitType('.reveal-subtitle', {
-        types: 'chars',
-        tagName: 'span',
+    const subtitleSplit = new SplitType(".reveal-subtitle", {
+      types: "chars",
+      tagName: "span",
     });
 
-    gsap.from('.reveal-name span', {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: 'power4.out',
-        stagger: 0.03,
+    gsap.from(".reveal-name span", {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      ease: "power4.out",
+      stagger: 0.03,
     });
 
-    gsap.from('.reveal-subtitle span', {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: 'power4.out',
-        stagger: 0.02,
-        delay: 0.3,
+    gsap.from(".reveal-subtitle span", {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      ease: "power4.out",
+      stagger: 0.02,
+      delay: 0.3,
     });
 
     return () => {
-        nameSplit.revert();
-        subtitleSplit.revert();
+      nameSplit.revert();
+      subtitleSplit.revert();
     };
-}, []);
+  }, [triggerAnimation]);
+
 
 
 
