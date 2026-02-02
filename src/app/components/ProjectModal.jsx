@@ -1,29 +1,87 @@
 // components/ProjectModal.jsx
-import React from "react";
-import { Dialog } from "@headlessui/react";
+import React from "react"
+import { Dialog } from "@headlessui/react"
 
-export default function ProjectModal({ isOpen, onClose, title, description, workDone, technologies }) {
+export default function ProjectModal({
+  isOpen,
+  onClose,
+  title,
+  description,
+  workDone,
+  technologies,
+}) {
+  // Convert long text into bullets safely
+  const bullets = workDone
+    ?.split(". ")
+    .filter(Boolean)
+    .map((item) => item.trim())
+
   return (
-    <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="fixed inset-0 bg-black opacity-30" aria-hidden="true" />
-      <Dialog.Panel className="bg-[#fffdf9] rounded-xl shadow-xl p-6 z-10 w-full max-w-2xl screen-xl:max-w-4xl border border-[#e4e0db]">
-        <Dialog.Title className="text-2xl font-bold mb-2 text-[#2c1e1e] tracking-wide">{title}</Dialog.Title>
-        <p className="text-[#4a423d] mb-4 text-sm leading-relaxed">{description}</p>
-        <h4 className="font-semibold mb-1 text-[#1e1c1c]">Work Done:</h4>
-        <p className="text-sm text-[#5c504b] mb-4 leading-relaxed">{workDone}</p>
-        <h4 className="font-semibold mb-1 text-[#1e1c1c]">Technologies:</h4>
-        <div className="flex flex-wrap gap-2 mt-1">
-          {technologies.map((tech, idx) => (
-            <span
-              key={idx}
-              className="bg-[#f3ede4] text-[#3d302b] text-xs font-medium px-2.5 py-0.5 rounded-full border border-[#e0dcd4]"
-            >
-              {tech}
-            </span>
-          ))}
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center px-4"
+    >
+      {/* Overlay */}
+      <div
+        className="fixed inset-0 bg-black/30"
+        aria-hidden="true"
+      />
+
+      {/* Panel */}
+      <Dialog.Panel className="relative z-10 w-full max-w-3xl rounded-xl bg-white p-8 md:p-10 shadow-xl border border-neutral-200">
+        {/* Header */}
+        <div className="mb-6">
+          <Dialog.Title className="text-2xl font-semibold tracking-tight text-neutral-900">
+            {title}
+          </Dialog.Title>
+
+          <p className="mt-3 text-neutral-600 leading-relaxed">
+            {description}
+          </p>
+        </div>
+
+        {/* Work Done */}
+        <div className="mb-8">
+          <h4 className="text-sm font-medium uppercase tracking-wide text-neutral-500 mb-3">
+            Responsibilities & Contributions
+          </h4>
+
+          <ul className="space-y-2 list-disc list-inside text-neutral-700 leading-relaxed">
+            {bullets.map((point, idx) => (
+              <li key={idx}>{point}.</li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Technologies */}
+        <div className="mb-10">
+          <h4 className="text-sm font-medium uppercase tracking-wide text-neutral-500 mb-3">
+            Technologies
+          </h4>
+
+          <div className="flex flex-wrap gap-2">
+            {technologies.map((tech, idx) => (
+              <span
+                key={idx}
+                className="rounded-full border border-neutral-300 px-3 py-1 text-xs text-neutral-700"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex justify-end">
+          <button
+            onClick={onClose}
+            className="text-sm font-medium text-neutral-600 hover:text-neutral-900 focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+          >
+            Close
+          </button>
         </div>
       </Dialog.Panel>
     </Dialog>
-  );
+  )
 }
-

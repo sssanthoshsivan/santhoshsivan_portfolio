@@ -6,8 +6,7 @@ import Footer from "@/app/components/Footer";
 
 function Favourites() {
   const [hoveredKey, setHoveredKey] = useState(null);
-  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
-  const [loadedCount, setLoadedCount] = useState(0);
+  const [ready, setReady] = useState(false);
 
   const images = {
     96: "/96.png",
@@ -16,99 +15,92 @@ function Favourites() {
     temples: "/temples.jpg",
     myHome: "/myHome.jpg",
     simpleLife: "/simpleLife.jpg",
-    wildLife: "/img3.jpg",
     travel: "/travel.jpg",
     conversation: "/goodConversation.jpg",
   };
 
+  //  More to add
+
+  // Early Mornings
+
+  // Old Things That Still Work
+
+  // Writing Things Down
+
+  // Things Built Slowly
+
   const items = [
-    { key: "96", label: "`96" },
-    { key: "music", label: `MUSIC - "Raja Sir"` },
-    { key: "myHome", label: "MY HOME" },
-    { key: "superstar", label: "SUPER STAR" },
-    { key: "temples", label: "TEMPLES" },
-    { key: "simpleLife", label: "SIMPLE LIFE" },
-    { key: "travel", label: "TRAVEL" },
-    { key: "conversation", label: "A GOOD CONVERSATION" },
+    { key: "96", label: "96" },
+    { key: "music", label: "Music" },
+    { key: "myHome", label: "My Home" },
+    { key: "superstar", label: "Superstar" },
+    { key: "temples", label: "Temples" },
+    { key: "simpleLife", label: "Simple Life" },
+    { key: "travel", label: "Travel" },
+    { key: "conversation", label: "A Good Conversation" },
   ];
 
   useEffect(() => {
     const imageList = Object.values(images);
-    const total = imageList.length;
+    let loaded = 0;
 
     imageList.forEach((src) => {
       const img = new Image();
       img.src = src;
-
-      const incrementOnce = (() => {
-        let called = false;
-        return () => {
-          if (!called) {
-            called = true;
-            setLoadedCount((prev) => {
-              const newCount = prev + 1;
-              if (newCount === total) {
-                setTimeout(() => setAllImagesLoaded(true), 300);
-              }
-              return newCount;
-            });
-          }
-        };
-      })();
-
-      img.onload = incrementOnce;
-      img.onerror = incrementOnce;
+      img.onload = img.onerror = () => {
+        loaded++;
+        if (loaded === imageList.length) {
+          setTimeout(() => setReady(true), 400);
+        }
+      };
     });
   }, []);
 
-  return (
-    <div className="relative text-black bg-white min-h-screen overflow-x-hidden">
-      {/* Loading Screen */}
-      {!allImagesLoaded && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-white">
-          <div className="text-base sm:text-lg text-gray-600 font-mono tracking-tight animate-pulse">
-            {Math.min(
-              100,
-              Math.floor((loadedCount / Object.keys(images).length) * 100)
-            )}
-            %
-          </div>
-        </div>
-      )}
+  if (!ready) {
+    return (
+      <div className="fixed inset-0 z-[999] flex items-center justify-center bg-white">
+        <span className="text-sm tracking-wide text-neutral-500">
+          Loading moments…
+        </span>
+      </div>
+    );
+  }
 
-      {/* Hover Image on Desktop */}
-      <div className="hidden sm:flex fixed top-0 bottom-0 right-0 z-0 w-1/2 pointer-events-none items-center py-20">
+  return (
+    <main className="bg-white min-h-screen">
+      <Header />
+
+      {/* Hover image (desktop) */}
+      <div className="hidden sm:flex fixed top-0 bottom-0 right-0 w-1/2 pointer-events-none items-center py-24">
         {hoveredKey && (
           <div className="relative w-full h-full">
             <NextImage
               src={images[hoveredKey]}
-              alt="background"
+              alt=""
               fill
-              className="object-contain rounded-lg transition-opacity duration-500 ease-in-out"
+              className="object-contain opacity-90 transition-opacity duration-500"
             />
           </div>
         )}
       </div>
 
-      {/* Main Content */}
-      <div
-        className={`relative z-10 transition-opacity duration-700 ${
-          allImagesLoaded ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <Header />
+      {/* Content */}
+      <section className="relative z-10 px-6 md:px-16 lg:px-24 pt-32 pb-24 max-w-5xl">
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-6">
+          A few things that matter to me
+        </h1>
 
-        {/* Title */}
-        <div className="text-4xl sm:text-6xl md:text-8xl font-black px-6 sm:px-10 pt-24 leading-tight sm:leading-none">
-          I'M A LOVER OF :
-        </div>
+        <p className="text-neutral-600 max-w-xl mb-16 leading-relaxed">
+          Outside of work, these are the things I’m drawn to — moments, places,
+          and values that quietly shape how I think and create.
+        </p>
 
-        {/* Mobile layout: stacked images with overlayed text */}
-        <div className="block sm:hidden mt-10 px-4 space-y-6">
+        {/* Mobile */}
+        <div className="block sm:hidden space-y-6">
           {items.map((item) => (
             <div
               key={item.key}
-              className="relative w-full aspect-video rounded-lg overflow-hidden"
+              className="relative aspect-video overflow-hidden rounded-xl"
             >
               <NextImage
                 src={images[item.key]}
@@ -116,36 +108,36 @@ function Favourites() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center px-4">
-                <p className="text-white text-center text-xl font-semibold">
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <span className="text-white text-lg font-medium">
                   {item.label}
-                </p>
+                </span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Desktop layout: interactive hover list */}
-        <ul className="hidden sm:block px-10 mt-10">
+        {/* Desktop */}
+        <ul className="hidden sm:block space-y-4">
           {items.map((item) => (
             <li
               key={item.key}
               onMouseEnter={() => setHoveredKey(item.key)}
               onMouseLeave={() => setHoveredKey(null)}
-              className={`text-[5rem] font-bold my-0 font-josefin cursor-default transition-opacity duration-300 ${
+              className={`text-4xl md:text-5xl font-medium cursor-default transition-opacity duration-300 ${
                 hoveredKey && hoveredKey !== item.key
-                  ? "opacity-100"
-                  : "opacity-50"
+                  ? "opacity-40"
+                  : "opacity-100"
               }`}
             >
               {item.label}
             </li>
           ))}
         </ul>
+      </section>
 
-        <Footer />
-      </div>
-    </div>
+      <Footer />
+    </main>
   );
 }
 

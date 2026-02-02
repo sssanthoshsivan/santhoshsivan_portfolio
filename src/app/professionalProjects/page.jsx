@@ -1,75 +1,94 @@
 "use client"
-import React, { useState } from "react";
-import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
-import ProjectCard from "../components/ProjectCard";
-import ProjectModal from "../components/ProjectModal";
+
+import React, { useState } from "react"
+import Header from "@/app/components/Header"
+import Footer from "@/app/components/Footer"
+import ProjectCard from "../components/ProjectCard"
+import ProjectModal from "../components/ProjectModal"
 
 const projects = [
-{
-  title: "Jewelry Manufacturing Management App",
-  description: "A comprehensive app for managing customer requests through detailed product design workflows including sketches, CAD models, renders, and design approvals.",
-  workDone:
-    "Worked throughout the project from start to finish, designing intuitive UIs and complex multi-step forms for each stage of the design process — from metal details and sizing to stones and renderings. Implemented supervisor approval workflows for sketches, CADs, and designs with role-based access control for employees such as sketchers and designers. Developed backend collections and relations using Payload CMS and PostgreSQL, optimized data fetching with SSR in Next.js, and integrated email notifications to keep customers informed. Architected the system with reusable components to enhance performance and maintainability.",
-  technologies: ["Next.js", "Payload CMS", "PostgreSQL", "Tailwind CSS"],
-},
+  {
+    title: "Jewelry Manufacturing Management App",
+    description:
+      "Multi-tenant workflow system managing sketches, CADs, renders, and design approvals.",
+    workDone:
+      "Designed and built complex multi-step interfaces covering the entire jewelry design lifecycle. Implemented role-based access control for sketchers, designers, and supervisors, along with approval workflows at each stage. Modeled backend relationships using Payload CMS and PostgreSQL, optimized data fetching with Next.js SSR, and integrated email notifications for customer updates. Architected reusable components for performance and maintainability.",
+    technologies: ["Next.js", "Payload CMS", "PostgreSQL", "Tailwind CSS"],
+  },
+  {
+    title: "Work Management App",
+    description:
+      "Role-based task and project workflows with multi-level approvals for construction teams.",
+    workDone:
+      "Built task and project management modules with role-based access control and multi-level approval flows, enabling structured collaboration across teams and supervisors.",
+    technologies: ["Next.js", "TypeScript", "Payload CMS", "PostgreSQL"],
+  },
   {
     title: "Resource Management System",
-    description: "Streamlined employee and inventory workflows using dynamic forms and time zone-aware booking.",
+    description:
+      "Employee and inventory management with time zone–aware booking and dynamic validation.",
     workDone:
-      "Created employee profile pages, booking systems, and inventory management features with dynamic form validation and comprehensive time zone handling to ensure accuracy across regions.",
+      "Created employee profiles, booking systems, and inventory workflows with robust validation and time zone handling to support distributed operations.",
     technologies: ["Next.js", "Tailwind CSS", "Sass"],
   },
   {
     title: "Banking Application",
-    description: "UI for processing ERP bills and showing multi-account financial data.",
+    description:
+      "ERP-linked UI for bill processing and multi-account financial visibility.",
     workDone:
-      "Built user interfaces to efficiently manage bill statuses and display vendor invoices linked to multiple accounts, enhancing financial transparency and workflow.",
+      "Developed interfaces for managing bill statuses and visualizing vendor invoices across multiple accounts, improving financial transparency.",
     technologies: ["Vue.js", "Tailwind CSS"],
   },
   {
-    title: "Work Management App",
-    description: "Construction-focused app with role-based task/project workflows and approvals.",
-    workDone:
-      "Implemented task and project management modules with role-based access control and multi-level approval workflows to streamline construction operations.",
-    technologies: ["Next.js", "TypeScript", "Payload CMS", "PostgreSQL"],
-  },
-  {
     title: "Billing Portal",
-    description: "ERP-integrated portal for bill tracking and vendor invoice visualization.",
+    description:
+      "Internal portal for bill tracking and vendor invoice visualization.",
     workDone:
-      "Developed financial UI components featuring bill status tracking and linked views for credit and bank accounts, improving vendor invoice transparency.",
+      "Built financial UI components for tracking bill states and linking credit and bank accounts to vendor invoices.",
     technologies: ["Vite", "Tailwind CSS"],
   },
-];
-
+]
 
 export default function ProjectsPage() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null)
 
   return (
-    <div>
+    <main className="bg-white">
       <Header />
-      <div className="text-5xl font-extrabold text-[#2c1e1e] px-14 mt-20 mb-8 screen-xs:px-7 screen-xs:text-3xl tracking-tight">
-        Professional Projects
-      </div>
 
-      <section className="px-16 screen-xs:px-8 pb-20">
-        <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((proj, idx) => (
+      {/* Page intro */}
+      <section className="px-6 md:px-16 lg:px-24 pt-32 pb-16">
+        <div className="max-w-3xl">
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">
+            Professional Projects
+          </h1>
+
+          <p className="text-neutral-600 leading-relaxed">
+            A selection of production-grade applications I’ve worked on in real
+            teams — spanning multi-tenant SaaS platforms, role-based dashboards,
+            approval workflows, and API-driven integrations.
+          </p>
+        </div>
+      </section>
+
+      {/* Projects grid */}
+      <section className="px-6 md:px-16 lg:px-24 pb-24">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, idx) => (
             <ProjectCard
               key={idx}
-              title={proj.title}
-              description={proj.description}
-              onClick={() => setSelectedProject(proj)}
+              title={project.title}
+              description={project.description}
+              onClick={() => setSelectedProject(project)}
             />
           ))}
         </div>
       </section>
 
+      {/* Modal */}
       {selectedProject && (
         <ProjectModal
-          isOpen={true}
+          isOpen
           onClose={() => setSelectedProject(null)}
           title={selectedProject.title}
           description={selectedProject.description}
@@ -79,6 +98,6 @@ export default function ProjectsPage() {
       )}
 
       <Footer />
-    </div>
-  );
+    </main>
+  )
 }

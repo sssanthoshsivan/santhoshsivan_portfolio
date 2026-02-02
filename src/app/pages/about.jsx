@@ -1,109 +1,125 @@
 "use client"
-import { useEffect, useRef, useState } from 'react';
-import { gsap, Circ } from 'gsap';
-
+import { useEffect, useRef } from "react"
+import { gsap, Circ } from "gsap"
 
 const About = () => {
-  const tamilnaduRef = useRef(null);
-  const thankYouRef = useRef(null);
+  const tamilnaduRef = useRef(null)
+  const thankYouRef = useRef(null)
 
   const scrambleText = (text) => {
-    const chars = "கஙசஞடணதநலஜனறளரமஅஆஇஈஉஊஔஓஒஐஏஎக்ங்ச்ட்ண்த்ந்ப்ம்ய்ர்ல்வ்ள்ர்வழஷழ்ன்";
+    const chars =
+      "கஙசஞடணதநலஜனறளரமஅஆஇஈஉஊஔஓஒஐஏஎக்ங்ச்ட்ண்த்ந்ப்ம்ய்ர்ல்வ்ள்ர்வழஷழ்ன்"
     return text
-      .split('')
-      .map(char => chars[Math.floor(Math.random() * chars.length)])
-      .join('');
-  };
+      .split("")
+      .map(() => chars[Math.floor(Math.random() * chars.length)])
+      .join("")
+  }
 
   useEffect(() => {
     const applyScrambleEffect = (element, originalText, hoverText) => {
-      let tween;
+      if (!element) return () => {}
+
+      let tween = null
 
       const scramble = (targetText) => {
-        let progress = 0;
-        const duration = 0.2; // Adjust duration as needed
-      
         return gsap.to({}, {
-          duration: duration,
-          ease: Circ.easeOut, // Easing function
-          onUpdate: function () {
-            progress = this.progress();
-            if (progress < 1) {
-              element.textContent = scrambleText(originalText);
+          duration: 0.25,
+          ease: Circ.easeOut,
+          onUpdate() {
+            if (this.progress() < 1) {
+              element.textContent = scrambleText(originalText)
             } else {
-              element.textContent = targetText;
+              element.textContent = targetText
             }
-          }
-        });
-      };
-      
+          },
+        })
+      }
 
       const handleMouseEnter = () => {
-        if (tween) tween.kill();
-        tween = scramble(hoverText);
-      };
+        if (tween) tween.kill()
+        tween = scramble(hoverText)
+      }
 
       const handleMouseLeave = () => {
-        if (tween) tween.kill();
-        tween = scramble(originalText);
-      };
+        if (tween) tween.kill()
+        tween = scramble(originalText)
+      }
 
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
+      element.addEventListener("mouseenter", handleMouseEnter)
+      element.addEventListener("mouseleave", handleMouseLeave)
 
       return () => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
-        if (tween) tween.kill();
-      };
-    };
+        element.removeEventListener("mouseenter", handleMouseEnter)
+        element.removeEventListener("mouseleave", handleMouseLeave)
+        if (tween) tween.kill()
+      }
+    }
 
-    const cleanupTamilnadu = applyScrambleEffect(tamilnaduRef.current, "Tamilnadu", "தமிழ்நாடு");
-    const cleanupThankYou = applyScrambleEffect(thankYouRef.current, "Thank you", "நன்றி");
+    const cleanupTamilnadu = applyScrambleEffect(
+      tamilnaduRef.current,
+      "Tamil Nadu",
+      "தமிழ்நாடு"
+    )
+
+    const cleanupThankYou = applyScrambleEffect(
+      thankYouRef.current,
+      "Thank you",
+      "நன்றி"
+    )
 
     return () => {
-      cleanupTamilnadu();
-      cleanupThankYou();
-    };
-  }, []);
+      cleanupTamilnadu()
+      cleanupThankYou()
+    }
+  }, [])
 
   return (
-    <div>
-      <h2 className="mb-8 text-3xl pt-10 text-center md:text-5xl font-bold tracking-tighter leading-tight text-black dark:text-black">
-        About
-      </h2>
+    <section className="px-6 md:px-16 lg:px-24 py-24">
       <div>
-        <p className="text-black text-justify pb-10 leading-extra-loose text-lg screen-xs:mx-2 screen-xs:leading-loose">
-          Greetings! I&apos;m Santhosh Sivan from 
-          <span 
-            ref={tamilnaduRef} 
-            className="inline-block max-w-36 min-w-36 hover:overflow-hidden hover:-mb-3 hover:pb-1 text-center text-orange-500 font-semibold mx-2 hover:text-2xl"
-          >
-            Tamilnadu
-          </span>, India.
-          currently serving as a Junior Web Developer at a startup. After
-          completing my degree in computer science, I tackled small projects
-          and soon found myself drawn into the world of web development
-          through frameworks like Flask and Django along with HTML, CSS, and
-          JavaScript. I built my first webpage using plain HTML and Bootstrap,
-          a modest achievement that set the foundation for my journey. In my
-          current role, I primarily leverage technologies such as React,
-          Next.js, Tailwind CSS, Vue.js, Payload CMS, TypeScript, and GraphQL.
-          Over the past year, I have contributed to several projects, each
-          presenting unique challenges and learning opportunities. My current
-          focus is predominantly on front-end web development. I relish the
-          process of transforming concepts into captivating and interactive
-          digital spaces. Feel free to connect.
-          <span 
-            ref={thankYouRef} 
-            className="inline-block max-w-24 min-w-24 hover:overflow-hidden hover:-mb-2 text-left text-orange-500 font-semibold mx-2 hover:text-2xl"
-          >
-            Thank you
-          </span>.
-        </p>
+
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-10">
+          About
+        </h2>
+
+<p className="text-neutral-700 leading-relaxed md:leading-loose text-base md:text-lg">
+  I’m Santhosh Sivan, a software engineer from
+  <span
+    ref={tamilnaduRef}
+    className="inline-block mx-2 font-medium text-neutral-900 border-b border-neutral-300 cursor-pointer transition-colors hover:text-neutral-600"
+  >
+    Tamil Nadu
+  </span>
+  , India, currently working at a startup building production web applications
+  used by real teams and users.
+
+  <br /><br />
+
+  My work spans front-end engineering and system-oriented features — including
+  multi-tenant application design, role- and permission-based access control,
+  webhook-driven workflows, and integrations that require reliability and clear
+  data flow. I’ve contributed to applications built with React, Next.js,
+  Tailwind CSS, Vue.js, Payload CMS, TypeScript, GraphQL, and PostgreSQL, often
+  working close to both product and backend boundaries.
+
+  <br /><br />
+
+  While I enjoy thinking in terms of architecture and systems, my strongest
+  focus remains on the front end — crafting interfaces that are predictable,
+  performant, and easy to reason about. I care about how systems feel to use,
+  not just how they work internally. If any of this resonates, feel free to
+  connect —
+  <span
+    ref={thankYouRef}
+    className="inline-block ml-2 font-medium text-neutral-900 border-b border-neutral-300 cursor-pointer transition-colors hover:text-neutral-600"
+  >
+    Thank you
+  </span>.
+</p>
+
+
       </div>
-    </div>
-  );
+    </section>
+  )
 }
- 
-export default About;
+
+export default About
