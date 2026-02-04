@@ -10,16 +10,16 @@ function WorkExperience() {
           Work Experience
         </h2>
 
-        <div className="relative pl-6 border-l border-neutral-300">
+        <div className="relative pl-10 border-l border-neutral-300">
 
           {/* Timeline item */}
           <div className="relative pb-12">
             {/* Dot */}
-            <span className="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-neutral-900" />
+            <span className="absolute -left-[2px] top-1 h-3 w-3 rounded-full bg-neutral-900" />
 
             {/* Content */}
             <div className="space-y-3">
-              <p className="text-sm text-neutral-500">
+              <p className="text-sm text-neutral-500 ml-5">
                 Sep 2023 — Present
               </p>
 

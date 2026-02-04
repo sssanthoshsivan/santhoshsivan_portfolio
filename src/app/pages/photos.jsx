@@ -13,14 +13,17 @@ const images = [
   "/img16.jpeg",
   "/img17.jpg",
   "/img18.jpg",
+  "/travel.jpg",
+  "/img19.jpg",
+  "/img20.jpg",
 ];
 
 const Photographs = () => {
   return (
     <section className="px-6 md:px-16 lg:px-24 py-28">
-      <div  >
+      <div>
         <div className="mb-16">
-          <h2 className="text-2xl font-medium tracking-tight text-neutral-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">
             Visual Explorations
           </h2>
           <p className="text-neutral-600 max-w-xl leading-relaxed">
@@ -35,7 +38,7 @@ const Photographs = () => {
           <div className="group relative col-span-2 row-span-2 rounded-3xl overflow-hidden bg-neutral-100 shadow-sm">
             <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
             <Image
-              src={images[0]}
+              src={images[12]}
               alt="Featured photograph"
               fill
               priority
@@ -47,7 +50,7 @@ const Photographs = () => {
           <div className="group relative col-span-1 row-span-2 rounded-2xl overflow-hidden bg-neutral-100 shadow-sm">
             <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
             <Image
-              src={images[1]}
+              src={images[10]}
               alt="Photograph"
               fill
               className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
@@ -59,6 +62,17 @@ const Photographs = () => {
             <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
             <Image
               src={images[2]}
+              alt="Photograph"
+              fill
+              className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
+            />
+          </div>
+
+          {/* Medium */}
+          <div className="group relative col-span-1 row-span-1 rounded-2xl overflow-hidden bg-neutral-100 shadow-sm">
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
+            <Image
+              src={images[11]}
               alt="Photograph"
               fill
               className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
@@ -79,7 +93,7 @@ const Photographs = () => {
           <div className="group relative col-span-1 row-span-1 rounded-2xl overflow-hidden bg-neutral-100 shadow-sm">
             <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
             <Image
-              src={images[4]}
+              src={images[5]}
               alt="Photograph"
               fill
               className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
@@ -90,28 +104,55 @@ const Photographs = () => {
           <div className="group relative col-span-2 row-span-1 rounded-2xl overflow-hidden bg-neutral-100 shadow-sm">
             <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
             <Image
-              src={images[5]}
+              src={images[4]}
               alt="Photograph"
               fill
               className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
             />
           </div>
-
-          {/* Remaining */}
-          {images.slice(6, 10).map((src, idx) => (
-            <div
-              key={idx}
-              className="group relative col-span-1 row-span-1 rounded-2xl overflow-hidden bg-neutral-100 shadow-sm"
-            >
+          {/* Tall */}
+          <div className="group relative col-span-1 row-span-2 rounded-2xl overflow-hidden bg-neutral-100 shadow-sm">
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
+            <Image
+              src={images[1]}
+              alt="Photograph"
+              fill
+              className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
+            />
+          </div>
+          {/* Stacked Images */}
+          <div className="col-span-1 row-span-2 grid grid-rows-2 gap-6">
+            <div className="group relative rounded-2xl overflow-hidden bg-neutral-100 shadow-sm">
               <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
               <Image
-                src={src}
-                alt={`Photograph ${idx + 7}`}
+                src={images[13]}
+                alt="Photograph"
                 fill
                 className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
               />
             </div>
-          ))}
+
+            <div className="group relative rounded-2xl overflow-hidden bg-neutral-100 shadow-sm">
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
+              <Image
+                src={images[0]}
+                alt="Photograph"
+                fill
+                className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
+              />
+            </div>
+          </div>
+
+          <div className="group relative col-span-2 row-span-2 rounded-3xl overflow-hidden bg-neutral-100 shadow-sm">
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
+            <Image
+              src={images[7]}
+              alt="Featured photograph"
+              fill
+              priority
+              className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.02]"
+            />
+          </div>
         </div>
       </div>
     </section>
