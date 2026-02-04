@@ -8,7 +8,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useEffect } from "react";
-import Profile from "../../../public/profile.jpg";
+import Profile from "../../../public/profile.webp";
 
 const Intro = ({ triggerAnimation }) => {
   useEffect(() => {

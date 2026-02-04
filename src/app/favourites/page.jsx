@@ -9,14 +9,14 @@ function Favourites() {
   const [ready, setReady] = useState(false);
 
   const images = {
-    96: "/96.png",
-    superstar: "/coolie.jpg",
-    music: "/music.jpg",
-    temples: "/temples.jpg",
-    myHome: "/myHome.jpg",
-    simpleLife: "/simpleLife.jpg",
-    travel: "/travel.jpg",
-    conversation: "/goodConversation.jpg",
+    96: "/96.webp",
+    superstar: "/coolie.webp",
+    music: "/music.webp",
+    temples: "/temples.webp",
+    myHome: "/myHome.webp",
+    simpleLife: "/simpleLife.webp",
+    travel: "/travel.webp",
+    conversation: "/goodConversation.webp",
   };
 
   //  More to add

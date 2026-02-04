@@ -1,21 +1,21 @@
 import Image from "next/image";
 
 const images = [
-  "/img1.jpeg", // hero
-  "/img3.jpg",
-  "/img4.jpg",
-  "/img5.jpg",
-  "/img8.jpg",
-  "/img9.jpg",
-  "/img12.jpeg",
-  "/img13.jpg",
-  "/img15.jpg",
-  "/img16.jpeg",
-  "/img17.jpg",
-  "/img18.jpg",
-  "/travel.jpg",
-  "/img19.jpg",
-  "/img20.jpg",
+  "/img1.webp", // hero
+  "/img3.webp",
+  "/img4.webp",
+  "/img5.webp",
+  "/img8.webp",
+  "/img9.webp",
+  "/img12.webp",
+  "/img13.webp",
+  "/img15.webp",
+  "/img16.webp",
+  "/img17.webp",
+  "/img18.webp",
+  "/travel.webp",
+  "/img19.webp",
+  "/img20.webp",
 ];
 
 const Photographs = () => {

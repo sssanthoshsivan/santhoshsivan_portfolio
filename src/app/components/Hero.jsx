@@ -10,7 +10,7 @@ const Hero = () => {
           <Button size="lg">Explore My Work</Button>
         </div>
         <div>
-          <img src="/Profile.jpg" alt="Santhosh Sivan" className="w-full h-auto rounded-lg shadow-lg" />
+          <img src="/Profile.webp" alt="Santhosh Sivan" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
       </div>
     </section>
