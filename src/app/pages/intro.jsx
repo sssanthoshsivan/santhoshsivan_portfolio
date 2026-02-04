@@ -8,7 +8,8 @@ import Link from "next/link";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useEffect } from "react";
-import Profile from "../../../public/profile.webp";
+
+const profile = "/Profile.webp";
 
 const Intro = ({ triggerAnimation }) => {
   useEffect(() => {
@@ -120,7 +121,8 @@ const Intro = ({ triggerAnimation }) => {
         <div className="flex justify-center lg:justify-end">
           <figure className="relative w-72 sm:w-80 lg:w-96">
             <Image
-              src={Profile}
+              src={profile}
+              fill
               alt="Portrait of Santhosh Sivan"
               className="object-cover rounded-2xl transition-transform duration-700 hover:scale-[1.04]"
               priority
