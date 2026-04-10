@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import NextImage from "next/image";
-import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 function Favourites() {
   const [hoveredKey, setHoveredKey] = useState(null);
-  const [ready, setReady] = useState(false);
-
+  
   const images = {
     96: "/96.webp",
     superstar: "/coolie.webp",
@@ -18,16 +17,6 @@ function Favourites() {
     travel: "/travel.webp",
     conversation: "/goodConversation.webp",
   };
-
-  //  More to add
-
-  // Early Mornings
-
-  // Old Things That Still Work
-
-  // Writing Things Down
-
-  // Things Built Slowly
 
   const items = [
     { key: "96", label: "96" },
@@ -40,103 +29,94 @@ function Favourites() {
     { key: "conversation", label: "A Good Conversation" },
   ];
 
-  useEffect(() => {
-    const imageList = Object.values(images);
-    let loaded = 0;
-
-    imageList.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = img.onerror = () => {
-        loaded++;
-        if (loaded === imageList.length) {
-          setTimeout(() => setReady(true), 400);
-        }
-      };
-    });
-  }, []);
-
-  if (!ready) {
-    return (
-      <div className="fixed inset-0 z-[999] flex items-center justify-center bg-white">
-        <span className="text-sm tracking-wide text-neutral-500">
-          Loading moments…
-        </span>
-      </div>
-    );
-  }
-
   return (
-    <main className="bg-white min-h-screen">
-      <Header />
+    <main className="bg-hatch min-h-screen relative overflow-x-hidden">
+      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen bg-background bg-dotted relative z-10 transition-colors">
+        <Header />
 
-      {/* Hover image (desktop) */}
-      <div className="hidden sm:flex fixed top-0 bottom-0 right-0 w-1/2 pointer-events-none items-center py-24">
-        {hoveredKey && (
-          <div className="relative w-full h-full">
-            <NextImage
-              src={images[hoveredKey]}
-              alt=""
-              fill
-              className="object-contain opacity-90 transition-opacity duration-500"
-            />
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <section className="relative z-10 px-6 md:px-16 lg:px-24 pt-32 pb-24 max-w-5xl">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-6">
-          A few things that matter to me
-        </h1>
-
-        <p className="text-neutral-600 max-w-xl mb-16 leading-relaxed">
-          Outside of work, these are the things I’m drawn to — moments, places,
-          and values that quietly shape how I think and create.
-        </p>
-
-        {/* Mobile */}
-        <div className="block sm:hidden space-y-6">
-          {items.map((item) => (
-            <div
-              key={item.key}
-              className="relative aspect-video overflow-hidden rounded-xl"
-            >
-              <NextImage
-                src={images[item.key]}
-                alt={item.label}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <span className="text-white text-lg font-medium">
-                  {item.label}
-                </span>
+        {/* Hover image (desktop) */}
+        <div className="hidden sm:flex fixed right-[max(0px,calc((100vw-1440px)/2))] top-0 bottom-0 w-[45%] pointer-events-none items-center justify-center z-0 px-12">
+            {hoveredKey ? (
+              <div className="relative w-full aspect-[4/5] max-h-[70vh] border border-border/50 shadow-2xl skew-y-1 transition-transform duration-700">
+                <NextImage
+                  src={images[hoveredKey]}
+                  alt=""
+                  fill
+                  className="object-cover transition-all duration-500 opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
               </div>
-            </div>
-          ))}
+            ) : (
+                <div className="flex flex-col items-center justify-center opacity-10">
+                    <span className="text-[120px] font-bold tracking-tighter text-foreground/20 rotate-90">FAVS_</span>
+                </div>
+            )}
         </div>
 
-        {/* Desktop */}
-        <ul className="hidden sm:block space-y-4">
-          {items.map((item) => (
-            <li
-              key={item.key}
-              onMouseEnter={() => setHoveredKey(item.key)}
-              onMouseLeave={() => setHoveredKey(null)}
-              className={`text-4xl md:text-5xl font-medium cursor-default transition-opacity duration-300 ${
-                hoveredKey && hoveredKey !== item.key
-                  ? "opacity-40"
-                  : "opacity-100"
-              }`}
-            >
-              {item.label}
-            </li>
-          ))}
-        </ul>
-      </section>
+        {/* Content */}
+        <section className="relative z-10 px-6 md:px-16 lg:px-24 pt-48 pb-32 max-w-5xl">
+          <header className="mb-24">
+            <h1 className="text-xs uppercase tracking-[0.2em] font-mono text-muted-foreground mb-4 flex items-center gap-4">
+                <span className="w-12 h-[1px] bg-border"></span>
+                Personal Archive // 02
+            </h1>
+            <h2 className="text-4xl md:text-7xl font-bold tracking-tighter text-foreground mb-8">
+                CURATED_VALUES
+            </h2>
+            <p className="text-muted-foreground max-w-xl leading-relaxed font-mono text-sm uppercase tracking-wide">
+                Outside of work, these are the things I’m drawn to — moments, places,
+                and values that quietly shape how I think and create.
+            </p>
+          </header>
 
-      <Footer />
+          {/* Mobile Grid */}
+          <div className="block sm:hidden grid grid-cols-1 gap-8 mb-12">
+            {items.map((item) => (
+              <div
+                key={item.key}
+                className="group relative aspect-[4/5] overflow-hidden border border-border"
+              >
+                <NextImage
+                  src={images[item.key]}
+                  alt={item.label}
+                  fill
+                  className="object-cover transition-all duration-700"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                  <span className="text-white text-xl font-bold uppercase tracking-tight">
+                    {item.label}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop List */}
+          <ul className="hidden sm:block space-y-2">
+            {items.map((item, idx) => (
+              <li
+                key={item.key}
+                onMouseEnter={() => setHoveredKey(item.key)}
+                onMouseLeave={() => setHoveredKey(null)}
+                className={`group flex items-baseline gap-6 cursor-none transition-all duration-300 ${
+                  hoveredKey && hoveredKey !== item.key
+                    ? "opacity-20 blur-[1px]"
+                    : "opacity-100"
+                }`}
+              >
+                <span className="text-xs font-mono text-muted-foreground transition-colors group-hover:text-primary">
+                    0{idx + 1}
+                </span>
+                <span className="text-5xl md:text-8xl font-bold tracking-tighter text-foreground uppercase group-hover:translate-x-4 transition-transform duration-500">
+                    {item.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <Footer />
+      </div>
     </main>
   );
 }

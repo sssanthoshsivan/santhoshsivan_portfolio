@@ -9,14 +9,9 @@ module.exports = {
   theme: {
   	extend: {
   		fontFamily: {
-  			josefin: [
-  				'var(--font-josefin-slab)',
-  				'serif'
-  			],
-  			spaceMono: [
-  				'var(--font-spaceMono)',
-  				'sans-serif'
-  			]
+  			sans: ['var(--font-inter)', 'sans-serif'],
+  			mono: ['var(--font-space-mono)', 'monospace'],
+  			josefin: ['var(--font-josefin-slab)', 'serif'],
   		},
   		screens: {
   			'screen-xs': {

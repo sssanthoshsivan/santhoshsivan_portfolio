@@ -1,103 +1,69 @@
 "use client"
 
 import React, { useState } from "react"
-import Header from "@/app/components/Header"
-import Footer from "@/app/components/Footer"
-import ProjectCard from "../components/ProjectCard"
-import ProjectModal from "../components/ProjectModal"
+import Header from "@/components/layout/Header"
+import Footer from "@/components/layout/Footer"
+import ProjectCard from "@/components/layout/ProjectCard"
+import ProjectModal from "@/components/layout/ProjectModal"
+import { allProjects } from "@/lib/projects"
 
-const projects = [
-  {
-    title: "Jewelry Manufacturing Management App",
-    description:
-      "Multi-tenant workflow system managing sketches, CADs, renders, and design approvals.",
-    workDone:
-      "Designed and built complex multi-step interfaces covering the entire jewelry design lifecycle. Implemented role-based access control for sketchers, designers, and supervisors, along with approval workflows at each stage. Modeled backend relationships using Payload CMS and PostgreSQL, optimized data fetching with Next.js SSR, and integrated email notifications for customer updates. Architected reusable components for performance and maintainability.",
-    technologies: ["Next.js", "Payload CMS", "PostgreSQL", "Tailwind CSS"],
-  },
-  {
-    title: "Work Management App",
-    description:
-      "Role-based task and project workflows with multi-level approvals for construction teams.",
-    workDone:
-      "Built task and project management modules with role-based access control and multi-level approval flows, enabling structured collaboration across teams and supervisors.",
-    technologies: ["Next.js", "TypeScript", "Payload CMS", "PostgreSQL"],
-  },
-  {
-    title: "Resource Management System",
-    description:
-      "Employee and inventory management with time zone–aware booking and dynamic validation.",
-    workDone:
-      "Created employee profiles, booking systems, and inventory workflows with robust validation and time zone handling to support distributed operations.",
-    technologies: ["Next.js", "Tailwind CSS", "Sass"],
-  },
-  {
-    title: "Banking Application",
-    description:
-      "ERP-linked UI for bill processing and multi-account financial visibility.",
-    workDone:
-      "Developed interfaces for managing bill statuses and visualizing vendor invoices across multiple accounts, improving financial transparency.",
-    technologies: ["Vue.js", "Tailwind CSS"],
-  },
-  {
-    title: "Billing Portal",
-    description:
-      "Internal portal for bill tracking and vendor invoice visualization.",
-    workDone:
-      "Built financial UI components for tracking bill states and linking credit and bank accounts to vendor invoices.",
-    technologies: ["Vite", "Tailwind CSS"],
-  },
-]
-
-export default function ProjectsPage() {
+export default function ProfessionalProjectsPage() {
   const [selectedProject, setSelectedProject] = useState(null)
+  
+  // Filter for professional projects only
+  const professionalProjects = allProjects.filter(p => p.tags.includes("Professional"))
 
   return (
-    <main className="bg-white">
-      <Header />
+    <main className="bg-hatch min-h-screen relative overflow-x-hidden">
+      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen bg-background bg-dotted relative z-10 transition-colors">
+        <Header />
 
-      {/* Page intro */}
-      <section className="px-6 md:px-16 lg:px-24 pt-32 pb-16">
-        <div className="max-w-3xl">
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">
-            Professional Projects
-          </h1>
+        {/* Page intro */}
+        <section className="px-6 md:px-16 lg:px-24 pt-32 pb-16">
+          <header className="mb-20">
+            <h1 className="text-xs uppercase tracking-[0.2em] font-mono text-muted-foreground mb-4 flex items-center gap-4">
+              <span className="w-12 h-[1px] bg-border"></span>
+              Full Stack // Professional
+            </h1>
+            <h2 className="text-4xl md:text-7xl font-bold tracking-tighter text-foreground mb-8 uppercase leading-none">
+              PRODUCTION_SYSTEMS
+            </h2>
+            <p className="text-muted-foreground max-w-2xl leading-relaxed font-mono text-sm uppercase tracking-wide">
+              A selection of production-grade applications I’ve worked on in real teams — spanning multi-tenant SaaS platforms, role-based dashboards, and API-driven integrations.
+            </p>
+          </header>
+        </section>
 
-          <p className="text-neutral-600 leading-relaxed">
-            A selection of production-grade applications I’ve worked on in real
-            teams — spanning multi-tenant SaaS platforms, role-based dashboards,
-            approval workflows, and API-driven integrations.
-          </p>
-        </div>
-      </section>
+        {/* Projects grid */}
+        <section className="px-6 md:px-16 lg:px-24 pb-24">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {professionalProjects.map((project, idx) => (
+              <ProjectCard
+                key={idx}
+                title={project.title}
+                description={project.description}
+                meta={project.date}
+                image={project.image}
+                onClick={() => setSelectedProject(project)}
+              />
+            ))}
+          </div>
+        </section>
 
-      {/* Projects grid */}
-      <section className="px-6 md:px-16 lg:px-24 pb-24">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, idx) => (
-            <ProjectCard
-              key={idx}
-              title={project.title}
-              description={project.description}
-              onClick={() => setSelectedProject(project)}
-            />
-          ))}
-        </div>
-      </section>
+        {/* Modal */}
+        {selectedProject && (
+          <ProjectModal
+            isOpen
+            onClose={() => setSelectedProject(null)}
+            title={selectedProject.title}
+            description={selectedProject.description}
+            workDone={selectedProject.workDone}
+            technologies={selectedProject.technologies}
+          />
+        )}
 
-      {/* Modal */}
-      {selectedProject && (
-        <ProjectModal
-          isOpen
-          onClose={() => setSelectedProject(null)}
-          title={selectedProject.title}
-          description={selectedProject.description}
-          workDone={selectedProject.workDone}
-          technologies={selectedProject.technologies}
-        />
-      )}
-
-      <Footer />
+        <Footer />
+      </div>
     </main>
   )
 }
