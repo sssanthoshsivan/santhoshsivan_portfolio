@@ -1,145 +1,74 @@
 "use client";
 
-import { TfiInstagram } from "react-icons/tfi";
-import { GrLinkedinOption } from "react-icons/gr";
-import { AiFillGithub } from "react-icons/ai";
-import Image from "next/image";
 import Link from "next/link";
-import gsap from "gsap";
-import SplitType from "split-type";
-import { useEffect } from "react";
-
-const profile = "/Profile.webp";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Intro = ({ triggerAnimation }) => {
+  const [opacity, setOpacity] = useState(0);
+
   useEffect(() => {
-    if (!triggerAnimation) return;
-
-    const nameSplit = new SplitType(".reveal-name", {
-      types: "chars",
-      tagName: "span",
-    });
-
-    const subtitleSplit = new SplitType(".reveal-subtitle", {
-      types: "chars",
-      tagName: "span",
-    });
-
-    gsap.from(".reveal-name span", {
-      opacity: 0,
-      y: 18,
-      duration: 0.8,
-      ease: "power3.out",
-      stagger: 0.025,
-    });
-
-    gsap.from(".reveal-subtitle span", {
-      opacity: 0,
-      y: 14,
-      duration: 0.7,
-      ease: "power3.out",
-      stagger: 0.02,
-      delay: 0.25,
-    });
-
-    return () => {
-      nameSplit.revert();
-      subtitleSplit.revert();
-    };
+    if (triggerAnimation) {
+      const timer = setTimeout(() => setOpacity(1), 100);
+      return () => clearTimeout(timer);
+    }
   }, [triggerAnimation]);
 
   return (
-    <section className="py-16 md:py-24 border-b border-border" aria-label="Introduction">
-      <div className="w-full px-6 md:px-16 lg:px-24">
-        <div className="brutalist-card min-h-[400px] flex flex-col lg:flex-row gap-16">
-          {/* Plus signs */}
-          <div className="brutalist-plus brutalist-plus-tl">+</div>
-          <div className="brutalist-plus brutalist-plus-tr">+</div>
-          <div className="brutalist-plus brutalist-plus-bl">+</div>
-          <div className="brutalist-plus brutalist-plus-br">+</div>
+    <section 
+      className="pt-[20vh] pb-8 lg:pb-16 transition-opacity duration-1000 ease-out max-w-[1280px] mx-auto w-full px-6 md:px-12 lg:px-16" 
+      aria-label="Introduction"
+      style={{ opacity }}
+    >
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-16">
+        <div className="max-w-[800px] flex-1">
+          <p className="text-[12px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-6">
+            SOFTWARE ENGINEER
+          </p>
 
-          {/* Text */}
-          <div className="flex flex-col justify-center max-w-3xl flex-1">
-            <p className="text-xs uppercase tracking-widest font-mono text-muted-foreground mb-4">
-              [ Software Engineer // Tamil Nadu ]
+          <h1 className="text-[clamp(42px,6vw,82px)] font-[400] tracking-[-0.045em] leading-[0.98] text-foreground mb-8">
+            Santhosh Sivan
+          </h1>
+
+          <div className="text-[15px] md:text-[17px] text-foreground leading-[1.7] font-[400] max-w-[600px] flex flex-col gap-4 mb-10">
+            <p>
+              I build scalable web products, SaaS applications, data-driven systems, and AI-enabled tools.
             </p>
-
-            <h1 className="reveal-name text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-              Building software for <br />
-              <span className="text-muted-foreground">real-world systems</span>
-            </h1>
-
-            <p className="mt-8 max-w-lg text-lg text-muted-foreground leading-relaxed font-mono">
-              I work on production web applications building role-based
-              interfaces, multi-step workflows, and software that scales 
-              with real users and real data.
+            <p>
+              Currently working across frontend, backend, databases, reporting, and product engineering.
             </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <span className="px-2 py-1 bg-muted text-xs font-mono border border-border">Engineer</span>
-              <span className="px-2 py-1 bg-muted text-xs font-mono border border-border">Artist</span>
-              <span className="px-2 py-1 bg-muted text-xs font-mono border border-border">Athlete</span>
-            </div>
-
-            {/* Signature */}
-            <p className="mt-6 text-sm text-muted-foreground/60 font-mono italic">
-              — சந்தோஷ் சிவன்
-            </p>
-
-            {/* CTA */}
-            <div className="mt-12 flex flex-wrap items-center gap-8">
-              <Link
-                href="/resume.pdf"
-                className="inline-flex items-center border border-foreground bg-foreground px-6 py-3 text-sm font-mono font-bold text-background transition-all hover:bg-background hover:text-foreground focus:outline-none"
-              >
-                VIEW_RESUME
-              </Link>
-
-              <nav className="flex items-center gap-6" aria-label="Social links">
-                <Link
-                  href="https://github.com/sssanthoshsivan"
-                  target="_blank"
-                  aria-label="GitHub"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <AiFillGithub size={28} />
-                </Link>
-
-                <Link
-                  href="https://www.instagram.com/sssanthosh_sivan/"
-                  target="_blank"
-                  aria-label="Instagram"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <TfiInstagram size={24} />
-                </Link>
-
-                <Link
-                  href="https://www.linkedin.com/in/sssanthoshsivan/"
-                  target="_blank"
-                  aria-label="LinkedIn"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <GrLinkedinOption size={28} />
-                </Link>
-              </nav>
-            </div>
           </div>
 
-          {/* Image */}
-          <div className="lg:w-1/3 flex items-center justify-center">
-            <div className="glitch-container relative w-full aspect-square transition-all duration-700 border border-border p-2">
-              <div className="glitch-image w-full h-full relative">
-                <Image
-                  src={profile}
-                  fill
-                  alt="Portrait of Santhosh Sivan"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
+          <div className="flex items-center gap-8 mb-16">
+            <Link
+              href="#projects"
+              className="text-link text-[14px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-1"
+            >
+              View recent work →
+            </Link>
+            <Link
+              href="#contact"
+              className="text-link text-[14px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-1"
+            >
+              Get in touch →
+            </Link>
           </div>
+
+          <div className="flex flex-wrap items-center gap-6 text-[11px] font-[500] uppercase tracking-[0.08em] text-muted-foreground">
+            <span>3+ YEARS EXPERIENCE</span>
+            <span>·</span>
+            <span>FULL STACK</span>
+          </div>
+        </div>
+
+        <div className="hidden lg:block relative w-[280px] aspect-[4/5] rounded-sm overflow-hidden flex-shrink-0">
+          <Image
+            src="/Profile.webp"
+            alt="Santhosh Sivan"
+            fill
+            className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            priority
+          />
         </div>
       </div>
     </section>

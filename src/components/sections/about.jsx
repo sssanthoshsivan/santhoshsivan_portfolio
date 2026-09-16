@@ -1,98 +1,90 @@
 "use client";
 
-import { useRef } from "react";
-import { gsap, Circ } from "gsap";
+const principles = [
+  {
+    title: "01 — BUILD FOR THE PRODUCT",
+    desc: "Engineering decisions should solve real product problems, not simply demonstrate technical complexity."
+  },
+  {
+    title: "02 — KEEP SYSTEMS UNDERSTANDABLE",
+    desc: "Good architecture should make future development easier, not make the system impressive on a diagram."
+  },
+  {
+    title: "03 — AUTOMATE REPETITIVE WORK",
+    desc: "If a recurring workflow can be simplified through APIs, automation, or AI, I look for a better system."
+  },
+  {
+    title: "04 — CARE ABOUT THE DETAILS",
+    desc: "Performance, usability, edge cases, and maintainability matter just as much as getting the feature working."
+  }
+];
 
 const About = () => {
-  const tamilnaduRef = useRef(null);
-  const thankYouRef = useRef(null);
-
-  const tamilTween = useRef(null);
-  const thankYouTween = useRef(null);
-
-  const scrambleText = (text) => {
-    const chars =
-      "கஙசஞடணதநலஜனறளரமஅஆஇஈஉஊஔஓஒஐஏஎக்ங்ச்ட்ண்த்ந்ப்ம்ய்ர்ல்வ்ள்ர்வழஷழ்ன்";
-    return text
-      .split("")
-      .map(() => chars[Math.floor(Math.random() * chars.length)])
-      .join("");
-  };
-
-  const runScramble = (element, from, to) => {
-    return gsap.to(
-      {},
-      {
-        duration: 0.25,
-        ease: Circ.easeOut,
-        onUpdate() {
-          if (this.progress() < 1) {
-            element.textContent = scrambleText(from);
-          } else {
-            element.textContent = to;
-          }
-        },
-      }
-    );
-  };
-
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 border-b border-border">
-      <div>
-        <h2 className="text-xs uppercase tracking-[0.2em] font-mono text-muted-foreground mb-12 flex items-center gap-4">
-          <span className="w-12 h-[1px] bg-border"></span>
-          Background // Philosophy
-        </h2>
+    <>
+      <section className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-24">
+          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+            HOW I WORK
+          </h2>
+        </div>
 
-        <div className="brutalist-card">
-          {/* Plus signs */}
-          <div className="brutalist-plus brutalist-plus-tl">+</div>
-          <div className="brutalist-plus brutalist-plus-tr">+</div>
-          <div className="brutalist-plus brutalist-plus-bl">+</div>
-          <div className="brutalist-plus brutalist-plus-br">+</div>
-
-          <div className="max-w-4xl">
-            <p className="text-foreground leading-relaxed md:leading-loose text-lg md:text-xl font-medium mb-8">
-              I’m Santhosh Sivan, a Full Stack Engineer at Jobin & Jismi, where I’ve spent the last 2.7 years building scalable SaaS platforms and workflow-driven systems. I design solutions that solve real operational problems.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-12 text-muted-foreground font-mono text-sm leading-relaxed">
-              <p>
-                My entire tenure has been dedicated to engineering core systems at Jobin & Jismi, spanning frontend architecture (Next.js, Vue), backend ecosystems (Node.js, PostgreSQL), and microservices. I focus on multi-tenant architectures and RBAC-driven systems.
-              </p>
-              <p>
-                I take ownership of products from design to deployment, always keeping a product-oriented mindset. I emphasize performance, maintainability, and the deliberate visualization of data. If any of this resonates, feel free to connect —
-                <span
-                  ref={thankYouRef}
-                  onMouseEnter={() => {
-                    if (!thankYouRef.current) return;
-                    thankYouTween.current?.kill();
-                    thankYouTween.current = runScramble(
-                      thankYouRef.current,
-                      "Thank you",
-                      "நன்றி"
-                    );
-                  }}
-                  onMouseLeave={() => {
-                    if (!thankYouRef.current) return;
-                    thankYouTween.current?.kill();
-                    thankYouTween.current = runScramble(
-                      thankYouRef.current,
-                      "நன்றி",
-                      "Thank you"
-                    );
-                  }}
-                  className="inline-block ml-2 font-mono text-foreground border-b-2 border-primary cursor-pointer transition-colors px-1"
-                >
-                  Thank you
-                </span>
-                .
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16 max-w-[900px]">
+          {principles.map((p, idx) => (
+            <div key={idx} className="flex flex-col gap-4">
+              <h3 className="text-[13px] font-[500] uppercase tracking-[0.04em] text-foreground">
+                {p.title}
+              </h3>
+              <p className="text-[15px] text-muted-foreground font-[400] leading-[1.7]">
+                {p.desc}
               </p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="about" className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-24">
+          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+            ABOUT
+          </h2>
+        </div>
+
+        <div className="max-w-[600px] flex flex-col gap-6 text-[16px] text-foreground font-[400] leading-[1.8]">
+          <p>
+            I'm a Full Stack Engineer interested in building products from interface to backend systems.
+          </p>
+          <p>
+            My work spans frontend engineering, APIs, databases, SaaS architecture, reporting infrastructure, and AI-assisted internal tools.
+          </p>
+          <p>
+            I enjoy working on problems where product requirements and technical complexity meet.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="flex flex-col gap-8 max-w-[600px]">
+          <h2 className="text-[clamp(32px,4vw,48px)] font-[400] tracking-[-0.03em] leading-[1.1] text-foreground mb-4">
+            LET'S BUILD SOMETHING.
+          </h2>
+          <p className="text-[16px] text-muted-foreground font-[400] leading-[1.8] mb-8">
+            I'm open to interesting engineering problems, product-focused teams, and opportunities to build useful software.
+          </p>
+          <div className="flex flex-col gap-4 items-start">
+            <a href="mailto:santhoshkan205@gmail.com" className="text-link text-[15px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-1">
+              Email →
+            </a>
+            <a href="https://www.linkedin.com/in/sssanthoshsivan/" target="_blank" rel="noreferrer" className="text-link text-[15px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-1">
+              LinkedIn →
+            </a>
+            <a href="https://github.com/sssanthoshsivan" target="_blank" rel="noreferrer" className="text-link text-[15px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-1">
+              GitHub →
+            </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

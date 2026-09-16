@@ -1,20 +1,13 @@
-import { Inter, Josefin_Slab, Space_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import CommandPalette from "@/components/layout/CommandPalette";
 import SpotifyWidget from "@/components/layout/SpotifyWidget";
+import InitialLoader from "@/components/layout/InitialLoader";
 
 const inter = Inter({ 
   subsets: ["latin"],
+  weight: ['300', '400', '500'],
   variable: '--font-inter',
-});
-const josefinSlab = Josefin_Slab({
-  subsets: ['latin'],
-  variable: '--font-josefin-slab',
-});
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-space-mono',
 });
 
 export const metadata = {
@@ -22,15 +15,11 @@ export const metadata = {
   description: "Portfolio",
 };
 
-import ThemeTransition from "@/components/layout/ThemeTransition";
-import InitialLoader from "@/components/layout/InitialLoader";
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceMono.variable} dark`}>
-      <body className={`${inter.className} font-sans antialiased`}>
+    <html lang="en" className={`${inter.variable}`}>
+      <body className={`${inter.className} font-sans antialiased text-base leading-[1.8] font-[300]`}>
         <InitialLoader />
-        <ThemeTransition />
         <CommandPalette />
         <SpotifyWidget />
         {children}

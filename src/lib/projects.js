@@ -1,72 +1,115 @@
 export const allProjects = [
   {
-    title: "Digital Catalogue SaaS Platform",
-    description: "Designed and built a multi-tenant platform for sales teams to share product albums, track engagement, and manage time-bound workflows.",
-    workDone: "Designed and implemented a scalable multi-tenant architecture with secure tenant-level isolation for over 50 sellers. Built a microservices-based backend using Node.js and PostgreSQL (Prisma). Developed a complex RBAC system with 5+ roles and 20+ permissions. Engineered time-bound album sharing (e.g., 24-hour access), engagement tracking analytics (views, interactions), and an automated workflow pipeline (catalogue → quote → approval → fulfillment). Set up Docker-based environments for consistent deployment and 40% improved developer efficiency.",
-    technologies: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Docker", "Microservices"],
-    date: "2024 - Present",
-    tags: ["Professional", "Next.js", "Node.js", "Microservices", "Docker"],
-    href: "/professionalProjects",
-    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1470&auto=format&fit=crop"
-  },
-  {
-    title: "Work Management System (German)",
-    description: "Centralized internal operations platform for resource allocation, invoicing, and inventory tracking.",
-    workDone: "Developed core modules for employee profile management, resource booking, and automated invoice generation. Standardized UI patterns across the platform and reduced state complexity through Redux and Context API. Collaborated cross-functionally to refine workflows for German operational teams.",
-    technologies: ["Next.js", "React", "Redux", "Tailwind CSS", "Sass"],
-    date: "2023 - Present",
-    tags: ["Professional", "Next.js", "React", "Redux"],
-    href: "/professionalProjects",
-    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    title: "Construction Workflow Platform",
-    description: "Role-specific project tracking system with automated approval pipelines for large-scale coordination.",
-    workDone: "Built sophisticated approval workflows and task management systems. Integrated Payload CMS for role-based dynamic UI rendering and content management. Managed PostgreSQL relational schemas to support complex construction coordination tasks.",
-    technologies: ["Next.js", "TypeScript", "Payload CMS", "PostgreSQL"],
-    date: "2023",
-    tags: ["Professional", "Next.js", "TypeScript", "Payload CMS"],
-    href: "/professionalProjects",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-     title: "Jewelry Manufacturing App",
-     description: "Multi-tenant workflow system managing the entire manufacturing lifecycle from sketches to final design approvals.",
-     workDone: "Designed and built multi-step interfaces covering the jewelry design lifecycle. Implemented role-based access control and approval workflows. Integrated email notifications and automated status updates.",
-     technologies: ["Next.js", "Payload CMS", "PostgreSQL", "Tailwind CSS"],
-     date: "2024",
-     tags: ["Professional", "Next.js", "TypeScript", "PostgreSQL"],
-     href: "/professionalProjects",
-     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    title: "Banking Application",
-    description: "Secure and intuitive financial interface for managing bill processing and account insights.",
-    workDone: "Developed secure and intuitive UI components for sensitive financial operations. Focused on clear visualization of account insights and bill management statuses using high-usability standards.",
-    technologies: ["Vue.js", "Tailwind CSS"],
-    date: "2023",
-    tags: ["Professional", "Vue.js", "Tailwind CSS"],
-    href: "/professionalProjects",
-    image: "https://images.unsplash.com/photo-1550565118-3d1428df4a7f?q=80&w=1470&auto=format&fit=crop"
-  },
-  {
-    title: "HTTP Server in C",
-    description: "Built a lightweight, multithreaded HTTP/1.1 server from scratch using C and POSIX threads to understand low-level networking.",
-    workDone: "Implemented low-level socket programming for TCP/IP communication. Handled concurrent connections using POSIX threads. Designed static file serving with appropriate MIME types and added basic HTTP error handling.",
-    technologies: ["C", "POSIX Threads", "TCP/IP", "HTTP/1.1"],
+    title: "Analytics & Reporting Platform",
+    category: "REPORTING & ANALYTICS",
+    featured: true,
+    homepageDescription: "Built reporting infrastructure for a multi-tenant product, transitioning legacy reporting workflows toward custom Apache Superset dashboards integrated directly into the application. Worked across embedded dashboards, authentication, row-level security, server-side filtering, Saved Views APIs, and SQL/report debugging.",
+    homepageContributions: [
+      "Reporting migration",
+      "Superset integration",
+      "Embedded dashboards",
+      "RLS",
+      "Saved Views API",
+      "SQL/report debugging"
+    ],
+    homepageTechnologies: ["SQL", "Apache Superset", "Next.js", "APIs", "Snowflake"],
+    description: "Context & Problem:\nThe business relied on a legacy myDBR reporting setup that suffered from slow response times and tight coupling. We needed to transition to a modern, embedded Apache Superset architecture without disrupting existing workflows.\n\nTechnical Implementation:\nMy work included dashboard embedding, Guest Token authentication, Row-Level Security, server-side filtering, Saved Views APIs, SQL and stored-procedure debugging, and tenant-specific reporting workflows.\n\nMeasurable Outcomes:\n• Reduced report response times to 2–4s for weekly data, 6–8s for monthly data, and ~10s for yearly data.\n• Successfully migrated business-critical reports to the new stack.",
+    role: "FULL STACK ENGINEER",
+    architecture: "Multi-tenant · Superset · Snowflake",
+    technologies: ["SQL", "Stored Procedures", "Apache Superset", "Next.js", "APIs", "Snowflake"],
+    keyContributions: [
+      "Reporting migration",
+      "Superset integration",
+      "Embedded dashboards",
+      "Guest Token authentication",
+      "RLS",
+      "Server-side filtering",
+      "Saved Views API",
+      "SQL/report debugging",
+      "Tenant-level reporting"
+    ],
     date: "2024",
-    tags: ["Personal", "C", "Networking"],
-    href: "/personalProjects",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc48?q=80&w=600&auto=format&fit=crop"
+    type: "Professional",
+    href: "/projects/analytics-platform",
+    icon: "BarChart3"
   },
   {
-     title: "AI Reply Generator",
-     description: "A productivity-focused Chrome extension that enhanced LinkedIn chat engagement via a controlled AI interface.",
-     workDone: "Built the extension using React and TypeScript with the WXT framework. Created a dynamic modal interface for AI input. Integrated with LinkedIn’s DOM for real-time message enhancement as per the user's manual selection.",
-     technologies: ["React.js", "TypeScript", "Tailwind CSS", "WXT Framework"],
-     date: "2024",
-     tags: ["Personal", "React", "AI", "TypeScript"],
-     href: "/personalProjects",
-     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600&auto=format&fit=crop"
+    title: "Internal Analytics AI Assistant",
+    category: "AI & INTERNAL TOOLING",
+    featured: true,
+    homepageDescription: "Built an internal tool that helps support and non-technical teams investigate reporting issues, inspect analytics data, and triage report-related tickets using AI-assisted workflows.",
+    homepageContributions: [
+      "Report investigation",
+      "Data exploration",
+      "Internal support tooling"
+    ],
+    homepageTechnologies: ["Superset MCP", "Google AI", "Next.js"],
+    description: "Context:\nSupport and non-technical teams needed a faster way to investigate reporting issues and inspect analytics data without writing raw SQL or manually navigating dashboards.\n\nWhat I Built:\nI developed an internal tool that leverages AI to investigate reporting issues, inspect analytics data, and triage report-related tickets using AI-assisted workflows.\n\nTechnical Implementation:\nBuilt using the Superset MCP, LangChain, and Google AI to create a conversational interface for exploring data and identifying reporting anomalies.",
+    role: "AI ENGINEER / FULL STACK",
+    technologies: ["Superset MCP", "Google AI", "Next.js", "LangChain"],
+    keyContributions: [
+      "Report investigation",
+      "Data exploration",
+      "Internal support tooling",
+      "AI integration"
+    ],
+    date: "2024",
+    type: "Professional",
+    href: "/projects/ai-assistant",
+    icon: "Sparkles"
+  },
+  {
+    title: "Multi-Tenant SaaS Platform",
+    category: "SYSTEM DESIGN",
+    featured: false,
+    description: "Context & Problem:\nThe client required a scalable SaaS platform to support shareable catalog-to-approval workflows for sales teams, requiring strict tenant isolation and complex role management.\n\nTechnical Implementation:\nBuilt a multi-tenant SaaS platform supporting tenant-level isolation, hierarchical RBAC, approval workflows, and subscription-based feature access. I worked across frontend applications, backend APIs, database design, and system architecture.\n\nMetrics & Outcomes:\n• Supported tenant isolation for 50+ tenants.\n• Engineered hierarchical RBAC with 5+ roles and 20+ permissions.\n• Delivered an ephemeral album-sharing system with 24-hour expiration using Redis TTL.",
+    role: "FULL STACK ENGINEER",
+    architecture: "Multi-tenant · Microservices · Turborepo",
+    technologies: ["Next.js", "Node.js", "PostgreSQL", "Docker", "Microservices", "Turborepo", "Redis"],
+    keyContributions: [
+      "Tenant isolation",
+      "Hierarchical RBAC",
+      "Time-bound workflows",
+      "System architecture"
+    ],
+    date: "2024",
+    type: "Professional",
+    href: "/projects/saas-platform",
+    icon: "Layers"
+  },
+  {
+    title: "Work Management System",
+    category: "OPERATIONS",
+    featured: false,
+    description: "Problem:\nThe internal operations team in the German market needed a centralized platform to manage resource allocation, invoicing, and inventory tracking to replace fragmented tools.\n\nWhat I Built:\nCentralized internal operations platform featuring employee profile management, resource booking, and automated invoice generation.\n\nTechnical Implementation:\nBuilt the frontend using Next.js, React, Redux, and Tailwind CSS, focusing on complex state management for bookings and fast UI interactions.",
+    role: "FRONTEND ENGINEER",
+    technologies: ["Next.js", "React", "Redux", "Tailwind CSS"],
+    keyContributions: [
+      "Employee profile management",
+      "Resource booking",
+      "Automated invoice generation",
+      "Frontend architecture"
+    ],
+    date: "2023",
+    type: "Professional",
+    href: "/projects/work-management",
+    icon: "BriefcaseBusiness"
+  },
+  {
+    title: "Jewelry Manufacturing App",
+    category: "WORKFLOW",
+    featured: false,
+    description: "Context & Problem:\nJewelry manufacturing involves complex stages from initial sketches to final design approvals, which were previously managed manually, leading to poor traceability.\n\nWhat I Built:\nA multi-tenant workflow system managing the entire manufacturing lifecycle, including design lifecycle interfaces, role-based access control, and automated status updates.\n\nMetrics & Outcomes:\n• Achieved 82% faster reconciliation.\n• Ensured 100% material traceability across the manufacturing pipeline.",
+    role: "FULL STACK ENGINEER",
+    technologies: ["Next.js", "Payload CMS", "PostgreSQL"],
+    keyContributions: [
+      "Design lifecycle interfaces",
+      "Role-based access control",
+      "Automated status updates"
+    ],
+    date: "2023",
+    type: "Professional",
+    href: "/projects/jewelry-app",
+    icon: "Factory"
   }
 ];

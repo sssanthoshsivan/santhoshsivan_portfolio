@@ -1,107 +1,163 @@
-import Link from "next/link"
 import React from "react"
 
 function WorkExperience() {
-  const platforms = [
+  const experiences = [
     {
-      name: "SaaS Digital Catalogue Platform",
-      desc: "Multi-tenant B2B platform with microservices architecture, onboarding 50+ tenants and improving dev efficiency by 40%.",
-      tech: "Next.js, Node.js, Prisma, Docker"
+      period: "2024 — PRESENT",
+      company: "RunLoyal",
+      title: "Full Stack Engineer",
+      skills: [
+        "Product engineering",
+        "Reporting & analytics",
+        "Superset",
+        "SQL",
+        "AI tooling"
+      ],
+      bullets: [
+        "Migrated business-critical reports from myDBR to Apache Superset, reducing report response times to 2–4s for weekly data, 6–8s for monthly data, and ~10s for yearly data.",
+        "Built custom dashboards for reports by aggregating API data, with persistent layouts and tenant-aware RLS, while resolving SSO and production reporting issues across workflows."
+      ],
+      description: "Driving the development of complex SaaS features, reporting infrastructure, and AI-enabled internal tools.",
     },
     {
-      name: "German Resource Management System",
-      desc: "Internal operations platform for employee allocation and automated invoicing for the German market.",
-      tech: "Next.js, Redux, Context API"
+      period: "2021 — 2024",
+      company: "Jobin & Jismi",
+      title: "Full Stack Engineer",
+      skills: [
+        "SaaS architecture",
+        "Microservices",
+        "Frontend engineering",
+        "PostgreSQL",
+        "RBAC"
+      ],
+      bullets: [
+        "Built a sales-driven SaaS platform supporting shareable catalog-to-approval workflows for sales teams.",
+        "Developed data-driven dashboards by integrating multiple APIs and engineered an ephemeral album-sharing system with a 24-hour expiration using Redis TTL.",
+        "Owned Next.js + TypeScript frontend development, delivering reusable components, complex multi-step workflows, API integrations, deployment, and production support."
+      ],
+      description: "Responsible for architecting and delivering critical business systems for diverse industrial domains.",
+    }
+  ];
+
+  const expertise = [
+    {
+      category: "FRONTEND",
+      skills: "React · Next.js · Vue · TypeScript · JavaScript\nTailwind CSS · Redux · Zustand"
     },
     {
-      name: "Construction Workflow Application",
-      desc: "RBAC-driven platform with complex approval pipelines and dynamic content rendering via Payload CMS.",
-      tech: "Next.js, TypeScript, PostgreSQL"
+      category: "BACKEND",
+      skills: "Node.js · NestJS · Express"
     },
     {
-      name: "Banking & Financial Dashboard",
-      desc: "Secure ERP-linked UI for bill processing and account insights with high-usability standards.",
-      tech: "Vue.js, Tailwind CSS"
+      category: "DATABASES",
+      skills: "PostgreSQL · MySQL · MongoDB · Supabase · Prisma"
+    },
+    {
+      category: "DATA & REPORTING",
+      skills: "SQL · Apache Superset · Snowflake"
+    },
+    {
+      category: "ARCHITECTURE",
+      skills: "Multi-tenancy · RBAC · Microservices · APIs"
+    },
+    {
+      category: "INFRASTRUCTURE",
+      skills: "Docker · Vercel · AWS · CI/CD"
+    },
+    {
+      category: "AI",
+      skills: "MCPs · Google APIs · LangChain"
     }
   ];
 
   return (
-    <section className="px-6 md:px-16 lg:px-24 py-24 border-b border-border">
-      <div>
-        <h2 className="text-xs uppercase tracking-[0.2em] font-mono text-muted-foreground mb-12 flex items-center gap-4">
-          <span className="w-12 h-[1px] bg-border"></span>
-          Experience // 2.7 Years Tenure
-        </h2>
-
-        <div className="brutalist-card">
-          {/* Plus signs */}
-          <div className="brutalist-plus brutalist-plus-tl">+</div>
-          <div className="brutalist-plus brutalist-plus-tr">+</div>
-          <div className="brutalist-plus brutalist-plus-bl">+</div>
-          <div className="brutalist-plus brutalist-plus-br">+</div>
-
-          <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-8 md:gap-16">
-            <div className="font-mono text-sm space-y-4">
-              <div className="text-muted-foreground uppercase tracking-widest">[ SEP_2021 — PRESENT ]</div>
-              <div className="text-[10px] text-primary font-bold uppercase tracking-widest leading-relaxed">
-                Single Company Tenure // <br />
-                Full Stack Specialist
-              </div>
-            </div>
-
-            <div className="space-y-10">
-              <header className="space-y-2">
-                <h3 className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground uppercase">
-                  Full Stack Developer<br/>
-                  <span className="text-muted-foreground outline-text">· Jobin & Jismi</span>
-                </h3>
-                <p className="text-sm font-mono text-muted-foreground uppercase tracking-[0.2em]">
-                  Thrissur, Kerala // Enterprise Platform Engineering
-                </p>
-              </header>
-
-              <div className="space-y-6 max-w-3xl">
-                <p className="text-muted-foreground leading-loose text-sm font-mono uppercase tracking-wide">
-                  During my 2.7-year tenure at Jobin & Jismi, I have been responsible for architecting and delivering critical business systems for diverse industrial domains. My role evolved from frontend engineering to full-stack system design, focusing on scalability, multi-tenancy, and operational automation.
-                </p>
-
-                <div className="grid gap-6 py-8 border-y border-border border-dashed">
-                  <h4 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest ml-1">Key Platforms Developed:</h4>
-                  {platforms.map((p, i) => (
-                    <div key={i} className="group relative pl-6 border-l border-border hover:border-primary transition-colors">
-                       <h5 className="text-sm font-bold text-foreground mb-1 group-hover:text-primary transition-colors">{p.name}</h5>
-                       <p className="text-xs text-muted-foreground leading-relaxed mb-3">{p.desc}</p>
-                       <span className="text-[9px] font-mono font-bold bg-muted px-2 py-0.5 rounded-sm text-foreground uppercase tracking-wider">{p.tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <Link
-                href="/professionalProjects"
-                className="inline-flex items-center text-xs font-mono font-bold text-foreground hover:text-primary transition-all group border-b border-foreground pb-1"
-              >
-                EXPLORE_PROJECT_ARCHIVE
-                <span className="ml-2 transition-transform group-hover:translate-x-1">
-                  →
-                </span>
-              </Link>
-            </div>
-          </div>
+    <>
+      <section id="experience" className="px-6 md:px-12 lg:px-16 py-8 lg:py-12 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-8">
+          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+            EXPERIENCE
+          </h2>
         </div>
-      </div>
 
-      <style jsx>{`
-        .outline-text {
-          -webkit-text-stroke: 1px currentColor;
-          color: transparent;
-        }
-        .outline-text:hover {
-          color: var(--muted-foreground);
-          -webkit-text-stroke: 0;
-        }
-      `}</style>
-    </section>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
+          {experiences.map((exp, idx) => (
+            <div key={idx} className="md:col-span-6 flex flex-col">
+              <p className="text-[12px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-4">
+                {exp.period}
+              </p>
+              <h3 className="text-[20px] font-[400] text-foreground mb-1">{exp.company}</h3>
+              <p className="text-[15px] font-[400] text-muted-foreground mb-8">{exp.title}</p>
+              
+              <div className="flex flex-col gap-1 mb-8">
+                {exp.skills.map((skill, i) => (
+                  <p key={i} className="text-[14px] text-foreground font-[400]">
+                    {skill}
+                  </p>
+                ))}
+              </div>
+
+              <p className="text-[15px] text-muted-foreground font-[400] leading-[1.7] max-w-[500px] mb-6">
+                {exp.description}
+              </p>
+
+              {exp.bullets && (
+                <ul className="list-disc list-outside ml-4 flex flex-col gap-3 max-w-[500px]">
+                  {exp.bullets.map((bullet, i) => (
+                    <li key={i} className="text-[14px] text-muted-foreground font-[400] leading-[1.6]">
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="expertise" className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-24">
+          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+            TECHNICAL EXPERTISE
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
+          {expertise.map((item, idx) => (
+            <div key={idx} className="flex flex-col">
+              <h3 className="text-[11px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-4">
+                {item.category}
+              </h3>
+              <p className="text-[14px] text-foreground font-[400] leading-[1.7] whitespace-pre-line">
+                {item.skills}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="achievements" className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-24">
+          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+            ACHIEVEMENTS
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-12 max-w-[1000px]">
+           <div className="flex flex-col">
+             <h3 className="text-[16px] text-foreground font-[400] mb-3">Winner – PMI Kerala Award 2024</h3>
+             <p className="text-[15px] text-muted-foreground font-[400] leading-[1.7]">
+               Recognized for developing a jewelry manufacturing platform achieving 82% faster reconciliation and 100% material traceability.
+             </p>
+           </div>
+           <div className="flex flex-col">
+             <h3 className="text-[16px] text-foreground font-[400] mb-3">Enterprise-grade NetSuite ERP Extension</h3>
+             <p className="text-[15px] text-muted-foreground font-[400] leading-[1.7]">
+               Delivered an enterprise-grade extension within a 28-day timeline, ensuring rapid client adoption and seamless integration.
+             </p>
+           </div>
+        </div>
+      </section>
+    </>
   )
 }
 
