@@ -27,11 +27,12 @@ const Header = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-[12px] uppercase tracking-[0.06em] text-foreground font-normal">
-            <Link href="/projects" className="text-link">Work</Link>
+            <Link href="/professionalProjects" className="text-link">Work</Link>
             <Link href="/#experience" className="text-link">Experience</Link>
             <Link href="/favourites" className="text-link">Favorites</Link>
             <Link href="/#about" className="text-link">About</Link>
             <Link href="/#contact" className="text-link">Contact</Link>
+            <a href="/Santhosh%20Sivan%20Resume.pdf" target="_blank" rel="noreferrer" className="text-link">Resume</a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -72,11 +73,12 @@ const Header = () => {
 
           {/* Mobile Nav Links */}
           <nav className="flex-1 flex flex-col justify-center items-center gap-12 text-sm uppercase tracking-[0.06em]">
-            <Link href="/projects" onClick={() => setIsMenuOpen(false)} className="text-link">Work</Link>
+            <Link href="/professionalProjects" onClick={() => setIsMenuOpen(false)} className="text-link">Work</Link>
             <Link href="/#experience" onClick={() => setIsMenuOpen(false)} className="text-link">Experience</Link>
             <Link href="/favourites" onClick={() => setIsMenuOpen(false)} className="text-link">Favorites</Link>
             <Link href="/#about" onClick={() => setIsMenuOpen(false)} className="text-link">About</Link>
             <Link href="/#contact" onClick={() => setIsMenuOpen(false)} className="text-link">Contact</Link>
+            <a href="/Santhosh%20Sivan%20Resume.pdf" target="_blank" rel="noreferrer" onClick={() => setIsMenuOpen(false)} className="text-link">Resume</a>
           </nav>
         </div>
       )}
@@ -85,4 +87,3 @@ const Header = () => {
 }
 
 export default Header
-

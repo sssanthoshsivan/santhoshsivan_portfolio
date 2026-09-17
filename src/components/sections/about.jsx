@@ -22,9 +22,9 @@ const principles = [
 const About = () => {
   return (
     <>
-      <section className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
-        <div className="mb-24">
-          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+      <section className="px-6 md:px-12 lg:px-16 py-12 md:py-16 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-8 md:mb-10">
+          <h2 className="text-[14px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
             HOW I WORK
           </h2>
         </div>
@@ -43,27 +43,27 @@ const About = () => {
         </div>
       </section>
 
-      <section id="about" className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
-        <div className="mb-24">
-          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+      <section id="about" className="px-6 md:px-12 lg:px-16 py-12 md:py-16 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-8 md:mb-10">
+          <h2 className="text-[14px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
             ABOUT
           </h2>
         </div>
 
         <div className="max-w-[600px] flex flex-col gap-6 text-[16px] text-foreground font-[400] leading-[1.8]">
           <p>
-            I'm a Full Stack Engineer interested in building products from interface to backend systems.
+            I'm a Full Stack Engineer who likes understanding how things work from end to end.
           </p>
           <p>
-            My work spans frontend engineering, APIs, databases, SaaS architecture, reporting infrastructure, and AI-assisted internal tools.
+            Over the last 3+ years, I've worked on everything from product interfaces and backend APIs to databases, multi-tenant SaaS systems, reporting platforms, and AI-assisted tools.
           </p>
           <p>
-            I enjoy working on problems where product requirements and technical complexity meet.
+            I enjoy the parts of engineering where things get complicated turning unclear requirements into practical systems, connecting different pieces of a product, and figuring out how to make them work better.
           </p>
         </div>
       </section>
 
-      <section id="contact" className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
+      <section id="contact" className="px-6 md:px-12 lg:px-16 py-12 md:py-16 max-w-[1280px] mx-auto w-full border-t border-border">
         <div className="flex flex-col gap-8 max-w-[600px]">
           <h2 className="text-[clamp(32px,4vw,48px)] font-[400] tracking-[-0.03em] leading-[1.1] text-foreground mb-4">
             LET'S BUILD SOMETHING.
@@ -80,6 +80,9 @@ const About = () => {
             </a>
             <a href="https://github.com/sssanthoshsivan" target="_blank" rel="noreferrer" className="text-link text-[15px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-1">
               GitHub →
+            </a>
+            <a href="/Santhosh%20Sivan%20Resume.pdf" target="_blank" rel="noreferrer" download className="text-link text-[15px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-1 mt-4">
+              Download Resume ↓
             </a>
           </div>
         </div>

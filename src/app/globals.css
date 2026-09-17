@@ -4,16 +4,23 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;       /* #FFFFFF */
-    --foreground: 0 0% 7%;         /* #111111 */
-    --primary: 0 0% 7%;            /* #111111 */
+    --background: 0 0% 100%;
+    /* #FFFFFF */
+    --foreground: 0 0% 7%;
+    /* #111111 */
+    --primary: 0 0% 7%;
+    /* #111111 */
     --primary-foreground: 0 0% 100%;
-    --muted-foreground: 0 0% 42%;  /* #6B6B6B */
-    --border: 0 0% 91%;            /* #E8E8E8 */
-    --card: 0 0% 97%;              /* #F7F7F7 */
-    --surface: 0 0% 97%;           /* #F7F7F7 */
+    --muted-foreground: 0 0% 42%;
+    /* #6B6B6B */
+    --border: 0 0% 91%;
+    /* #E8E8E8 */
+    --card: 0 0% 97%;
+    /* #F7F7F7 */
+    --surface: 0 0% 97%;
+    /* #F7F7F7 */
   }
-  
+
   .dark {
     --background: 0 0% 100%;
     --foreground: 0 0% 7%;
@@ -36,6 +43,7 @@
 }
 
 @layer components {
+
   /* Minimal link style */
   .text-link {
     @apply hover:opacity-50 transition-opacity duration-300;

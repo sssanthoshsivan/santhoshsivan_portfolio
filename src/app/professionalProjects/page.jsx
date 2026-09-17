@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
-import React from "react"
-import Link from "next/link"
-import { BarChart3, ChartNoAxesCombined, Sparkles, Layers, BriefcaseBusiness, Factory, Circle } from "lucide-react"
-import Header from "@/components/layout/Header"
-import Footer from "@/components/layout/Footer"
-import { allProjects } from "@/lib/projects"
+import Link from "next/link";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { BarChart3, ChartNoAxesCombined, Sparkles, Layers, BriefcaseBusiness, Factory, Circle } from "lucide-react";
+import { allProjects } from "@/lib/projects";
 
 const IconMap = {
   BarChart3,
@@ -19,62 +18,63 @@ const IconMap = {
 export default function ProfessionalProjectsPage() {
   return (
     <main className="min-h-screen relative overflow-x-hidden bg-background">
-      <div className="mx-auto min-h-screen bg-background relative z-10 transition-colors">
+      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen flex flex-col bg-background relative z-10 transition-colors">
         <Header />
+        
+        <div className="flex-1 pt-[120px] md:pt-[140px] lg:pt-[160px] px-6 md:px-12 lg:px-16 pb-16 w-full max-w-[1280px] mx-auto">
+          <div className="mb-12 md:mb-16">
+             <Link
+                href="/"
+                className="group inline-flex items-center gap-2 text-[13px] font-[500] text-muted-foreground hover:text-foreground transition-colors mb-8"
+              >
+                <span className="transition-transform group-hover:-translate-x-1">←</span>
+                Back to Home
+              </Link>
+             <h1 className="text-[32px] md:text-[48px] font-[400] tracking-[-0.02em] text-foreground uppercase">
+               Professional Projects
+             </h1>
+          </div>
 
-        {/* Page intro */}
-        <section className="px-6 md:px-12 lg:px-16 pt-[20vh] pb-16 max-w-[1280px] mx-auto w-full">
-          <header className="mb-20 max-w-[800px]">
-            <p className="text-[12px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-6">
-              ALL WORK
-            </p>
-            <h1 className="text-[clamp(42px,6vw,82px)] font-[400] tracking-[-0.045em] leading-[0.98] text-foreground mb-8">
-              Selected Projects
-            </h1>
-            <p className="text-[15px] md:text-[17px] text-muted-foreground leading-[1.7] font-[400] max-w-[600px]">
-              A complete collection of selected professional and personal projects spanning SaaS platforms, internal tools, and system architecture.
-            </p>
-          </header>
-        </section>
-
-        {/* Projects grid */}
-        <section className="px-6 md:px-12 lg:px-16 pb-32 max-w-[1280px] mx-auto w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 md:gap-y-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16 md:gap-y-20 pb-8">
             {allProjects.map((project, idx) => {
               const Icon = IconMap[project.icon] || Circle;
+              const displayDescription = project.description;
+              const displayContributions = project.keyContributions;
+              const displayTechnologies = project.technologies;
+
               return (
-                <div key={idx} className="flex flex-col gap-8">
+                <div key={idx} className="flex flex-col gap-6 md:gap-8">
                   <div className="flex flex-col flex-grow">
-                    <p className="text-[14px] text-muted-foreground mb-4">
+                    <p className="text-[13px] md:text-[14px] text-muted-foreground mb-3 md:mb-4">
                       {String(idx + 1).padStart(2, '0')}
                     </p>
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon className="w-[18px] h-[18px] text-muted-foreground stroke-[1.5]" />
-                      <h3 className="text-[24px] md:text-[28px] tracking-[-0.02em] font-[400] text-foreground uppercase">
+                    <div className="flex items-center gap-2 md:gap-3 mb-2">
+                      <Icon className="w-[16px] h-[16px] md:w-[18px] md:h-[18px] text-muted-foreground stroke-[1.5]" />
+                      <h3 className="text-[22px] md:text-[28px] tracking-[-0.02em] font-[400] text-foreground uppercase">
                         {project.title}
                       </h3>
                     </div>
-                    <p className="text-[11px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-8">
-                      {project.category || project.type}
+                    <p className="text-[10px] md:text-[11px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-6 md:mb-8">
+                      {project.category}
                     </p>
                     
-                    <div className="text-[15px] text-foreground font-[400] leading-[1.7] whitespace-pre-line mb-8 flex-grow max-w-[500px]">
-                      {project.description}
+                    <div className="text-[14px] md:text-[15px] text-foreground font-[400] leading-[1.6] md:leading-[1.7] whitespace-pre-line mb-6 md:mb-8 flex-grow max-w-[500px]">
+                      {displayDescription}
                     </div>
                     
-                    {project.keyContributions && (
-                      <div className="mb-8 max-w-[500px]">
-                        <p className="text-[11px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-2">CONTRIBUTION</p>
-                        <p className="text-[14px] text-foreground font-[400] leading-[1.6]">
-                          {project.keyContributions.join(" · ")}
+                    {displayContributions && (
+                      <div className="mb-6 md:mb-8 max-w-[500px]">
+                        <p className="text-[10px] md:text-[11px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-2">CONTRIBUTION</p>
+                        <p className="text-[13px] md:text-[14px] text-foreground font-[400] leading-[1.6]">
+                          {displayContributions.join(" · ")}
                         </p>
                       </div>
                     )}
 
-                    <div className="mb-12 border-t border-border pt-6 max-w-[500px]">
-                      <p className="text-[11px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-2">STACK</p>
-                      <p className="text-[14px] text-foreground font-[400] leading-[1.6]">
-                        {project.technologies.join(" · ")}
+                    <div className="mb-8 md:mb-12 border-t border-border pt-4 md:pt-6 max-w-[500px]">
+                      <p className="text-[10px] md:text-[11px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-2">STACK</p>
+                      <p className="text-[13px] md:text-[14px] text-foreground font-[400] leading-[1.6]">
+                        {displayTechnologies.join(" · ")}
                       </p>
                     </div>
 
@@ -91,10 +91,11 @@ export default function ProfessionalProjectsPage() {
               );
             })}
           </div>
-        </section>
+
+        </div>
 
         <Footer />
       </div>
     </main>
-  )
+  );
 }

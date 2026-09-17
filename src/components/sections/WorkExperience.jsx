@@ -72,9 +72,9 @@ function WorkExperience() {
 
   return (
     <>
-      <section id="experience" className="px-6 md:px-12 lg:px-16 py-8 lg:py-12 max-w-[1280px] mx-auto w-full border-t border-border">
-        <div className="mb-8">
-          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+      <section id="experience" className="px-6 md:px-12 lg:px-16 py-12 md:py-16 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-8 md:mb-10">
+          <h2 className="text-[14px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
             EXPERIENCE
           </h2>
         </div>
@@ -88,11 +88,11 @@ function WorkExperience() {
               <h3 className="text-[20px] font-[400] text-foreground mb-1">{exp.company}</h3>
               <p className="text-[15px] font-[400] text-muted-foreground mb-8">{exp.title}</p>
               
-              <div className="flex flex-col gap-1 mb-8">
+              <div className="flex flex-wrap gap-2 mb-8 mt-2">
                 {exp.skills.map((skill, i) => (
-                  <p key={i} className="text-[14px] text-foreground font-[400]">
+                  <span key={i} className="px-3 py-1 text-[12px] font-[500] bg-muted/50 text-muted-foreground rounded-full border border-border/50">
                     {skill}
-                  </p>
+                  </span>
                 ))}
               </div>
 
@@ -114,9 +114,9 @@ function WorkExperience() {
         </div>
       </section>
 
-      <section id="expertise" className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
-        <div className="mb-24">
-          <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
+      <section id="expertise" className="px-6 md:px-12 lg:px-16 py-12 md:py-16 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-8 md:mb-10">
+          <h2 className="text-[14px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
             TECHNICAL EXPERTISE
           </h2>
         </div>
@@ -135,8 +135,8 @@ function WorkExperience() {
         </div>
       </section>
 
-      <section id="achievements" className="px-6 md:px-12 lg:px-16 py-8 max-w-[1280px] mx-auto w-full border-t border-border">
-        <div className="mb-24">
+      <section id="achievements" className="px-6 md:px-12 lg:px-16 py-12 md:py-16 max-w-[1280px] mx-auto w-full border-t border-border">
+        <div className="mb-8 md:mb-10">
           <h2 className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground font-[500]">
             ACHIEVEMENTS
           </h2>

@@ -16,11 +16,11 @@ const Intro = ({ triggerAnimation }) => {
 
   return (
     <section 
-      className="pt-[20vh] pb-8 lg:pb-16 transition-opacity duration-1000 ease-out max-w-[1280px] mx-auto w-full px-6 md:px-12 lg:px-16" 
+      className="pt-[120px] md:pt-[140px] lg:pt-[160px] pb-8 lg:pb-16 transition-opacity duration-1000 ease-out max-w-[1280px] mx-auto w-full px-6 md:px-12 lg:px-16" 
       aria-label="Introduction"
       style={{ opacity }}
     >
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-16">
+      <div className="flex flex-col-reverse lg:flex-row lg:items-center justify-between gap-8 lg:gap-16">
         <div className="max-w-[800px] flex-1">
           <p className="text-[12px] font-[500] uppercase tracking-[0.08em] text-muted-foreground mb-6">
             SOFTWARE ENGINEER
@@ -61,7 +61,7 @@ const Intro = ({ triggerAnimation }) => {
           </div>
         </div>
 
-        <div className="hidden lg:block relative w-[280px] aspect-[4/5] rounded-sm overflow-hidden flex-shrink-0">
+        <div className="relative w-full max-w-[240px] mx-auto lg:mx-0 lg:max-w-none lg:w-[280px] aspect-[4/5] rounded-sm overflow-hidden flex-shrink-0">
           <Image
             src="/Profile.webp"
             alt="Santhosh Sivan"

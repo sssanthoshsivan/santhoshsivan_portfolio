@@ -62,7 +62,7 @@ function Favourites() {
                 Curated Values
             </h1>
             <p className="text-[15px] md:text-[17px] text-muted-foreground leading-[1.7] font-[400] max-w-[600px]">
-                Outside of work, these are the things I’m drawn to — moments, places,
+                Outside of work, these are the things I’m drawn to moments, places,
                 and values that quietly shape how I think and create.
             </p>
           </header>
