@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NextImage from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -30,11 +30,11 @@ function Favourites() {
   ];
 
   return (
-    <main className="min-h-screen relative overflow-x-hidden font-sans bg-background">
-      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen bg-background relative z-10 transition-colors">
+    <main className="min-h-screen relative overflow-x-hidden font-sans bg-transparent">
+      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen bg-transparent relative z-10 transition-colors">
         <Header />
 
-        {/* Hover image (desktop) */}
+        {/* Hover image (desktop) - clean static display without spring/float motion */}
         <div className="hidden sm:flex fixed right-[max(0px,calc((100vw-1440px)/2))] top-0 bottom-0 w-[45%] pointer-events-none items-center justify-center z-0 px-12">
             {hoveredKey ? (
               <div className="relative w-full aspect-[4/5] max-h-[70vh] border border-border/50 shadow-2xl transition-transform duration-700">
@@ -47,7 +47,7 @@ function Favourites() {
               </div>
             ) : (
                 <div className="flex flex-col items-center justify-center opacity-10">
-                    <span className="text-[120px] font-[400] tracking-[-0.045em] text-foreground/20 rotate-90">FAVS_</span>
+                    <span className="text-[120px] font-[400] tracking-[-0.04em] text-foreground/20 rotate-90">FAVS_</span>
                 </div>
             )}
         </div>
@@ -61,10 +61,14 @@ function Favourites() {
             <h1 className="text-[clamp(42px,6vw,82px)] font-[400] tracking-[-0.045em] leading-[0.98] text-foreground mb-8">
                 Curated Values
             </h1>
-            <p className="text-[15px] md:text-[17px] text-muted-foreground leading-[1.7] font-[400] max-w-[600px]">
-                Outside of work, these are the things I’m drawn to moments, places,
-                and values that quietly shape how I think and create.
-            </p>
+            <div className="flex flex-col gap-4 max-w-[640px]">
+              <p className="text-[15px] md:text-[17px] text-muted-foreground leading-[1.7] font-[400]">
+                Outside of work, these are the things I’m drawn to—moments, places, and values that quietly shape how I think and create.
+              </p>
+              <p className="text-[15px] md:text-[16px] text-foreground/90 leading-[1.75] font-[400] pl-4 border-l border-border/80">
+                I'm happy when I try to learn music, how fast I solve a Rubik's cube, playing with a deck of cards, how far I run, or how my fishes are doing.
+              </p>
+            </div>
           </header>
 
           {/* Mobile Grid */}

@@ -3,6 +3,7 @@ import "./globals.css";
 import CommandPalette from "@/components/layout/CommandPalette";
 import SpotifyWidget from "@/components/layout/SpotifyWidget";
 import InitialLoader from "@/components/layout/InitialLoader";
+import DynamicBackground from "@/components/layout/DynamicBackground";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -17,9 +18,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable}`}>
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} font-sans antialiased text-base leading-[1.8] font-[300]`}>
         <InitialLoader />
+        <DynamicBackground />
         <CommandPalette />
         <SpotifyWidget />
         {children}

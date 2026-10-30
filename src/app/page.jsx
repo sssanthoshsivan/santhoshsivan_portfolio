@@ -10,8 +10,8 @@ import Photographs from "@/components/sections/photos";
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative overflow-x-hidden bg-background">
-      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen bg-background relative z-10 transition-colors">
+    <main className="min-h-screen relative overflow-x-hidden bg-transparent">
+      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen bg-transparent relative z-10 transition-colors">
         <Header />
 
         <div id="index">

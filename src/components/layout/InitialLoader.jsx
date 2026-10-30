@@ -7,33 +7,90 @@ const InitialLoader = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Check if the loader has already been shown in this session
-    const hasLoadedBefore = sessionStorage.getItem("hasLoadedPortfolio")
+    try {
+      // Check if the loader has already been shown in this session
+      const hasLoadedBefore = sessionStorage.getItem("hasLoadedPortfolio")
 
-    if (!hasLoadedBefore) {
-      setIsVisible(true)
-      const timer = setTimeout(() => {
-        setIsVisible(false)
+      if (!hasLoadedBefore) {
+        // Mark as loaded immediately so rapid reloads/clicks never re-trigger
         sessionStorage.setItem("hasLoadedPortfolio", "true")
-      }, 2500)
-      return () => clearTimeout(timer)
+        setIsVisible(true)
+
+        const timer = setTimeout(() => {
+          setIsVisible(false)
+        }, 1400)
+
+        const handleKeyDown = (e) => {
+          if (e.key === "Escape") {
+            clearTimeout(timer)
+            setIsVisible(false)
+          }
+        }
+
+        window.addEventListener("keydown", handleKeyDown)
+
+        return () => {
+          clearTimeout(timer)
+          window.removeEventListener("keydown", handleKeyDown)
+        }
+      }
+    } catch (e) {
+      // Graceful fallback if storage is restricted
+      setIsVisible(false)
     }
   }, [])
 
+  // Lock body scroll only while loader is active
+  useEffect(() => {
+    if (isVisible) {
+      const originalOverflow = document.body.style.overflow
+      document.body.style.overflow = "hidden"
+      return () => {
+        document.body.style.overflow = originalOverflow
+      }
+    }
+  }, [isVisible])
+
+  // Allow replaying from Command Palette or developer testing
+  useEffect(() => {
+    const handleReplay = () => {
+      try {
+        sessionStorage.removeItem("hasLoadedPortfolio")
+      } catch (e) {}
+      setIsVisible(true)
+      document.documentElement.style.overflow = "hidden"
+      document.body.style.overflow = "hidden"
+      const timer = setTimeout(() => {
+        setIsVisible(false)
+      }, 1400)
+      return () => clearTimeout(timer)
+    }
+
+    window.addEventListener("replay-initial-loader", handleReplay)
+    return () => window.removeEventListener("replay-initial-loader", handleReplay)
+  }, [])
+
+  const handleExitComplete = () => {
+    document.body.style.overflow = ""
+  }
+
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={handleExitComplete}>
       {isVisible && (
         <motion.div
+          key="initial-portfolio-loader"
           initial={{ y: 0 }}
           exit={{ y: "-100%" }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
+          transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-background select-none cursor-default"
+          onClick={() => setIsVisible(false)}
+          title="Click or press Esc to skip"
         >
-          <div className="flex flex-col items-center justify-center h-full relative z-10">
+          <div className="flex flex-col items-center justify-center h-full relative z-10 pointer-events-none">
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="flex flex-col items-center gap-4"
             >
               <span className="text-[14px] font-[500] uppercase tracking-[0.08em] text-foreground">
@@ -50,7 +107,7 @@ const InitialLoader = () => {
                   className="absolute inset-y-0 left-0 bg-foreground"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
-                  transition={{ duration: 1.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
+                  transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
                 />
               </div>
             </motion.div>

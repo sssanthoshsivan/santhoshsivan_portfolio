@@ -11,8 +11,8 @@ export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState(null)
 
   return (
-    <main className="bg-hatch min-h-screen relative overflow-x-hidden">
-      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen bg-background bg-dotted relative z-10 transition-colors">
+    <main className="min-h-screen relative overflow-x-hidden bg-transparent">
+      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen bg-transparent relative z-10 transition-colors">
         <Header />
 
         <section className="px-6 md:px-16 lg:px-24 pt-32 pb-24">

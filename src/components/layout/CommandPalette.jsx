@@ -13,16 +13,23 @@ import {
   User, 
   Code, 
   Briefcase, 
-  Home
+  Home,
+  RotateCcw
 } from "lucide-react"
 import { triggerThemeTransition } from "./ThemeTransition"
+
+export const openCommandPalette = () => {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("open-command-palette"))
+  }
+}
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false)
   const [theme, setTheme] = useState("dark")
   const router = useRouter()
 
-  // Toggle open state on Ctrl+K
+  // Toggle open state on Ctrl+K and custom event
   useEffect(() => {
     const down = (e) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -31,8 +38,14 @@ export default function CommandPalette() {
       }
     }
 
+    const handleCustomOpen = () => setOpen(true)
+
     document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
+    window.addEventListener("open-command-palette", handleCustomOpen)
+    return () => {
+      document.removeEventListener("keydown", down)
+      window.removeEventListener("open-command-palette", handleCustomOpen)
+    }
   }, [])
 
   // Action Handlers
@@ -84,6 +97,15 @@ export default function CommandPalette() {
           <Command.Group heading="Preferences" className="px-2 py-2 text-[9px] font-bold text-muted-foreground uppercase tracking-[0.2em] mt-4 mb-1">
             <Item onSelect={toggleTheme} icon={theme === "dark" ? <Sun size={14}/> : <Moon size={14}/>}>
               Toggle Theme (Light / Dark)
+            </Item>
+            <Item 
+              onSelect={() => {
+                setOpen(false)
+                window.dispatchEvent(new CustomEvent("replay-initial-loader"))
+              }} 
+              icon={<RotateCcw size={14}/>}
+            >
+              Replay Intro Animation
             </Item>
           </Command.Group>
 

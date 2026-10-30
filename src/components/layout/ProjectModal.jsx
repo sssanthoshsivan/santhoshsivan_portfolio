@@ -11,16 +11,18 @@ export default function ProjectModal({
   workDone,
   technologies,
 }) {
-  const points = workDone
-    ?.split(". ")
-    .filter(Boolean)
-    .map((item) => item.trim())
+  const points = Array.isArray(workDone)
+    ? workDone
+    : workDone
+        ?.split(". ")
+        .filter(Boolean)
+        .map((item) => item.trim()) || [];
 
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog
         onClose={onClose}
-        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12"
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
       >
         <Transition.Child
           as={Fragment}
@@ -43,7 +45,7 @@ export default function ProjectModal({
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Dialog.Panel className="relative z-10 w-full max-w-4xl bg-card border border-border shadow-2xl overflow-hidden font-mono text-sm tracking-tight">
+          <Dialog.Panel className="relative z-10 w-full max-w-4xl bg-card border border-border shadow-2xl overflow-y-auto max-h-[88vh] font-mono text-sm tracking-tight rounded-xl">
             {/* Header / Grid markings */}
             <div className="absolute top-4 left-4 text-[9px] font-bold text-muted-foreground uppercase tracking-widest opacity-30 select-none">
               [ SYSTEM_STATUS: INSPECTING_COMPONENT ]

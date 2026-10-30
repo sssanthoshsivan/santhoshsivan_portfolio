@@ -1,115 +1,119 @@
 export const allProjects = [
   {
-    title: "Analytics & Reporting Platform",
-    category: "REPORTING & ANALYTICS",
+    title: "Mission-Critical Analytics & Data Infrastructure",
+    category: "ENTERPRISE DATA & ANALYTICS",
     featured: true,
-    homepageDescription: "Built reporting infrastructure for a multi-tenant product, transitioning legacy reporting workflows toward custom Apache Superset dashboards integrated directly into the application. Worked across embedded dashboards, authentication, row-level security, server-side filtering, Saved Views APIs, and SQL/report debugging.",
+    homepageDescription: "Architected high-throughput analytics infrastructure for a multi-tenant SaaS platform, migrating business-critical telemetry from legacy monolithic bottlenecks into an isolated, high-performance data architecture. Engineered guest-token authentication, tenant-aware Row-Level Security (RLS) for 50+ enterprise tenants, Saved Views APIs, and sub-second operational dashboards across financial, appointment, invoice, and revenue workflows.",
     homepageContributions: [
-      "Reporting migration",
-      "Superset integration",
-      "Embedded dashboards",
-      "RLS",
-      "Saved Views API",
-      "SQL/report debugging"
+      "Analytics Architecture",
+      "Tenant-Isolated RLS",
+      "Financial & Ops Telemetry",
+      "Guest Token Authentication",
+      "Saved Views APIs",
+      "Query Latency Optimization"
     ],
-    homepageTechnologies: ["SQL", "Apache Superset", "Next.js", "APIs", "Snowflake"],
-    description: "Context & Problem:\nThe business relied on a legacy myDBR reporting setup that suffered from slow response times and tight coupling. We needed to transition to a modern, embedded Apache Superset architecture without disrupting existing workflows.\n\nTechnical Implementation:\nMy work included dashboard embedding, Guest Token authentication, Row-Level Security, server-side filtering, Saved Views APIs, SQL and stored-procedure debugging, and tenant-specific reporting workflows.\n\nMeasurable Outcomes:\n• Reduced report response times to 2–4s for weekly data, 6–8s for monthly data, and ~10s for yearly data.\n• Successfully migrated business-critical reports to the new stack.",
+    homepageTechnologies: ["PostgreSQL", "SQL / Stored Procs", "Java (Spring)", "Apache Superset", "Next.js", "Microservices"],
+    description: "Context & Critical Problem:\nThe business relied on legacy reporting infrastructure suffering from tight architectural coupling, query latencies exceeding 35s, and authentication vulnerabilities. We needed to architect a modern, tenant-isolated analytics engine without disrupting live mission-critical workflows.\n\nTechnical Architecture & Execution:\n• Analytics Architecture: Integrated Apache Superset into the SaaS portal using Superset APIs, secure guest-token authentication, and tenant-aware Row-Level Security (RLS) across 50+ enterprise tenants.\n• Core Data Engineering: Rebuilt and optimized complex SQL, stored procedures, database views, and analytics APIs powering high-stakes financial audits, invoice pipelines, appointment telemetry, and sales workflows.\n• Complex Domain Logic: Redesigned data aggregation logic for challenging multi-day stays, tenant-local timezone offsets, and appointment state machines.\n• Security & Legacy Auth: Investigated and eliminated myDBR single sign-on (SSO) access-control issues, preventing unauthorized report access.\n\nMeasurable Outcomes:\n• Slashed average query response times to 2–4s for weekly rollups, 6–8s for monthly aggregations, and ~10s for yearly historical data.\n• Successfully transitioned business-critical financial, operational, and appointment reporting with 100% data fidelity.",
     role: "FULL STACK ENGINEER",
-    architecture: "Multi-tenant · Superset · Snowflake",
-    technologies: ["SQL", "Stored Procedures", "Apache Superset", "Next.js", "APIs", "Snowflake"],
+    architecture: "Multi-Tenant SaaS · Distributed Analytics · PostgreSQL",
+    technologies: ["PostgreSQL", "SQL / Stored Procedures", "Java (Spring Boot)", "Apache Superset", "Next.js", "Microservices", "Snowflake"],
     keyContributions: [
-      "Reporting migration",
-      "Superset integration",
-      "Embedded dashboards",
-      "Guest Token authentication",
-      "RLS",
-      "Server-side filtering",
-      "Saved Views API",
-      "SQL/report debugging",
-      "Tenant-level reporting"
+      "Analytics Architecture & Migration",
+      "Tenant-Aware Row-Level Security (RLS)",
+      "Guest Token Authentication",
+      "Sub-Second Query Optimization (2–4s)",
+      "Financial, Invoice & Operational Telemetry",
+      "Saved Views APIs",
+      "SSO Security Resolution",
+      "Database Views & Stored Procedures"
     ],
     date: "2024",
     type: "Professional",
-    href: "/projects/analytics-platform",
+    href: "/professionalProjects",
     icon: "BarChart3"
   },
   {
-    title: "Internal Analytics AI Assistant",
-    category: "AI & INTERNAL TOOLING",
+    title: "Internal Analytics AI Operational Agent",
+    category: "AI & OPERATIONAL AUTOMATION",
     featured: true,
-    homepageDescription: "Built an internal tool that helps support and non-technical teams investigate reporting issues, inspect analytics data, and triage report-related tickets using AI-assisted workflows.",
+    homepageDescription: "Engineered an internal AI agent that enables support and non-technical teams to investigate complex data anomalies, inspect analytics pipelines, and triage production data tickets using natural language without writing manual SQL.",
     homepageContributions: [
-      "Report investigation",
-      "Data exploration",
-      "Internal support tooling"
+      "Automated Anomaly Triage",
+      "Autonomous Tool Calling",
+      "Production Data Sandboxing"
     ],
-    homepageTechnologies: ["Superset MCP", "Google AI", "Next.js"],
-    description: "Context:\nSupport and non-technical teams needed a faster way to investigate reporting issues and inspect analytics data without writing raw SQL or manually navigating dashboards.\n\nWhat I Built:\nI developed an internal tool that leverages AI to investigate reporting issues, inspect analytics data, and triage report-related tickets using AI-assisted workflows.\n\nTechnical Implementation:\nBuilt using the Superset MCP, LangChain, and Google AI to create a conversational interface for exploring data and identifying reporting anomalies.",
+    homepageTechnologies: ["AI MCPs", "Google AI API", "LangChain", "Next.js"],
+    description: "Context:\nSupport and operational teams needed an instant way to investigate telemetry anomalies and inspect analytics data without writing raw SQL queries or manually navigating multi-layered dashboards.\n\nWhat I Built:\nDeveloped an autonomous AI investigation agent utilizing the Model Context Protocol (MCP), LangChain, and Google AI to enable natural-language conversational queries directly into SQL & production analytics databases.\n\nTechnical Implementation:\nEngineered custom MCP tools connected to analytics endpoints, structured agent tool-calling loops, and provided safe query sandboxing for rapid ticket triaging.",
     role: "AI ENGINEER / FULL STACK",
-    technologies: ["Superset MCP", "Google AI", "Next.js", "LangChain"],
+    technologies: ["AI MCPs", "Google AI API", "LangChain", "Next.js", "SQL Sandboxing"],
     keyContributions: [
-      "Report investigation",
-      "Data exploration",
-      "Internal support tooling",
-      "AI integration"
+      "Autonomous Anomaly Investigation",
+      "Model Context Protocol (MCP) Integration",
+      "Safe SQL Query Sandboxing",
+      "Support Ticket Triage Automation"
     ],
     date: "2024",
     type: "Professional",
-    href: "/projects/ai-assistant",
+    href: "/professionalProjects",
     icon: "Sparkles"
   },
   {
-    title: "Multi-Tenant SaaS Platform",
-    category: "SYSTEM DESIGN",
+    title: "Multi-Tenant SaaS Digital Product Catalog Platform",
+    category: "SYSTEM DESIGN & ARCHITECTURE",
     featured: false,
-    description: "Context & Problem:\nThe client required a scalable SaaS platform to support shareable catalog-to-approval workflows for sales teams, requiring strict tenant isolation and complex role management.\n\nTechnical Implementation:\nBuilt a multi-tenant SaaS platform supporting tenant-level isolation, hierarchical RBAC, approval workflows, and subscription-based feature access. I worked across frontend applications, backend APIs, database design, and system architecture.\n\nMetrics & Outcomes:\n• Supported tenant isolation for 50+ tenants.\n• Engineered hierarchical RBAC with 5+ roles and 20+ permissions.\n• Delivered an ephemeral album-sharing system with 24-hour expiration using Redis TTL.",
+    description: "Context & Problem:\nThe client required a scalable SaaS platform to support shareable catalog-to-approval workflows for sales teams, requiring strict tenant isolation and complex role management.\n\nTechnical Architecture:\n• Multi-Tenant Isolation: Built a multi-tenant SaaS platform with tenant-level data isolation and hierarchical RBAC (5+ roles, 20+ permissions), onboarding 50+ enterprise tenants with secure access control.\n• SaaS Monetization: Implemented subscription and plan management with tier-based feature access.\n• Ephemeral Sharing Architecture: Developed an ephemeral album-sharing system with 24-hour expiration using Redis TTL, enabling customer views, likes, feedback, and approval tracking.\n• Turborepo & Docker: Structured the monorepo using Turborepo and Docker, reducing build times by 40% and ensuring consistent deployments across environments.",
     role: "FULL STACK ENGINEER",
-    architecture: "Multi-tenant · Microservices · Turborepo",
-    technologies: ["Next.js", "Node.js", "PostgreSQL", "Docker", "Microservices", "Turborepo", "Redis"],
+    architecture: "Multi-Tenant · Microservices · Turborepo",
+    technologies: ["Next.js", "Node.js", "PostgreSQL", "Docker", "Microservices", "Turborepo", "Redis", "RBAC"],
     keyContributions: [
-      "Tenant isolation",
-      "Hierarchical RBAC",
-      "Time-bound workflows",
-      "System architecture"
+      "Tenant-Level Data Isolation (50+ Tenants)",
+      "Hierarchical RBAC (5+ Roles, 20+ Permissions)",
+      "Tier-Based Subscription & Monetization",
+      "Ephemeral Redis TTL Album System",
+      "Turborepo Monorepo & Docker Optimization"
     ],
     date: "2024",
     type: "Professional",
-    href: "/projects/saas-platform",
+    href: "/professionalProjects",
     icon: "Layers"
   },
   {
-    title: "Work Management System",
-    category: "OPERATIONS",
+    title: "Jewelry Manufacturing Management Platform",
+    category: "ENTERPRISE WORKFLOW & SUPPLY CHAIN",
     featured: false,
-    description: "Problem:\nThe internal operations team in the German market needed a centralized platform to manage resource allocation, invoicing, and inventory tracking to replace fragmented tools.\n\nWhat I Built:\nCentralized internal operations platform featuring employee profile management, resource booking, and automated invoice generation.\n\nTechnical Implementation:\nBuilt the frontend using Next.js, React, Redux, and Tailwind CSS, focusing on complex state management for bookings and fast UI interactions.",
-    role: "FRONTEND ENGINEER",
-    technologies: ["Next.js", "React", "Redux", "Tailwind CSS"],
+    description: "Context & Problem:\nJewelry manufacturing involves complex stages from initial sketches to casting and final design approvals, which were previously managed manually, causing material leakage and slow auditing.\n\nTechnical Architecture & Outcomes:\n• End-to-End Workflow: Built a full manufacturing management platform with integrated customer communication and production workflows.\n• Complex Forms & Approvals: Developed 30+ multi-step forms, approval flows, role-based access control, and real-time notification systems.\n• Measurable Business Impact: Achieved 100% material traceability across precious metals and gems, 82% faster reconciliation, and significantly reduced material loss.\n• Industry Recognition: Winner of the PMI Kerala Award 2025.",
+    role: "FULL STACK ENGINEER",
+    architecture: "Multi-Step Workflow · Headless CMS · PostgreSQL",
+    technologies: ["React.js", "TypeScript", "Payload CMS", "PostgreSQL", "Tailwind CSS"],
     keyContributions: [
-      "Employee profile management",
-      "Resource booking",
-      "Automated invoice generation",
-      "Frontend architecture"
+      "100% Precious Material Traceability",
+      "82% Faster Financial Reconciliation",
+      "30+ Multi-Step Forms & Approval Engines",
+      "PMI Kerala Award 2025 Recognition",
+      "Role-Based Access & Audit Logs"
     ],
-    date: "2023",
+    date: "2024",
     type: "Professional",
-    href: "/projects/work-management",
-    icon: "BriefcaseBusiness"
+    href: "/professionalProjects",
+    icon: "Factory"
   },
   {
-    title: "Jewelry Manufacturing App",
-    category: "WORKFLOW",
+    title: "Enterprise NetSuite ERP Extension",
+    category: "ENTERPRISE INTEGRATIONS",
     featured: false,
-    description: "Context & Problem:\nJewelry manufacturing involves complex stages from initial sketches to final design approvals, which were previously managed manually, leading to poor traceability.\n\nWhat I Built:\nA multi-tenant workflow system managing the entire manufacturing lifecycle, including design lifecycle interfaces, role-based access control, and automated status updates.\n\nMetrics & Outcomes:\n• Achieved 82% faster reconciliation.\n• Ensured 100% material traceability across the manufacturing pipeline.",
+    description: "Context & Problem:\nAn enterprise client needed a rapid extension to their NetSuite ERP deployment to streamline custom financial workflows, automated invoicing, and inventory tracking without disrupting existing operations.\n\nTechnical Implementation & Delivery:\n• Rapid 28-Day Delivery: Delivered an enterprise-grade NetSuite ERP extension within an aggressive 28-day timeline, driving immediate customer adoption.\n• Automated Invoicing & Reconciliation: Engineered custom SuiteScript handlers and REST APIs connecting ERP records directly to external reporting tools.\n• Role-Based Security: Enforced strict access boundaries ensuring audit compliance and secure data exchange across distributed enterprise accounts.",
     role: "FULL STACK ENGINEER",
-    technologies: ["Next.js", "Payload CMS", "PostgreSQL"],
+    architecture: "ERP Cloud Extension · SuiteScript · REST APIs",
+    technologies: ["NetSuite ERP", "SuiteScript", "JavaScript", "REST APIs", "Node.js"],
     keyContributions: [
-      "Design lifecycle interfaces",
-      "Role-based access control",
-      "Automated status updates"
+      "28-Day Rapid Enterprise Delivery",
+      "Custom SuiteScript Handlers",
+      "Automated Invoicing & Accounting Pipelines",
+      "Enterprise Compliance & Audit Security"
     ],
     date: "2023",
     type: "Professional",
-    href: "/projects/jewelry-app",
-    icon: "Factory"
+    href: "/professionalProjects",
+    icon: "BriefcaseBusiness"
   }
 ];
