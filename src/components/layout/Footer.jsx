@@ -19,7 +19,7 @@ const Footer = () => {
           <Link target="_blank" href="https://github.com/sssanthoshsivan" className="animated-underline text-foreground/80 hover:text-foreground">GitHub ↗</Link>
           <Link target="_blank" href="https://www.linkedin.com/in/sssanthoshsivan/" className="animated-underline text-foreground/80 hover:text-foreground">LinkedIn ↗</Link>
           <Link href="/favourites" className="animated-underline text-foreground/80 hover:text-foreground">Favourites (Archive) ↗</Link>
-          <Link href="mailto:santhoshkan205@gmail.com" className="animated-underline text-foreground/80 hover:text-foreground">Email ↗</Link>
+          <Link href="mailto:santhoshsivansenthilkumar@gmail.com" className="animated-underline text-foreground/80 hover:text-foreground">Email ↗</Link>
         </div>
 
         <button 

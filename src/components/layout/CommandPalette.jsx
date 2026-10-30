@@ -113,7 +113,7 @@ export default function CommandPalette() {
             <Item onSelect={() => handleNav("https://github.com/sssanthoshsivan")} icon={<Github size={14}/>}>GitHub_Profile</Item>
             <Item onSelect={() => handleNav("https://www.linkedin.com/in/sssanthoshsivan/")} icon={<Linkedin size={14}/>}>Connect_on_LinkedIn</Item>
             <Item onSelect={() => handleNav("https://instagram.com/sssanthosh_sivan/")} icon={<Instagram size={14}/>}>Visuals_Instagram</Item>
-            <Item onSelect={() => handleNav("mailto:santhoshkan205@gmail.com")} icon={<Mail size={14}/>}>Send_Email_Direct</Item>
+            <Item onSelect={() => handleNav("mailto:santhoshsivansenthilkumar@gmail.com")} icon={<Mail size={14}/>}>Send_Email_Direct</Item>
           </Command.Group>
         </Command.List>
 

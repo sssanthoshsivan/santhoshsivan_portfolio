@@ -30,7 +30,7 @@ const principles = [
 
 const About = () => {
   const [copied, setCopied] = useState(false);
-  const email = "santhoshkan205@gmail.com";
+  const email = "santhoshsivansenthilkumar@gmail.com";
 
   const handleCopyEmail = (e) => {
     e.preventDefault();
