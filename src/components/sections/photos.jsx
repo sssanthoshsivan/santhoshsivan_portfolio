@@ -25,14 +25,6 @@ const photoArchive = [
     aspect: "16/10",
   },
   {
-    src: "/img17.webp",
-    title: "Arches of Thirumalai Nayakkar",
-    location: "Thirumalai Nayakkar Mahal, Madurai",
-    category: "architecture",
-    year: "2024",
-    aspect: "16/9",
-  },
-  {
     src: "/banyanShrine.webp",
     title: "Sacred Banyan & Harvest Field",
     location: "Theni",
@@ -41,9 +33,17 @@ const photoArchive = [
     aspect: "3/4",
   },
   {
+    src: "/img17.webp",
+    title: "Arches of Thirumalai Nayakkar",
+    location: "Thirumalai Nayakkar Mahal, Madurai",
+    category: "architecture",
+    year: "2024",
+    aspect: "16/9",
+  },
+  {
     src: "/terracottaBull.webp",
     title: "Touch of the Terracotta Bull",
-    location: "Theni",
+    location: "Keeladi",
     category: "architecture",
     year: "2024",
     aspect: "3/2",
@@ -51,7 +51,7 @@ const photoArchive = [
   {
     src: "/mountainDusk.webp",
     title: "Dusk Contemplation on the Ridge",
-    location: "Western Ghats, Theni",
+    location: "Vagamon",
     category: "landscape",
     year: "2024",
     aspect: "3/4",
