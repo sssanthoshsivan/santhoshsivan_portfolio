@@ -72,7 +72,7 @@ const Intro = ({ triggerAnimation = true }) => {
 
   return (
     <section 
-      className="pt-[32px] md:pt-[40px] lg:pt-[44px] pb-12 lg:pb-16 max-w-[1280px] mx-auto w-full px-6 md:px-12 lg:px-16" 
+      className="min-h-[calc(100vh-76px)] md:min-h-[calc(100vh-84px)] min-h-[calc(100svh-76px)] md:min-h-[calc(100svh-84px)] flex flex-col justify-center max-w-[1280px] mx-auto w-full px-6 md:px-12 lg:px-16 py-8 md:py-12" 
       aria-label="Introduction"
     >
       <motion.div 
