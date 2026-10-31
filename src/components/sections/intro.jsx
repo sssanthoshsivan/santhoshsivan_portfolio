@@ -82,23 +82,18 @@ const Intro = ({ triggerAnimation = true }) => {
         className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-14"
       >
         {/* Main Content (Left) */}
-        <div className="max-w-[760px] flex-1">
+        <div className="max-w-[720px] flex-1">
           {/* Eyebrow */}
-          <motion.div variants={itemVariants} className="flex items-center gap-3 mb-4">
-            <span className="text-[11px] font-mono font-[500] uppercase tracking-[0.1em] text-muted-foreground">
+          <motion.div variants={itemVariants} className="mb-4">
+            <span className="text-[11px] font-mono font-[500] uppercase tracking-[0.12em] text-muted-foreground">
               FULL STACK & AI SOFTWARE ENGINEER
-            </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-border" />
-            <span className="text-[10px] font-mono font-[500] uppercase tracking-[0.08em] text-muted-foreground flex items-center gap-1.5 bg-emerald-500/10 text-emerald-700 px-2 py-0.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-beacon" />
-              AVAILABLE FOR ROLES
             </span>
           </motion.div>
 
           {/* Headline */}
           <motion.h1 
             variants={itemVariants}
-            className="text-[clamp(44px,6.5vw,84px)] font-[400] tracking-[-0.045em] leading-[0.96] text-foreground mb-5"
+            className="text-[clamp(44px,6.2vw,80px)] font-[400] tracking-[-0.045em] leading-[0.96] text-foreground mb-5"
           >
             Santhosh Sivan
           </motion.h1>
@@ -106,18 +101,18 @@ const Intro = ({ triggerAnimation = true }) => {
           {/* Paragraphs */}
           <motion.div 
             variants={itemVariants}
-            className="text-[15px] md:text-[17px] text-foreground/90 leading-[1.7] font-[400] max-w-[620px] flex flex-col gap-2.5 mb-7"
+            className="text-[15px] md:text-[17px] text-foreground/90 leading-[1.7] font-[400] max-w-[620px] flex flex-col gap-2.5 mb-8"
           >
             <p>
               I architect and build scalable web platforms, multi-tenant SaaS systems, mission-critical analytics infrastructure, and AI operational tools.
             </p>
-            <p className="text-muted-foreground text-[14px] md:text-[15px]">
+            <p className="text-muted-foreground text-[14px] md:text-[15px] leading-relaxed">
               Specializing in high-throughput analytics engines, database query optimization, complex workflow orchestration, and resilient multi-tenant architecture.
             </p>
           </motion.div>
 
           {/* CTAs & Quick Recruiter Actions */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 sm:gap-8">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 sm:gap-7">
             <Link
               href="#projects"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-[13px] font-[500] hover:scale-105 active:scale-95 transition-all shadow-xs"
@@ -144,10 +139,10 @@ const Intro = ({ triggerAnimation = true }) => {
           </motion.div>
         </div>
 
-        {/* Right Column: Portrait & Active System Snapshot */}
+        {/* Right Column: Portrait & Balanced Status */}
         <motion.div 
           variants={itemVariants}
-          className="w-full sm:w-auto lg:w-[240px] flex flex-col sm:flex-row lg:flex-col gap-3.5 flex-shrink-0 items-start"
+          className="w-full sm:w-auto lg:w-[260px] flex flex-col gap-2.5 flex-shrink-0 items-start self-start"
         >
           {/* Interactive Portrait */}
           <div 
@@ -155,7 +150,7 @@ const Intro = ({ triggerAnimation = true }) => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ perspective: 1000 }}
-            className="relative w-[220px] sm:w-[180px] lg:w-[240px] aspect-[4/5] rounded-sm flex-shrink-0 cursor-pointer"
+            className="relative w-[240px] sm:w-[220px] lg:w-[260px] aspect-[4/5] rounded-sm flex-shrink-0 cursor-pointer"
           >
             <div 
               style={{
@@ -168,7 +163,7 @@ const Intro = ({ triggerAnimation = true }) => {
                 src="/Profile.webp"
                 alt="Santhosh Sivan"
                 fill
-                sizes="(max-width: 640px) 220px, (max-width: 1024px) 180px, 240px"
+                sizes="(max-width: 640px) 240px, (max-width: 1024px) 220px, 260px"
                 className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-out"
                 priority
               />
@@ -180,26 +175,13 @@ const Intro = ({ triggerAnimation = true }) => {
             </div>
           </div>
 
-          {/* Active Production Focus Card */}
-          <div className="w-[220px] sm:w-[240px] lg:w-[240px] p-3.5 rounded-sm border border-border/80 bg-muted/20 flex flex-col gap-2">
-            <div className="flex items-center justify-between border-b border-border/50 pb-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                ACTIVE FOCUS
-              </span>
-              {time && (
-                <span className="text-[10px] font-mono text-muted-foreground">
-                  {time}
-                </span>
-              )}
-            </div>
-
-            <div className="flex flex-col gap-1 text-[12px]">
-              <span className="text-foreground font-medium text-[12.5px] leading-tight">Full Stack Engineer · RunLoyal</span>
-              <span className="text-muted-foreground text-[11px] leading-relaxed">
-                Building multi-tenant SaaS platforms, mission-critical analytics & AI operational tools.
-              </span>
-            </div>
+          {/* Balanced Presence Bar under photo */}
+          <div className="w-[240px] sm:w-[220px] lg:w-[260px] flex items-center justify-between text-[11px] font-mono text-muted-foreground px-0.5 pt-1">
+            <span className="flex items-center gap-1.5 text-foreground font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              Full Stack @ RunLoyal
+            </span>
+            {time && <span className="opacity-70">{time}</span>}
           </div>
         </motion.div>
       </motion.div>
