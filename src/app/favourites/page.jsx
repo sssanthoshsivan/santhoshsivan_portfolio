@@ -59,14 +59,9 @@ function Favourites() {
             <h1 className="text-[clamp(42px,6vw,82px)] font-[400] tracking-[-0.045em] leading-[0.98] text-foreground mb-8">
                 Curated Values
             </h1>
-            <div className="flex flex-col gap-4 max-w-[640px]">
-              <p className="text-[15px] md:text-[17px] text-muted-foreground leading-[1.7] font-[400]">
-                Outside of work, these are the things I’m drawn to—moments, places, and values that quietly shape how I think and create.
-              </p>
-              <p className="text-[15px] md:text-[16px] text-foreground/90 leading-[1.75] font-[400] pl-4 border-l border-border/80">
-                I'm happy when I try to learn music, how fast I solve a Rubik's cube, playing with a deck of cards, how far I run, or how my fishes are doing.
-              </p>
-            </div>
+            <p className="text-[15px] md:text-[17px] text-muted-foreground leading-[1.75] font-[400] max-w-[640px]">
+              Outside of work, these are the things I’m drawn to—moments, places, and values that quietly shape how I think and create. I'm happy when I try to learn music, how fast I solve a Rubik's cube, playing with a deck of cards, how far I run, or how my fishes are doing.
+            </p>
           </header>
 
           {/* Mobile Grid */}
