@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import PhotoLightbox from "@/components/ui/PhotoLightbox";
 
 const photoArchive = [
@@ -163,25 +163,24 @@ export default function Photographs() {
 
   const scrollFilmstrip = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = direction === "left" ? -460 : 460;
+      const scrollAmount = direction === "left" ? -420 : 420;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
-  const featurePhoto = filteredPhotos[0] || photoArchive[0];
-  const sidePhotos = filteredPhotos.slice(1, 3);
+  const featuredPhotos = filteredPhotos.slice(0, 3);
   const streamPhotos = filteredPhotos.slice(3);
 
   return (
-    <section id="photography" className="px-6 md:px-12 lg:px-16 py-20 md:py-32 max-w-[1280px] mx-auto w-full">
+    <section id="photography" className="px-6 md:px-12 lg:px-16 py-16 md:py-24 max-w-[1280px] mx-auto w-full">
       {/* Editorial Header */}
-      <div className="mb-12 md:mb-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8">
+      <div className="mb-8 md:mb-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6">
           <div className="max-w-[680px]">
-            <h2 className="text-[clamp(30px,4vw,52px)] font-[400] text-foreground tracking-[-0.035em] leading-[1.08] mb-4">
+            <h2 className="text-[clamp(28px,3.5vw,46px)] font-[400] text-foreground tracking-[-0.035em] leading-[1.08] mb-3">
               Visual Observations
             </h2>
-            <p className="text-[15px] md:text-[17px] text-muted-foreground font-[300] leading-[1.7]">
+            <p className="text-[14px] md:text-[16px] text-muted-foreground font-[300] leading-[1.6]">
               A quiet visual archive of street life, temple stone, and mountain atmospheres across Theni, the Western Ghats, and travel routes. Candid frames made between software builds.
             </p>
           </div>
@@ -194,7 +193,7 @@ export default function Photographs() {
         </div>
 
         {/* Filter Navigation */}
-        <div className="flex flex-wrap items-center gap-2 pt-2">
+        <div className="flex flex-wrap items-center gap-2 pt-1">
           {categoryTabs.map((tab) => {
             const isActive = activeCategory === tab.id;
             const count = tab.id === "all" 
@@ -205,14 +204,14 @@ export default function Photographs() {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id)}
-                className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[13px] font-[400] transition-[background-color,color] duration-200 cursor-pointer ${
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[12px] md:text-[13px] font-[400] transition-[background-color,color] duration-200 cursor-pointer ${
                   isActive
                     ? "bg-foreground text-background font-medium"
                     : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
                 }`}
               >
                 <span>{tab.label}</span>
-                <span className={`text-[11px] px-1.5 py-0.2 rounded-full ${
+                <span className={`text-[10px] md:text-[11px] px-1.5 py-0.2 rounded-full ${
                   isActive ? "bg-background/20 text-background" : "bg-muted text-muted-foreground"
                 }`}>
                   {count}
@@ -223,109 +222,80 @@ export default function Photographs() {
         </div>
       </div>
 
-      {/* Curator Diptych Presentation */}
+      {/* Curator Exhibition Stage */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeCategory}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-12 md:space-y-16"
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-8 md:space-y-10"
         >
-          {/* Main Exhibition Stage: Large Feature + Paired Stack */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
-            {/* Grand Focus Image */}
-            <div 
-              onClick={() => handleOpenPhoto(featurePhoto.src)}
-              className="lg:col-span-7 group relative bg-muted/30 rounded-lg overflow-hidden cursor-zoom-in"
-            >
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/11] w-full overflow-hidden">
-                <Image
-                  src={featurePhoto.src}
-                  alt={featurePhoto.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  priority
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                />
-              </div>
+          {/* 3-Image Featured Grid: All 3 visible side-by-side */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+            {featuredPhotos.map((photo, idx) => (
+              <div
+                key={idx}
+                onClick={() => handleOpenPhoto(photo.src)}
+                className="group relative cursor-zoom-in"
+              >
+                <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-muted/20">
+                  <Image
+                    src={photo.src}
+                    alt={photo.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={idx === 0}
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
 
-              {/* Museum Label Under Image */}
-              <div className="p-4 sm:p-5 flex items-center justify-between gap-4 bg-card/90">
-                <div>
-                  <h3 className="text-[15px] sm:text-[16px] font-[400] text-foreground tracking-[-0.01em]">
-                    {featurePhoto.title}
-                  </h3>
-                  <p className="text-[12px] text-muted-foreground font-[300] mt-0.5">
-                    {featurePhoto.location} · {featurePhoto.year}
+                {/* Minimal Editorial Caption — Zero Slop, Space-Efficient */}
+                <div className="pt-2 px-0.5">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h3 className="text-[13px] md:text-[14px] font-[450] text-foreground tracking-[-0.01em] truncate">
+                      {photo.title}
+                    </h3>
+                    <span className="shrink-0 text-[11px] text-muted-foreground/75 font-[350]">
+                      {photo.year}
+                    </span>
+                  </div>
+                  <p className="text-[11px] md:text-[12px] text-muted-foreground/70 font-[350] truncate mt-0.5">
+                    {photo.location}
                   </p>
                 </div>
-
-                <div className="flex items-center gap-1.5 text-[12px] text-muted-foreground group-hover:text-foreground transition-colors duration-200">
-                  <span className="hidden sm:inline font-[300]">Inspect full frame</span>
-                  <ArrowUpRight size={14} />
-                </div>
               </div>
-            </div>
-
-            {/* Paired Side Frames */}
-            <div className="lg:col-span-5 flex flex-col gap-6 md:gap-8">
-              {sidePhotos.map((photo, sIdx) => (
-                <div
-                  key={sIdx}
-                  onClick={() => handleOpenPhoto(photo.src)}
-                  className="group relative bg-muted/30 rounded-lg overflow-hidden cursor-zoom-in"
-                >
-                  <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] w-full overflow-hidden">
-                    <Image
-                      src={photo.src}
-                      alt={photo.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 40vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                    />
-                  </div>
-
-                  <div className="p-4 flex items-center justify-between gap-4 bg-card/90">
-                    <div>
-                      <h4 className="text-[14px] font-[400] text-foreground tracking-[-0.01em]">
-                        {photo.title}
-                      </h4>
-                      <p className="text-[12px] text-muted-foreground font-[300] mt-0.5">
-                        {photo.location} · {photo.year}
-                      </p>
-                    </div>
-
-                    <ArrowUpRight size={13} className="text-muted-foreground group-hover:text-foreground transition-colors duration-200" />
-                  </div>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
 
-          {/* Horizontal Filmstrip Reel (gallery-drag-row-mixed-modules) */}
+          {/* Horizontal Archive Stream Reel */}
           {streamPhotos.length > 0 && (
-            <div className="pt-8">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-[14px] font-[400] text-foreground">
-                  Archive Stream
-                </span>
+            <div className="pt-4 md:pt-6 border-t border-border/40">
+              <div className="flex items-center justify-between mb-3.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-[13px] md:text-[14px] font-[450] text-foreground">
+                    Archive Stream
+                  </span>
+                  <span className="text-[11px] text-muted-foreground/70 font-[350]">
+                    ({streamPhotos.length} frames)
+                  </span>
+                </div>
 
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => scrollFilmstrip("left")}
                     aria-label="Scroll left in photography strip"
-                    className="w-8 h-8 rounded-full bg-muted/40 hover:bg-muted text-foreground flex items-center justify-center transition-colors duration-150 cursor-pointer"
+                    className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-muted/40 hover:bg-muted text-foreground flex items-center justify-center transition-colors duration-150 cursor-pointer"
                   >
-                    <ChevronLeft size={16} />
+                    <ChevronLeft size={15} />
                   </button>
                   <button
                     onClick={() => scrollFilmstrip("right")}
                     aria-label="Scroll right in photography strip"
-                    className="w-8 h-8 rounded-full bg-muted/40 hover:bg-muted text-foreground flex items-center justify-center transition-colors duration-150 cursor-pointer"
+                    className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-muted/40 hover:bg-muted text-foreground flex items-center justify-center transition-colors duration-150 cursor-pointer"
                   >
-                    <ChevronRight size={16} />
+                    <ChevronRight size={15} />
                   </button>
                 </div>
               </div>
@@ -333,30 +303,36 @@ export default function Photographs() {
               {/* Horizontal Scroll Track */}
               <div
                 ref={scrollRef}
-                className="flex gap-4 md:gap-5 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                className="flex gap-3.5 md:gap-4 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               >
                 {streamPhotos.map((photo, pIdx) => (
                   <div
                     key={pIdx}
                     onClick={() => handleOpenPhoto(photo.src)}
-                    className="group relative flex-none w-[240px] sm:w-[300px] md:w-[340px] bg-muted/30 rounded-lg overflow-hidden cursor-zoom-in snap-start"
+                    className="group relative flex-none w-[220px] sm:w-[250px] md:w-[270px] cursor-zoom-in snap-start"
                   >
-                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-muted/20">
                       <Image
                         src={photo.src}
                         alt={photo.title}
                         fill
-                        sizes="340px"
+                        sizes="270px"
                         className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                       />
                     </div>
 
-                    <div className="p-3.5 bg-card/90">
-                      <h4 className="text-[13px] font-[400] text-foreground truncate">
-                        {photo.title}
-                      </h4>
-                      <p className="text-[11px] text-muted-foreground font-[300] mt-0.5 truncate">
-                        {photo.location} · {photo.year}
+                    {/* Stream Minimal Caption */}
+                    <div className="pt-2 px-0.5">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <h4 className="text-[12px] sm:text-[13px] font-[450] text-foreground tracking-[-0.01em] truncate">
+                          {photo.title}
+                        </h4>
+                        <span className="shrink-0 text-[10px] sm:text-[11px] text-muted-foreground/75 font-[350]">
+                          {photo.year}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-muted-foreground/70 font-[350] truncate mt-0.5">
+                        {photo.location}
                       </p>
                     </div>
                   </div>
@@ -368,8 +344,8 @@ export default function Photographs() {
       </AnimatePresence>
 
       {/* Understated Personal Archive Link Bridge */}
-      <div className="mt-16 md:mt-24 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <p className="text-[14px] text-muted-foreground font-[300]">
+      <div className="mt-12 md:mt-16 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-border/40">
+        <p className="text-[13px] md:text-[14px] text-muted-foreground font-[300]">
           Cinema, music, temples, and everyday personal reflections.
         </p>
 
