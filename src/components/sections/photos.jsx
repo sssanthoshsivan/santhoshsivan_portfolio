@@ -33,6 +33,30 @@ const photoArchive = [
     aspect: "16/9",
   },
   {
+    src: "/banyanShrine.webp",
+    title: "Sacred Banyan & Harvest Field",
+    location: "Theni",
+    category: "landscape",
+    year: "2024",
+    aspect: "3/4",
+  },
+  {
+    src: "/terracottaBull.webp",
+    title: "Touch of the Terracotta Bull",
+    location: "Theni",
+    category: "architecture",
+    year: "2024",
+    aspect: "3/2",
+  },
+  {
+    src: "/mountainDusk.webp",
+    title: "Dusk Contemplation on the Ridge",
+    location: "Western Ghats, Theni",
+    category: "landscape",
+    year: "2024",
+    aspect: "3/4",
+  },
+  {
     src: "/img4.webp",
     title: "Mountain Ridge from Home",
     location: "Theni",
@@ -163,7 +187,7 @@ export default function Photographs() {
 
   const scrollFilmstrip = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = direction === "left" ? -420 : 420;
+      const scrollAmount = direction === "left" ? -300 : 300;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -230,7 +254,7 @@ export default function Photographs() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-8 md:space-y-10"
+          className="space-y-6 md:space-y-8"
         >
           {/* 3-Image Featured Grid: All 3 visible side-by-side */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
@@ -269,33 +293,33 @@ export default function Photographs() {
             ))}
           </div>
 
-          {/* Horizontal Archive Stream Reel */}
+          {/* Horizontal Archive Stream Reel — Small & Compact Filmstrip */}
           {streamPhotos.length > 0 && (
-            <div className="pt-4 md:pt-6 border-t border-border/40">
-              <div className="flex items-center justify-between mb-3.5">
+            <div className="pt-3 md:pt-4 border-t border-border/40">
+              <div className="flex items-center justify-between mb-2.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-[13px] md:text-[14px] font-[450] text-foreground">
+                  <span className="text-[12px] md:text-[13px] font-[450] text-foreground">
                     Archive Stream
                   </span>
-                  <span className="text-[11px] text-muted-foreground/70 font-[350]">
+                  <span className="text-[10px] md:text-[11px] text-muted-foreground/70 font-[350]">
                     ({streamPhotos.length} frames)
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1">
                   <button
                     onClick={() => scrollFilmstrip("left")}
                     aria-label="Scroll left in photography strip"
-                    className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-muted/40 hover:bg-muted text-foreground flex items-center justify-center transition-colors duration-150 cursor-pointer"
+                    className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-muted/40 hover:bg-muted text-foreground flex items-center justify-center transition-colors duration-150 cursor-pointer"
                   >
-                    <ChevronLeft size={15} />
+                    <ChevronLeft size={13} />
                   </button>
                   <button
                     onClick={() => scrollFilmstrip("right")}
                     aria-label="Scroll right in photography strip"
-                    className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-muted/40 hover:bg-muted text-foreground flex items-center justify-center transition-colors duration-150 cursor-pointer"
+                    className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-muted/40 hover:bg-muted text-foreground flex items-center justify-center transition-colors duration-150 cursor-pointer"
                   >
-                    <ChevronRight size={15} />
+                    <ChevronRight size={13} />
                   </button>
                 </div>
               </div>
@@ -303,35 +327,35 @@ export default function Photographs() {
               {/* Horizontal Scroll Track */}
               <div
                 ref={scrollRef}
-                className="flex gap-3.5 md:gap-4 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                className="flex gap-2.5 sm:gap-3 md:gap-3.5 overflow-x-auto pb-1.5 scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               >
                 {streamPhotos.map((photo, pIdx) => (
                   <div
                     key={pIdx}
                     onClick={() => handleOpenPhoto(photo.src)}
-                    className="group relative flex-none w-[220px] sm:w-[250px] md:w-[270px] cursor-zoom-in snap-start"
+                    className="group relative flex-none w-[150px] sm:w-[175px] md:w-[195px] cursor-zoom-in snap-start"
                   >
-                    <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-muted/20">
+                    <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden rounded-md bg-muted/20">
                       <Image
                         src={photo.src}
                         alt={photo.title}
                         fill
-                        sizes="270px"
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                        sizes="195px"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                       />
                     </div>
 
-                    {/* Stream Minimal Caption */}
-                    <div className="pt-2 px-0.5">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <h4 className="text-[12px] sm:text-[13px] font-[450] text-foreground tracking-[-0.01em] truncate">
+                    {/* Stream Compact Minimal Caption */}
+                    <div className="pt-1.5 px-0.5">
+                      <div className="flex items-baseline justify-between gap-1.5">
+                        <h4 className="text-[11px] sm:text-[12px] font-[450] text-foreground tracking-[-0.01em] truncate">
                           {photo.title}
                         </h4>
-                        <span className="shrink-0 text-[10px] sm:text-[11px] text-muted-foreground/75 font-[350]">
+                        <span className="shrink-0 text-[10px] text-muted-foreground/75 font-[350]">
                           {photo.year}
                         </span>
                       </div>
-                      <p className="text-[11px] text-muted-foreground/70 font-[350] truncate mt-0.5">
+                      <p className="text-[10px] sm:text-[11px] text-muted-foreground/70 font-[350] truncate mt-0.5">
                         {photo.location}
                       </p>
                     </div>

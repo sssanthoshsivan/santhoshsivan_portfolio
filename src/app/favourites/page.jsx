@@ -8,8 +8,7 @@ function Favourites() {
   const [hoveredKey, setHoveredKey] = useState(null);
   
   const images = {
-    96: "/96.webp",
-    superstar: "/coolie.webp",
+    football: "/messi.jpg",
     music: "/music.webp",
     temples: "/temples.webp",
     myHome: "/myHome.webp",
@@ -19,10 +18,9 @@ function Favourites() {
   };
 
   const items = [
-    { key: "96", label: "96" },
+    { key: "football", label: "Football" },
     { key: "music", label: "Music" },
     { key: "myHome", label: "My Home" },
-    { key: "superstar", label: "Superstar" },
     { key: "temples", label: "Temples" },
     { key: "simpleLife", label: "Simple Life" },
     { key: "travel", label: "Travel" },
