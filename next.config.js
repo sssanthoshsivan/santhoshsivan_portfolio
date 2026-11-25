@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
+  experimental: {
+    agentUpgrade: 'security',
+  },
   images: {
     remotePatterns: [
       {
