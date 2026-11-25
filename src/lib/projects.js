@@ -27,7 +27,7 @@ export const allProjects = [
       "SSO Security Resolution",
       "Database Views & Stored Procedures"
     ],
-    date: "2024",
+    date: "Apr 2026 — Present",
     type: "Professional",
     href: "/professionalProjects",
     icon: "BarChart3"
@@ -52,7 +52,7 @@ export const allProjects = [
       "Safe SQL Query Sandboxing",
       "Support Ticket Triage Automation"
     ],
-    date: "2024",
+    date: "Apr 2026 — Present",
     type: "Professional",
     href: "/professionalProjects",
     icon: "Sparkles"
@@ -72,7 +72,7 @@ export const allProjects = [
       "Ephemeral Redis TTL Album System",
       "Turborepo Monorepo & Docker Optimization"
     ],
-    date: "2024",
+    date: "Sep 2023 — Apr 2026",
     type: "Professional",
     href: "/professionalProjects",
     icon: "Layers"
@@ -92,7 +92,7 @@ export const allProjects = [
       "PMI Kerala Award 2025 Recognition",
       "Role-Based Access & Audit Logs"
     ],
-    date: "2024",
+    date: "Sep 2023 — Apr 2026",
     type: "Professional",
     href: "/professionalProjects",
     icon: "Factory"
@@ -111,7 +111,7 @@ export const allProjects = [
       "Automated Invoicing & Accounting Pipelines",
       "Enterprise Compliance & Audit Security"
     ],
-    date: "2023",
+    date: "Sep 2023 — Apr 2026",
     type: "Professional",
     href: "/professionalProjects",
     icon: "BriefcaseBusiness"

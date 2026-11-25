@@ -94,7 +94,7 @@ const Projects = () => {
                 <span className="px-2.5 py-0.5 rounded-xs bg-muted text-[10px] font-mono font-semibold uppercase tracking-wider text-muted-foreground">
                   FLAGSHIP SYSTEM
                 </span>
-                <span className="text-[11px] font-mono text-muted-foreground">RUNLOYAL · 2024</span>
+                <span className="text-[11px] font-mono text-muted-foreground">RUNLOYAL · APR 2026 — PRESENT</span>
               </div>
 
               <h3 className="text-[24px] md:text-[30px] font-[400] tracking-[-0.025em] text-foreground">
@@ -221,7 +221,7 @@ const Projects = () => {
                 <span className="px-2.5 py-0.5 rounded-xs bg-muted text-[10px] font-mono font-semibold uppercase tracking-wider text-muted-foreground">
                   AI TOOLING
                 </span>
-                <span className="text-[11px] font-mono text-muted-foreground">RUNLOYAL · 2024</span>
+                <span className="text-[11px] font-mono text-muted-foreground">RUNLOYAL · APR 2026 — PRESENT</span>
               </div>
 
               <h3 className="text-[24px] md:text-[30px] font-[400] tracking-[-0.025em] text-foreground">

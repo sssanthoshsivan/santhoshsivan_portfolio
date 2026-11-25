@@ -9,7 +9,7 @@ function WorkExperience() {
   const experiences = [
     {
       id: "runloyal",
-      period: "2024 — PRESENT",
+      period: "APR 2026 — PRESENT",
       isCurrent: true,
       company: "RunLoyal",
       title: "Full Stack Engineer",
@@ -38,7 +38,7 @@ function WorkExperience() {
     },
     {
       id: "jobin-jismi",
-      period: "2021 — 2024",
+      period: "SEP 2023 — APR 2026",
       isCurrent: false,
       company: "Jobin & Jismi",
       title: "Full Stack Engineer",
