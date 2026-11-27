@@ -5,67 +5,39 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProjectModal from "@/components/layout/ProjectModal";
-import { 
-  BarChart3, 
-  Sparkles, 
-  Layers, 
-  BriefcaseBusiness, 
-  Factory, 
-  Circle, 
-  ArrowUpRight, 
-  CheckCircle2, 
-  ArrowLeft,
-  Cpu,
-  ShieldCheck,
-  Award,
-  Database
-} from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ArrowLeft } from "lucide-react";
 import { allProjects } from "@/lib/projects";
-import { motion, AnimatePresence } from "framer-motion";
-
-const IconMap = {
-  BarChart3,
-  Sparkles,
-  Layers,
-  BriefcaseBusiness,
-  Factory
-};
-
-// Distinct verified milestone & impact highlights from resume
-const highlightMap = {
-  "Mission-Critical Analytics & Data Infrastructure": {
-    badge: "~80% Latency Drop",
-    metric: "2–4s Query Speed",
-    categoryKey: "analytics"
-  },
-  "Internal Analytics AI Operational Agent": {
-    badge: "Autonomous MCP",
-    metric: "Zero-SQL Triage",
-    categoryKey: "ai"
-  },
-  "Multi-Tenant SaaS Digital Product Catalog Platform": {
-    badge: "50+ Enterprise Tenants",
-    metric: "40% Faster Builds",
-    categoryKey: "saas"
-  },
-  "Jewelry Manufacturing Management Platform": {
-    badge: "PMI Kerala Award 2025",
-    metric: "82% Faster Audits",
-    categoryKey: "enterprise"
-  },
-  "Enterprise NetSuite ERP Extension": {
-    badge: "28-Day Rapid Delivery",
-    metric: "Automated Invoicing",
-    categoryKey: "enterprise"
-  }
-};
+import { motion } from "framer-motion";
 
 const filterTabs = [
-  { id: "all", label: "All Systems", count: 5 },
-  { id: "analytics", label: "Data & Analytics", count: 1 },
-  { id: "saas", label: "Multi-Tenant SaaS", count: 1 },
-  { id: "enterprise", label: "Enterprise Workflows", count: 2 },
-  { id: "ai", label: "AI & Automation", count: 1 },
+  { id: "all", label: "All Projects", count: allProjects.length },
+  {
+    id: "featured",
+    label: "Flagship",
+    count: allProjects.filter((p) => p.featured).length,
+  },
+  {
+    id: "data",
+    label: "Analytics & Data",
+    count: allProjects.filter((p) => p.filterGroup === "data").length,
+  },
+  {
+    id: "ai",
+    label: "AI Tooling",
+    count: allProjects.filter((p) => p.filterGroup === "ai").length,
+  },
+  {
+    id: "saas",
+    label: "SaaS & Enterprise",
+    count: allProjects.filter((p) => p.filterGroup === "saas").length,
+  },
+];
+
+const summaryMetrics = [
+  { value: "3+ Years", label: "Production software engineering" },
+  { value: "50+ Tenants", label: "Multi-tenant SaaS isolation" },
+  { value: "2–4s Weekly", label: "Observed Superset queries" },
+  { value: "PMI 2025", label: "Kerala Manufacturing Award" },
 ];
 
 export default function ProfessionalProjectsPage() {
@@ -74,233 +46,219 @@ export default function ProfessionalProjectsPage() {
 
   const filteredProjects = allProjects.filter((project) => {
     if (activeTab === "all") return true;
-    const highlight = highlightMap[project.title];
-    return highlight?.categoryKey === activeTab;
+    if (activeTab === "featured") return project.featured;
+    return project.filterGroup === activeTab;
   });
 
   return (
     <main className="min-h-screen relative overflow-x-hidden bg-transparent">
-      <div className="mx-auto max-w-[1440px] border-x border-border min-h-screen flex flex-col bg-transparent relative z-10 transition-colors">
+      <div className="mx-auto max-w-[1440px] min-h-screen flex flex-col bg-transparent relative z-10">
         <Header />
-        
-        <div className="flex-1 pt-24 md:pt-32 px-6 md:px-12 lg:px-16 pb-24 w-full max-w-[1280px] mx-auto">
+
+        <div className="flex-1 pt-16 md:pt-24 px-6 md:px-12 lg:px-16 pb-24 w-full max-w-[1280px] mx-auto">
           {/* Header & Overview */}
-          <motion.div 
-            initial={{ opacity: 0, y: 16 }}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-12 md:mb-16"
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-10 md:mb-12"
           >
-            {/* Back link */}
             <Link
-              href="/"
-              className="group inline-flex items-center gap-2 text-[12px] font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors mb-6"
+              href="/#projects"
+              className="group inline-flex items-center gap-2 text-[14px] font-medium text-muted-foreground hover:text-foreground transition-colors mb-6"
             >
-              <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1" />
-              <span>Back to Overview // System Index</span>
+              <ArrowLeft
+                size={15}
+                className="transition-transform group-hover:-translate-x-1"
+                aria-hidden="true"
+              />
+              <span>Back to overview</span>
             </Link>
 
-            <div className="flex items-center gap-3 mb-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="w-8 h-[1px] bg-border"></span>
-              <span>Production Systems Archive // 005 Entries</span>
-            </div>
-
-            <h1 className="text-[clamp(32px,4.5vw,56px)] font-[400] tracking-[-0.035em] text-foreground leading-[1.08] mb-4">
-              Professional Engineering Systems
+            <h1 className="text-[clamp(28px,4vw,48px)] font-[400] tracking-[-0.03em] text-foreground leading-[1.1] mb-4">
+              Selected Projects
             </h1>
 
-            <p className="text-[15px] md:text-[17px] text-muted-foreground font-[300] max-w-[720px] leading-[1.7] mb-8">
-              A comprehensive technical archive of multi-tenant SaaS platforms, mission-critical analytics infrastructure, ERP integrations, and autonomous AI operational tooling delivered in production.
+            <p className="text-[16px] md:text-[17px] text-muted-foreground font-[400] max-w-[66ch] leading-[1.65] mb-8">
+              Five production and active engineering systems across multi-tenant SaaS, analytics infrastructure modernization, enterprise ERP workflows, and internal AI tooling.
             </p>
 
-            {/* Quick Metrics Summary Ribbon */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-xl border border-border/80 bg-card/40 backdrop-blur-xs max-w-[960px]">
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[18px] md:text-[20px] font-mono font-medium text-foreground tracking-tight flex items-center gap-1.5">
-                  <Database size={15} className="text-muted-foreground" />
-                  3+ Years
-                </span>
-                <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">In Production SaaS</span>
-              </div>
-
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[18px] md:text-[20px] font-mono font-medium text-foreground tracking-tight flex items-center gap-1.5">
-                  <ShieldCheck size={15} className="text-muted-foreground" />
-                  50+ Tenants
-                </span>
-                <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">Tenant-Level RLS</span>
-              </div>
-
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[18px] md:text-[20px] font-mono font-medium text-foreground tracking-tight flex items-center gap-1.5">
-                  <Cpu size={15} className="text-muted-foreground" />
-                  2–4s Latency
-                </span>
-                <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">Sub-Second Queries</span>
-              </div>
-
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[18px] md:text-[20px] font-mono font-medium text-foreground tracking-tight flex items-center gap-1.5">
-                  <Award size={15} className="text-muted-foreground" />
-                  PMI 2025
-                </span>
-                <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">Kerala Award Winner</span>
-              </div>
+            {/* Summary Metrics */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-[960px]">
+              {summaryMetrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="p-4 rounded-xl bg-card flex flex-col gap-1"
+                >
+                  <span className="text-[18px] md:text-[20px] font-mono font-medium text-foreground tabular-nums tracking-[-0.02em]">
+                    {metric.value}
+                  </span>
+                  <span className="text-[13px] text-muted-foreground leading-snug">
+                    {metric.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Interactive Category Filter Tabs */}
-          <div className="mb-10 flex flex-wrap items-center gap-2 border-b border-border/80 pb-4">
-            {filterTabs.map((tab) => {
-              const isActive = activeTab === tab.id;
+          {/* Category Filter Tabs (Same pattern as homepage) */}
+          <div className="mb-10 flex items-center justify-between flex-wrap gap-4">
+            <div
+              className="flex flex-wrap items-center gap-1.5 p-1.5 bg-card rounded-lg"
+              role="tablist"
+              aria-label="Filter projects by domain"
+            >
+              {filterTabs.map((tab) => {
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`inline-flex items-center gap-2 px-3.5 py-2 text-[13px] font-medium rounded-md transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 ${
+                      isActive
+                        ? "bg-foreground text-background"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    <span>{tab.label}</span>
+                    <span
+                      className={`text-[13px] tabular-nums ${
+                        isActive ? "text-background/80" : "text-muted-foreground"
+                      }`}
+                    >
+                      {tab.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Uniform Editorial Project Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-8">
+            {filteredProjects.map((project, idx) => {
+              const isOngoing =
+                project.slug === "internal-analytics-ai-assistant";
+
               return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[12px] font-mono uppercase tracking-wider transition-all duration-200 ${
-                    isActive
-                      ? "bg-foreground text-background font-medium shadow-xs"
-                      : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-                  }`}
+                <motion.article
+                  id={project.slug}
+                  key={project.slug}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.5,
+                    delay: idx * 0.05,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  onClick={() => setSelectedProject(project)}
+                  className="scroll-mt-28 flex flex-col justify-between p-6 md:p-8 rounded-xl bg-card/75 hover:bg-card transition-colors cursor-pointer"
                 >
-                  <span>{tab.label}</span>
-                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                    isActive ? "bg-background/20 text-background" : "bg-border text-muted-foreground"
-                  }`}>
-                    {tab.count}
-                  </span>
-                </button>
+                  <div className="flex flex-col gap-4">
+                    {/* Title & Company/Timeline */}
+                    <div>
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                        <span className="text-[12px] font-mono uppercase tracking-wider text-muted-foreground">
+                          {project.company} · {project.date}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 text-[12px] font-mono text-muted-foreground">
+                          <span
+                            className={`w-2 h-2 rounded-full ${
+                              isOngoing ? "bg-amber-500" : "bg-emerald-500"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          <span>
+                            {isOngoing
+                              ? "Ongoing development"
+                              : "Production system"}
+                          </span>
+                        </span>
+                      </div>
+
+                      <h2 className="text-[22px] md:text-[26px] font-[450] tracking-[-0.025em] text-foreground leading-[1.2]">
+                        {project.title}
+                      </h2>
+
+                      {project.highlight && (
+                        <p className="text-[13px] font-medium text-emerald-700 dark:text-emerald-400 mt-1.5">
+                          {project.highlight}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Overview */}
+                    <p className="text-[15px] text-foreground/90 leading-[1.65]">
+                      {project.homepageDescription}
+                    </p>
+
+                    {/* Optional Architecture Summary */}
+                    {project.architecture && (
+                      <div className="p-3.5 rounded-lg bg-background text-[12px] font-mono text-muted-foreground leading-[1.5]">
+                        <span className="font-semibold text-foreground">
+                          Architecture:
+                        </span>{" "}
+                        {project.architecture}
+                      </div>
+                    )}
+
+                    {/* Key Contributions */}
+                    {project.keyContributions && (
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        {project.keyContributions
+                          .slice(0, 4)
+                          .map((contrib, cIdx) => (
+                            <li
+                              key={cIdx}
+                              className="flex items-start gap-2 text-[14px] text-foreground/85 leading-[1.5]"
+                            >
+                              <CheckCircle2
+                                size={15}
+                                className="text-foreground/70 flex-shrink-0 mt-1"
+                                aria-hidden="true"
+                              />
+                              <span>{contrib}</span>
+                            </li>
+                          ))}
+                      </ul>
+                    )}
+                  </div>
+
+                  {/* Tech Stack & Action */}
+                  <div className="flex flex-col gap-5 pt-6">
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 text-[12px] font-mono text-foreground/85 bg-background rounded-md"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedProject(project);
+                        }}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-[14px] font-medium hover:bg-foreground/90 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
+                      >
+                        <span>Inspect Technical Spec</span>
+                        <ArrowUpRight size={15} aria-hidden="true" />
+                      </button>
+                    </div>
+                  </div>
+                </motion.article>
               );
             })}
           </div>
-
-          {/* Systems Grid */}
-          <motion.div 
-            layout 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 pb-12"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, idx) => {
-                const Icon = IconMap[project.icon] || Circle;
-                const highlight = highlightMap[project.title] || { badge: "Production", metric: "Verified System" };
-
-                return (
-                  <motion.div 
-                    layout
-                    key={project.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="group relative flex flex-col justify-between p-6 sm:p-8 rounded-xl border border-border/80 bg-card/30 hover:bg-card/70 hover:border-foreground/30 transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer"
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <div>
-                      {/* Top Meta Row */}
-                      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-border/60">
-                        <div className="flex items-center gap-2.5">
-                          <span className="text-[12px] font-mono font-medium text-foreground whitespace-nowrap">
-                            {String(idx + 1).padStart(2, '0')} // ARCHIVE
-                          </span>
-                          <span className="text-border">·</span>
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
-                            {project.category}
-                          </span>
-                        </div>
-
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-medium tracking-wide bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
-                            {highlight.badge}
-                          </span>
-                          <span className="text-[10px] font-mono uppercase text-muted-foreground/60 border border-border/50 px-2 py-0.5 rounded-sm whitespace-nowrap">
-                            {project.date || "2026"}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Title & Icon Header */}
-                      <div className="flex items-start gap-3.5 mb-3">
-                        <div className="w-8 h-8 rounded-md bg-muted/60 border border-border/60 flex items-center justify-center text-foreground group-hover:scale-105 transition-all duration-300 flex-shrink-0 mt-0.5">
-                          <Icon className="w-4 h-4 stroke-[1.75]" />
-                        </div>
-                        <div>
-                          <h2 className="text-xl sm:text-2xl font-[400] text-foreground tracking-[-0.025em] leading-snug group-hover:text-primary transition-colors">
-                            {project.title}
-                          </h2>
-                          {project.architecture && (
-                            <p className="text-[11px] font-mono text-muted-foreground mt-1">
-                              {project.architecture}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Narrative Overview */}
-                      <p className="text-[14px] text-foreground/85 font-[300] leading-[1.7] mt-3">
-                        {project.homepageDescription || project.description.split("\n\n")[0]}
-                      </p>
-
-                      {/* Key Architectural Highlights / Contributions */}
-                      {project.keyContributions && (
-                        <div className="pt-4 border-t border-border/60 my-4 flex flex-col gap-2">
-                          <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground/80">
-                            KEY ARCHITECTURAL HIGHLIGHTS
-                          </span>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                            {project.keyContributions.slice(0, 4).map((contrib, cIdx) => (
-                              <div key={cIdx} className="flex items-start gap-1.5 text-[12px] text-foreground/90">
-                                <CheckCircle2 size={13} className="text-emerald-500 flex-shrink-0 mt-0.5" />
-                                <span className="leading-snug">{contrib}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    <div>
-                      {/* Tech Stack Badges */}
-                      {project.technologies && (
-                        <div className="pt-3 border-t border-border/60 mb-5">
-                          <div className="flex flex-wrap gap-1.5">
-                            {project.technologies.map((tech, tIdx) => (
-                              <span 
-                                key={tIdx} 
-                                className="px-2 py-0.5 text-[11px] font-mono text-muted-foreground bg-muted/40 hover:bg-muted hover:text-foreground rounded-sm border border-border/50 transition-all duration-150 cursor-default"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Action Bar */}
-                      <div className="pt-3 border-t border-border/50 flex items-center justify-between">
-                        <span className="text-[11px] font-mono text-muted-foreground flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                          <span>Production Verified</span>
-                        </span>
-
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedProject(project);
-                          }}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-foreground text-background text-[12px] font-medium hover:bg-foreground/90 active:scale-95 transition-all shadow-xs cursor-pointer"
-                          title="Inspect complete technical architecture spec"
-                        >
-                          <span>Inspect Technical Spec</span>
-                          <ArrowUpRight size={13} />
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </motion.div>
         </div>
 
         {/* Technical Specification Dialog Modal */}
@@ -309,9 +267,16 @@ export default function ProfessionalProjectsPage() {
             isOpen={!!selectedProject}
             onClose={() => setSelectedProject(null)}
             title={selectedProject.title}
+            company={selectedProject.company}
+            date={selectedProject.date}
+            highlight={selectedProject.highlight}
+            architecture={selectedProject.architecture}
             description={selectedProject.description}
-            workDone={selectedProject.keyContributions || selectedProject.workDone || []}
+            workDone={
+              selectedProject.keyContributions || selectedProject.workDone || []
+            }
             technologies={selectedProject.technologies || []}
+            benchmarks={selectedProject.benchmarks}
           />
         )}
 

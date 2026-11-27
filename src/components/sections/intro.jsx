@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowDownToLine } from "lucide-react";
 
 const Intro = ({ triggerAnimation = true }) => {
   const [time, setTime] = useState("");
@@ -24,7 +25,7 @@ const Intro = ({ triggerAnimation = true }) => {
         }).format(now);
         setTime(formatted);
       } catch (e) {
-        setTime("12:00 PM IST");
+        setTime("");
       }
     };
     updateTime();
@@ -38,8 +39,8 @@ const Intro = ({ triggerAnimation = true }) => {
     const rect = portraitRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    setRotateX(-(y / rect.height) * 8);
-    setRotateY((x / rect.width) * 8);
+    setRotateX(-(y / rect.height) * 6);
+    setRotateY((x / rect.width) * 6);
   };
 
   const handleMouseLeave = () => {
@@ -52,136 +53,140 @@ const Intro = ({ triggerAnimation = true }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.15,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 16 },
+    hidden: { opacity: 0, y: 12 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.7,
-        ease: [0.16, 1, 0.3, 1], // expo out
+        duration: 0.55,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
 
   return (
-    <section 
-      className="min-h-[calc(100vh-76px)] md:min-h-[calc(100vh-84px)] min-h-[calc(100svh-76px)] md:min-h-[calc(100svh-84px)] flex flex-col justify-center max-w-[1280px] mx-auto w-full px-6 md:px-12 lg:px-16 py-8 md:py-12" 
+    <section
+      className="min-h-[calc(100svh-76px)] md:min-h-[calc(100svh-84px)] flex flex-col justify-center max-w-[1280px] mx-auto w-full px-6 md:px-12 lg:px-16 py-10 md:py-14"
       aria-label="Introduction"
     >
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-14"
+        className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-14"
       >
         {/* Main Content (Left) */}
-        <div className="max-w-[720px] flex-1">
-          {/* Eyebrow */}
-          <motion.div variants={itemVariants} className="mb-4">
-            <span className="text-[11px] font-mono font-[500] uppercase tracking-[0.12em] text-muted-foreground">
-              FULL STACK & AI SOFTWARE ENGINEER
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1 
+        <div className="max-w-[740px] flex-1">
+          {/* Primary Headline */}
+          <motion.h1
             variants={itemVariants}
-            className="text-[clamp(44px,6.2vw,80px)] font-[400] tracking-[-0.045em] leading-[0.96] text-foreground mb-5"
+            className="text-[clamp(26px,4.2vw,54px)] font-[400] tracking-[-0.035em] leading-[1.1] text-foreground mb-5 max-w-[660px]"
           >
-            Santhosh Sivan
+            I build software that solves real-world problems.
           </motion.h1>
 
-          {/* Paragraphs */}
-          <motion.div 
+          {/* Identity & Positioning */}
+          <motion.p
             variants={itemVariants}
-            className="text-[15px] md:text-[17px] text-foreground/90 leading-[1.7] font-[400] max-w-[620px] flex flex-col gap-2.5 mb-8"
+            className="text-[15px] md:text-[16px] font-medium text-foreground mb-4"
+          >
+            Santhosh Sivan — Full Stack Engineer | Backend &amp; AI
+          </motion.p>
+
+          {/* Introduction Copy */}
+          <motion.div
+            variants={itemVariants}
+            className="text-[16px] md:text-[17px] text-foreground leading-[1.65] font-[400] max-w-[62ch] flex flex-col gap-3 mb-6"
           >
             <p>
-              I architect and build scalable web platforms, multi-tenant SaaS systems, mission-critical analytics infrastructure, and AI operational tools.
+              I&apos;m a Full Stack Engineer with 3+ years of experience building production-grade software across frontend, backend, databases and AI.
             </p>
-            <p className="text-muted-foreground text-[14px] md:text-[15px] leading-relaxed">
-              Specializing in high-throughput analytics engines, database query optimization, complex workflow orchestration, and resilient multi-tenant architecture.
+            <p className="text-muted-foreground text-[15px] md:text-[16px] leading-[1.65]">
+              I&apos;ve worked on multi-tenant SaaS platforms, enterprise applications, analytics infrastructure and AI-powered internal tools. I enjoy understanding complex business workflows, solving engineering problems and turning them into reliable software.
             </p>
           </motion.div>
 
-          {/* CTAs & Quick Recruiter Actions */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 sm:gap-7">
+          {/* Technology Summary */}
+          <motion.div variants={itemVariants} className="mb-8">
+            <p className="text-[13px] font-mono text-muted-foreground">
+              React · Next.js · TypeScript · Node.js · Java · SQL · Snowflake · MCP
+            </p>
+          </motion.div>
+
+          {/* Primary Actions */}
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 sm:gap-6">
             <Link
               href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-[13px] font-[500] hover:scale-105 active:scale-95 transition-all shadow-xs"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-[14px] font-[500] hover:bg-foreground/90 active:scale-[0.98] transition-[transform,background-color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2"
             >
-              <span>Explore Featured Work</span>
-              <span className="text-[11px]">↓</span>
+              <span>View My Work</span>
+              <span className="text-[12px]" aria-hidden="true">↓</span>
             </Link>
 
-            <Link
-              href="#experience"
-              className="group inline-flex items-center gap-1.5 text-[13px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-0.5"
+            <a
+              href="/Santhosh%20Sivan%20Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              download
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-card text-[14px] font-[500] text-foreground hover:bg-foreground hover:text-background transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
             >
-              <span>Experience & Impact</span>
-              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </Link>
+              <ArrowDownToLine size={15} aria-hidden="true" />
+              <span>Download Resume</span>
+            </a>
 
             <Link
               href="#contact"
-              className="group inline-flex items-center gap-1.5 text-[13px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-0.5"
+              className="group inline-flex items-center gap-1.5 text-[14px] font-[500] text-foreground hover:opacity-70 transition-opacity py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50"
             >
-              <span>Get in touch</span>
-              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              <span>Contact Me</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
             </Link>
           </motion.div>
         </div>
 
-        {/* Right Column: Portrait & Balanced Status */}
-        <motion.div 
+        {/* Right Column: Portrait & Presence */}
+        <motion.div
           variants={itemVariants}
-          className="w-full sm:w-auto lg:w-[260px] flex flex-col gap-2.5 flex-shrink-0 items-start self-start"
+          className="w-full sm:w-auto lg:w-[260px] flex flex-col gap-2.5 flex-shrink-0 items-start"
         >
-          {/* Interactive Portrait */}
-          <div 
+          <div
             ref={portraitRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ perspective: 1000 }}
             className="relative w-[240px] sm:w-[220px] lg:w-[260px] aspect-[4/5] rounded-sm flex-shrink-0 cursor-pointer"
           >
-            <div 
+            <div
               style={{
                 transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
                 transition: "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
               }}
-              className="relative w-full h-full rounded-sm overflow-hidden border border-border shadow-xs group"
+              className="relative w-full h-full rounded-sm overflow-hidden bg-card group"
             >
               <Image
                 src="/Profile.webp"
-                alt="Santhosh Sivan"
+                alt="Portrait of Santhosh Sivan, Full Stack Engineer"
                 fill
                 sizes="(max-width: 640px) 240px, (max-width: 1024px) 220px, 260px"
-                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-[filter,transform] duration-700 ease-out"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 px-2 py-1 bg-background/85 backdrop-blur-xs rounded-xs text-[9px] font-mono uppercase tracking-wider text-foreground flex items-center justify-between border border-border/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span>Santhosh Sivan</span>
-                <span>Theni, IN</span>
-              </div>
             </div>
           </div>
 
-          {/* Balanced Presence Bar under photo */}
-          <div className="w-[240px] sm:w-[220px] lg:w-[260px] flex items-center justify-between text-[11px] font-mono text-muted-foreground px-0.5 pt-1">
-            <span className="flex items-center gap-1.5 text-foreground font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <div className="w-[240px] sm:w-[220px] lg:w-[260px] flex items-center justify-between text-[12px] font-mono text-muted-foreground px-0.5 pt-0.5">
+            <span className="flex items-center gap-2 text-foreground font-medium">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
               Full Stack @ RunLoyal
             </span>
-            {time && <span className="opacity-70">{time}</span>}
+            {time && <span className="tabular-nums">{time}</span>}
           </div>
         </motion.div>
       </motion.div>

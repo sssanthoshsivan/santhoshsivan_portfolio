@@ -2,72 +2,76 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { BarChart3, ChartNoAxesCombined, Sparkles, Layers, BriefcaseBusiness, Factory, Circle, ArrowUpRight, Terminal, Cpu, Database, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { allProjects } from "@/lib/projects";
-import { motion, AnimatePresence } from "framer-motion";
-
-const IconMap = {
-  BarChart3,
-  ChartNoAxesCombined,
-  Sparkles,
-  Layers,
-  BriefcaseBusiness,
-  Factory
-};
+import { motion } from "framer-motion";
+import ProjectModal from "@/components/layout/ProjectModal";
 
 const CATEGORIES = [
-  { id: "all", label: "All Systems" },
-  { id: "featured", label: "Featured Case Studies" },
+  { id: "all", label: "All Projects" },
+  { id: "featured", label: "Flagship" },
   { id: "data", label: "Analytics & Data" },
-  { id: "ai", label: "AI & Internal Tools" },
-  { id: "saas", label: "SaaS Architecture" },
+  { id: "ai", label: "AI Tooling" },
+  { id: "saas", label: "SaaS & Enterprise" },
 ];
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState("all");
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  const filteredProjects = allProjects.filter(project => {
-    if (activeTab === "all") return true;
-    if (activeTab === "featured") return project.featured;
-    if (activeTab === "data") return project.category.includes("REPORTING") || project.technologies.includes("Apache Superset");
-    if (activeTab === "ai") return project.category.includes("AI") || project.technologies.includes("Google AI");
-    if (activeTab === "saas") return project.category.includes("SYSTEM") || project.category.includes("OPERATIONS") || project.category.includes("WORKFLOW");
-    return true;
-  });
+  const analyticsProject = allProjects.find(
+    (p) => p.slug === "analytics-infrastructure-modernization"
+  );
+  const aiProject = allProjects.find(
+    (p) => p.slug === "internal-analytics-ai-assistant"
+  );
+  const listProjects = allProjects.filter((p) => !p.featured);
+
+  const showAnalytics =
+    activeTab === "all" || activeTab === "featured" || activeTab === "data";
+  const showAI =
+    activeTab === "all" || activeTab === "featured" || activeTab === "ai";
+  const showList = activeTab === "all" || activeTab === "saas";
 
   return (
-    <section id="projects" className="px-6 md:px-12 lg:px-16 py-12 md:py-20 max-w-[1280px] mx-auto w-full border-t border-border/80">
+    <section
+      id="projects"
+      className="px-6 md:px-12 lg:px-16 py-16 md:py-24 max-w-[1280px] mx-auto w-full"
+    >
       {/* Header & Category Filters */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <motion.div 
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-12">
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col gap-2"
         >
-          <div className="flex items-center gap-2">
-            <span className="text-[12px] uppercase tracking-[0.1em] text-muted-foreground font-[500]">
-              PRODUCTION SYSTEMS & CASE STUDIES
-            </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-beacon" />
-          </div>
-          <h2 className="text-[28px] md:text-[36px] font-[400] tracking-[-0.03em] text-foreground uppercase">
-            Architected & Delivered
+          <h2 className="text-[28px] md:text-[36px] font-[400] tracking-[-0.03em] leading-[1.15] text-foreground">
+            Selected Projects
           </h2>
+          <p className="text-[15px] text-muted-foreground max-w-[540px] leading-[1.6]">
+            Five production and active engineering systems across multi-tenant SaaS, analytics modernization, ERP integrations, and internal AI workflows.
+          </p>
         </motion.div>
 
-        {/* User-friendly Domain Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-muted/40 rounded-lg border border-border/60">
+        <div
+          className="flex flex-wrap items-center gap-1.5 p-1.5 bg-card rounded-lg"
+          role="tablist"
+          aria-label="Filter projects by domain"
+        >
           {CATEGORIES.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative px-3 py-1.5 text-[12px] font-medium rounded-md transition-all duration-200 ${
-                  isActive 
-                    ? "text-foreground bg-background shadow-xs font-semibold" 
+                className={`px-3.5 py-2 text-[13px] font-medium rounded-md transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 ${
+                  isActive
+                    ? "text-background bg-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -78,247 +82,309 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* Flagship Case Study 1: Analytics & Reporting Platform */}
-      {(activeTab === "all" || activeTab === "featured" || activeTab === "data") && (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+      {/* 1. Analytics Infrastructure Modernization (Flagship) */}
+      {showAnalytics && analyticsProject && (
+        <motion.article
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14 p-6 md:p-8 rounded-xl border border-border/80 bg-muted/10 hover:border-border transition-colors group"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-8 p-6 md:p-10 rounded-xl bg-card"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Story & Context */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Left: Narrative & Contributions */}
             <div className="lg:col-span-7 flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <span className="px-2.5 py-0.5 rounded-xs bg-muted text-[10px] font-mono font-semibold uppercase tracking-wider text-muted-foreground">
-                  FLAGSHIP SYSTEM
-                </span>
-                <span className="text-[11px] font-mono text-muted-foreground">RUNLOYAL · APR 2026 — PRESENT</span>
+              <div>
+                <h3 className="text-[24px] md:text-[30px] font-[450] tracking-[-0.025em] text-foreground leading-[1.2]">
+                  {analyticsProject.title}
+                </h3>
+                <p className="text-[12px] font-mono uppercase tracking-wider text-muted-foreground mt-2">
+                  {analyticsProject.company} · {analyticsProject.date}
+                </p>
               </div>
 
-              <h3 className="text-[24px] md:text-[30px] font-[400] tracking-[-0.025em] text-foreground">
-                Mission-Critical Analytics & Data Infrastructure
-              </h3>
-
-              <p className="text-[14px] md:text-[15px] text-foreground/80 leading-[1.7] max-w-[620px]">
-                Architected an enterprise data platform transitioning mission-critical analytics from legacy monolithic bottlenecks into an isolated, high-performance data architecture. Designed tenant-aware Row-Level Security (RLS) for 50+ enterprise tenants, guest-token authentication, Saved Views APIs, and sub-second operational dashboards across financial, appointment, and revenue streams.
+              <p className="text-[16px] text-foreground leading-[1.65] max-w-[62ch]">
+                {analyticsProject.homepageDescription}
               </p>
 
-              {/* Contributions list */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
-                {["Analytics Architecture", "Tenant-Isolated RLS", "Financial & Ops Telemetry", "Guest Token Auth", "Saved Views API", "Query Optimization"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
-                    <CheckCircle2 size={13} className="text-foreground/70 flex-shrink-0" />
-                    <span className="truncate">{item}</span>
-                  </div>
+              {/* Individual Contributions */}
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                {analyticsProject.homepageContributions.map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-2 text-[14px] text-foreground/85 leading-[1.5]"
+                  >
+                    <CheckCircle2
+                      size={15}
+                      className="text-foreground/70 flex-shrink-0 mt-1"
+                      aria-hidden="true"
+                    />
+                    <span>{item}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-              <div className="pt-3">
-                <Link
-                  href="/professionalProjects"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-foreground text-background text-[12px] font-medium hover:scale-105 active:scale-95 transition-all shadow-xs"
-                >
-                  <span>Read Full Technical Case Study</span>
-                  <ArrowUpRight size={14} />
-                </Link>
-              </div>
-            </div>
-
-            {/* Architecture & Performance Benchmark Widget */}
-            <div className="lg:col-span-5 p-5 rounded-lg border border-border/80 bg-background/80 shadow-xs flex flex-col gap-4">
-              <div className="flex items-center justify-between border-b border-border/60 pb-3">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-                  <Cpu size={14} className="text-foreground" />
-                  LATENCY BENCHMARK
-                </span>
-                <span className="text-[10px] font-mono text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full font-semibold">
-                  ~80% FASTER
-                </span>
-              </div>
-
-              {/* Benchmark Bars */}
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col gap-1">
-                  <div className="flex justify-between text-[11px] font-mono">
-                    <span className="text-muted-foreground">Legacy myDBR (Weekly):</span>
-                    <span className="text-red-500/80 font-medium">35s+ latency</span>
-                  </div>
-                  <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="w-full h-full bg-red-400/60 rounded-full" />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1">
-                  <div className="flex justify-between text-[11px] font-mono">
-                    <span className="text-foreground font-medium">Apache Superset (Modernized):</span>
-                    <span className="text-emerald-600 font-bold">2–4s response</span>
-                  </div>
-                  <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="w-[12%] h-full bg-emerald-500 rounded-full" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Architecture Blueprint Pills */}
-              <div className="pt-2 border-t border-border/60 flex flex-col gap-1.5">
-                <span className="text-[10px] font-mono text-muted-foreground uppercase">Data Flow & Security</span>
-                <div className="flex flex-wrap gap-1 text-[10px] font-mono">
-                  <span className="px-2 py-0.5 rounded-xs bg-muted text-foreground">Client App</span>
-                  <span className="text-muted-foreground self-center">→</span>
-                  <span className="px-2 py-0.5 rounded-xs bg-muted text-foreground">Guest Token</span>
-                  <span className="text-muted-foreground self-center">→</span>
-                  <span className="px-2 py-0.5 rounded-xs bg-muted text-foreground">RLS Filter</span>
-                  <span className="text-muted-foreground self-center">→</span>
-                  <span className="px-2 py-0.5 rounded-xs bg-muted text-foreground">Snowflake</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      )}
-
-      {/* Flagship Case Study 2: Internal Analytics AI Assistant */}
-      {(activeTab === "all" || activeTab === "featured" || activeTab === "ai") && (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14 p-6 md:p-8 rounded-xl border border-border/80 bg-muted/10 hover:border-border transition-colors group"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Live Terminal / Prompt Demo Box */}
-            <div className="lg:col-span-5 p-5 rounded-lg border border-border/80 bg-background font-mono text-xs shadow-xs flex flex-col gap-3 order-2 lg:order-1">
-              <div className="flex items-center justify-between border-b border-border/60 pb-2.5">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                  <span className="text-[10px] text-muted-foreground ml-2">superset-mcp // debug_session</span>
-                </div>
-                <span className="text-[9px] text-emerald-600 bg-emerald-500/10 px-1.5 py-0.5 rounded-xs">CONNECTED</span>
-              </div>
-
-              <div className="flex flex-col gap-2 text-[11px] leading-relaxed">
-                <div className="text-muted-foreground">
-                  <span className="text-foreground font-bold">&gt;</span> Prompt: "Investigate reporting anomaly in tenant #418"
-                </div>
-                <div className="text-foreground/70 pl-2 border-l border-border">
-                  [MCP Tool: Superset.InspectChart] executing query...
-                </div>
-                <div className="p-2 rounded-xs bg-muted/50 text-[10px] text-foreground">
-                  ✓ Found 3 mismatched aggregated filters in Saved View schema.<br />
-                  ✓ Generated corrective SQL stored procedure.
-                </div>
-              </div>
-            </div>
-
-            {/* Story & Context */}
-            <div className="lg:col-span-7 flex flex-col gap-4 order-1 lg:order-2">
-              <div className="flex items-center gap-3">
-                <span className="px-2.5 py-0.5 rounded-xs bg-muted text-[10px] font-mono font-semibold uppercase tracking-wider text-muted-foreground">
-                  AI TOOLING
-                </span>
-                <span className="text-[11px] font-mono text-muted-foreground">RUNLOYAL · APR 2026 — PRESENT</span>
-              </div>
-
-              <h3 className="text-[24px] md:text-[30px] font-[400] tracking-[-0.025em] text-foreground">
-                Internal Analytics AI Operational Agent
-              </h3>
-
-              <p className="text-[14px] md:text-[15px] text-foreground/80 leading-[1.7] max-w-[620px]">
-                Engineered an internal AI agent that enables support and non-technical teams to investigate complex data anomalies, inspect telemetry pipelines, and triage production data tickets using natural language without writing manual SQL.
-              </p>
-
-              <div className="flex flex-wrap gap-2 pt-1">
-                {["AI MCPs", "Google AI API", "LangChain", "Next.js", "Autonomous Tool Calling"].map((tech, i) => (
-                  <span key={i} className="px-2 py-0.5 text-[11px] font-mono text-muted-foreground bg-muted/50 rounded-sm border border-border/50">
+              {/* Tech Labels */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {analyticsProject.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 text-[12px] font-mono text-foreground/85 bg-background rounded-md"
+                  >
                     {tech}
                   </span>
                 ))}
               </div>
 
               <div className="pt-2">
-                <Link
-                  href="/professionalProjects"
-                  className="inline-flex items-center gap-2 text-[13px] font-[500] text-foreground border-b border-border hover:border-foreground transition-colors pb-0.5"
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(analyticsProject)}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-[14px] font-medium hover:bg-foreground/90 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2"
                 >
-                  <span>Inspect AI Architecture</span>
-                  <ArrowUpRight size={14} />
-                </Link>
+                  <span>Inspect Technical Spec</span>
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </button>
+              </div>
+            </div>
+
+            {/* Right: Verified Benchmarks & Architecture Scope */}
+            <div className="lg:col-span-5 p-6 rounded-lg bg-background flex flex-col gap-5">
+              <div>
+                <h4 className="text-[14px] font-medium text-foreground mb-3">
+                  Observed reporting benchmarks
+                </h4>
+                <div className="grid grid-cols-3 gap-2.5">
+                  {analyticsProject.benchmarks.map((item) => (
+                    <div
+                      key={item.label}
+                      className="p-3 rounded-md bg-card"
+                    >
+                      <div className="text-[12px] font-mono text-muted-foreground leading-tight whitespace-nowrap">
+                        {item.label.replace(" reports", "")}
+                      </div>
+                      <div className="text-[15px] font-mono font-medium text-foreground tabular-nums mt-1 whitespace-nowrap">
+                        {item.value.replace(" seconds", "s")}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2.5 pt-1">
+                <h4 className="text-[14px] font-medium text-foreground">
+                  Architecture &amp; ownership
+                </h4>
+                <div className="flex flex-wrap items-center gap-1.5 text-[12px] font-mono text-foreground">
+                  <span className="px-2.5 py-1 rounded-md bg-card">RDS</span>
+                  <span className="text-muted-foreground" aria-hidden="true">→</span>
+                  <span className="px-2.5 py-1 rounded-md bg-card">DMS</span>
+                  <span className="text-muted-foreground" aria-hidden="true">→</span>
+                  <span className="px-2.5 py-1 rounded-md bg-card">Snowflake</span>
+                  <span className="text-muted-foreground" aria-hidden="true">→</span>
+                  <span className="px-2.5 py-1 rounded-md bg-foreground text-background">Superset</span>
+                  <span className="text-muted-foreground" aria-hidden="true">→</span>
+                  <span className="px-2.5 py-1 rounded-md bg-foreground text-background">Portal</span>
+                </div>
+                <p className="text-[13px] text-muted-foreground leading-[1.6]">
+                  Team maintains core RDS → DMS → Snowflake ingestion; my focus covered Superset migration, portal embedding, SSO/guest tokens, tenant RLS, and saved views.
+                </p>
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.article>
       )}
 
-      {/* Additional Engineering Systems Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-        {filteredProjects
-          .filter(p => !p.featured || (activeTab !== "all" && activeTab !== "featured"))
-          .map((project, idx) => {
-            const Icon = IconMap[project.icon] || Circle;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col p-6 rounded-lg border border-border/70 bg-card hover:bg-muted/30 transition-all duration-200 group"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-8 h-8 rounded-md bg-muted/60 flex items-center justify-center text-muted-foreground group-hover:text-foreground transition-colors">
-                    <Icon size={16} />
-                  </div>
-                  <span className="text-[10px] font-mono uppercase text-muted-foreground tracking-wider">
-                    {project.date}
+      {/* 2. Internal Analytics AI Assistant (Flagship) */}
+      {showAI && aiProject && (
+        <motion.article
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 p-6 md:p-10 rounded-xl bg-card"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Left: Narrative */}
+            <div className="lg:col-span-7 flex flex-col gap-4">
+              <div>
+                <h3 className="text-[24px] md:text-[30px] font-[450] tracking-[-0.025em] text-foreground leading-[1.2]">
+                  {aiProject.title}
+                </h3>
+                <p className="text-[12px] font-mono uppercase tracking-wider text-muted-foreground mt-2">
+                  {aiProject.company} · {aiProject.date}
+                </p>
+              </div>
+
+              <p className="text-[16px] text-foreground leading-[1.65] max-w-[62ch]">
+                {aiProject.homepageDescription}
+              </p>
+
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                {aiProject.homepageContributions.map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-2 text-[14px] text-foreground/85 leading-[1.5]"
+                  >
+                    <CheckCircle2
+                      size={15}
+                      className="text-foreground/70 flex-shrink-0 mt-1"
+                      aria-hidden="true"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap gap-2 pt-2">
+                {aiProject.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 text-[12px] font-mono text-foreground/85 bg-background rounded-md"
+                  >
+                    {tech}
                   </span>
-                </div>
+                ))}
+              </div>
 
-                <h4 className="text-[18px] font-[400] text-foreground mb-2 group-hover:translate-x-0.5 transition-transform">
-                  {project.title}
-                </h4>
-
-                <p className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground mb-4">
-                  {project.category}
-                </p>
-
-                <p className="text-[13px] text-muted-foreground leading-relaxed flex-1 mb-6">
-                  {project.homepageDescription || project.description.split("\n\n")[0]}
-                </p>
-
-                <div className="pt-4 border-t border-border/60 flex flex-wrap gap-1.5 mb-4">
-                  {project.technologies.slice(0, 4).map((tech, tIdx) => (
-                    <span key={tIdx} className="px-2 py-0.5 text-[10px] font-mono text-muted-foreground bg-muted/50 rounded-xs">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <Link
-                  href={project.href}
-                  className="inline-flex items-center gap-1.5 text-[12px] font-medium text-foreground group-hover:text-primary transition-colors"
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(aiProject)}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-[14px] font-medium hover:bg-foreground/90 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2"
                 >
-                  <span>View Details</span>
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
-                </Link>
-              </motion.div>
-            );
-          })}
-      </div>
+                  <span>Inspect Technical Spec</span>
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </button>
+              </div>
+            </div>
 
-      <div className="flex justify-center pt-10">
+            {/* Right: Implemented vs Ongoing Scope */}
+            <div className="lg:col-span-5 p-6 rounded-lg bg-background flex flex-col gap-5">
+              <div className="flex items-center justify-between gap-3">
+                <h4 className="text-[14px] font-medium text-foreground">
+                  Implemented capabilities
+                </h4>
+                <span className="px-2.5 py-1 rounded-md bg-card text-[12px] font-mono text-muted-foreground">
+                  Active development
+                </span>
+              </div>
+
+              <ul className="space-y-2.5 text-[14px] text-foreground/85 leading-[1.55]">
+                {aiProject.implementedCapabilities.map((cap, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="text-muted-foreground mt-0.5" aria-hidden="true">•</span>
+                    <span>{cap}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="p-3.5 rounded-md bg-card">
+                <h4 className="text-[13px] font-medium text-foreground mb-1">
+                  Ongoing scope
+                </h4>
+                <p className="text-[13px] text-muted-foreground leading-[1.6]">
+                  {aiProject.ongoingWork}
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.article>
+      )}
+
+      {/* 3, 4, 5: Structured Editorial Rows (Distinct from flagship split cards) */}
+      {showList && (
+        <div className="flex flex-col gap-4">
+          {listProjects.map((project, idx) => (
+            <motion.article
+              key={project.slug}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: idx * 0.06,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="p-6 md:p-8 rounded-xl bg-card/65 hover:bg-card transition-colors"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                {/* Identity & Verified Outcome */}
+                <div className="lg:col-span-4 flex flex-col gap-2">
+                  <h3 className="text-[20px] md:text-[22px] font-[450] tracking-[-0.02em] text-foreground leading-[1.25]">
+                    {project.title}
+                  </h3>
+                  <p className="text-[12px] font-mono uppercase tracking-wider text-muted-foreground">
+                    {project.company} · {project.date}
+                  </p>
+                  <p className="text-[13px] font-medium text-emerald-700 dark:text-emerald-400 leading-[1.45] pt-0.5">
+                    {project.highlight}
+                  </p>
+                </div>
+
+                {/* Business Description, Contribution & Technologies */}
+                <div className="lg:col-span-6 flex flex-col gap-3">
+                  <p className="text-[15px] text-foreground leading-[1.65]">
+                    {project.homepageDescription}
+                  </p>
+                  <p className="text-[14px] text-muted-foreground leading-[1.6]">
+                    <span className="font-medium text-foreground">Contribution:</span>{" "}
+                    {project.homepageContribution}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 text-[12px] font-mono text-foreground/85 bg-background rounded-md"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Technical Spec Popup Trigger */}
+                <div className="lg:col-span-2 flex lg:justify-end items-start">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
+                    className="inline-flex items-center gap-1.5 py-2 text-[14px] font-medium text-foreground hover:opacity-70 transition-opacity cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
+                  >
+                    <span>Inspect Technical Spec</span>
+                    <ArrowUpRight size={15} aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      )}
+
+      <div className="flex justify-start md:justify-center pt-10">
         <Link
           href="/professionalProjects"
-          className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border hover:border-foreground text-[12px] font-mono uppercase tracking-wider transition-all"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-card text-[14px] font-medium text-foreground hover:bg-foreground hover:text-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
         >
-          <span>View Complete Architecture Index ({allProjects.length} Projects)</span>
-          <span className="transition-transform group-hover:translate-x-1">→</span>
+          <span>View all {allProjects.length} case studies</span>
+          <ArrowUpRight size={15} aria-hidden="true" />
         </Link>
       </div>
+
+      {selectedProject && (
+        <ProjectModal
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+          title={selectedProject.title}
+          company={selectedProject.company}
+          date={selectedProject.date}
+          highlight={selectedProject.highlight}
+          architecture={selectedProject.architecture}
+          description={selectedProject.description}
+          workDone={selectedProject.keyContributions || []}
+          technologies={selectedProject.technologies || []}
+          benchmarks={selectedProject.benchmarks}
+        />
+      )}
     </section>
   );
 };

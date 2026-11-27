@@ -50,9 +50,14 @@ export default function ProjectsPage() {
             isOpen
             onClose={() => setSelectedProject(null)}
             title={selectedProject.title}
+            company={selectedProject.company}
+            date={selectedProject.date}
+            highlight={selectedProject.highlight}
+            architecture={selectedProject.architecture}
             description={selectedProject.description}
-            workDone={selectedProject.workDone}
-            technologies={selectedProject.technologies}
+            workDone={selectedProject.keyContributions || selectedProject.workDone || []}
+            technologies={selectedProject.technologies || []}
+            benchmarks={selectedProject.benchmarks}
           />
         )}
 
